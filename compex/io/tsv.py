@@ -98,6 +98,7 @@ class TsvReader:
             elif not line:
                 if sentence_started:
                     # Sentence ends
+                    # TODO link the relations
                     sentences.append(TsvSentence(current_text, tokens))
                     current_text = None
                     tokens = []
