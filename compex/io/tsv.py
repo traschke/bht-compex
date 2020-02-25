@@ -53,8 +53,8 @@ class TsvSentence:
 
 class TsvDocument:
     def __init__(self, schema: TsvSchema, sentences: List[TsvSentence]):
-        self.schema: TsvSchema
-        self.sentences: List[TsvSentence]
+        self.schema: TsvSchema = schema
+        self.sentences: List[TsvSentence] = sentences
 
 class TsvReader:
     def read_tsv(self, tsvFile: str) -> TsvDocument:
@@ -70,13 +70,13 @@ class TsvReader:
         schema: TsvSchema = TsvSchema()
         for line in iterator:
             if line.startswith(HEADER_PREFIX_FORMAT):
-                schema.format = line.split(HEADER_LAYER_PREFIX_SEPARATOR, 1)[1]
+                schema.format = line.split(HEADER_LAYER_PREFIX_SEPARATOR, 1)[1].strip()
             elif line.startswith(HEADER_PREFIX_SPAN_LAYER):
-                schema.span_types = line.split(HEADER_LAYER_PREFIX_SEPARATOR, 1)[1]
+                schema.span_types.append(line.split(HEADER_LAYER_PREFIX_SEPARATOR, 1)[1].strip())
             elif line.startswith(HEADER_PREFIX_CHAIN_LAYER):
-                schema.chain_layers = line.split(HEADER_LAYER_PREFIX_SEPARATOR, 1)[1]
+                schema.chain_layers.append(line.split(HEADER_LAYER_PREFIX_SEPARATOR, 1)[1].strip())
             elif line.startswith(HEADER_PREFIX_RELATION_LAYER):
-                schema.relation_layers = line.split(HEADER_LAYER_PREFIX_SEPARATOR, 1)[1]
+                schema.relation_layers.append(line.split(HEADER_LAYER_PREFIX_SEPARATOR, 1)[1].strip())
             else:
                 break
         return schema
