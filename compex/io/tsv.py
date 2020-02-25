@@ -38,18 +38,18 @@ class TsvSchema:
         self.relation_layers: List[str] = []
 
 class TsvToken:
-    def __init__(self):
-        self.sentence_number: int
-        self.token_number: int
-        self.offset_begin: int
-        self.offset_end: int
-        self.token: str
-        self.layers: List
+    def __init__(self, sentence_number: int, token_number: int, offset_begin: int, offset_end: int, token: str, layers: List):
+        self.sentence_number: int = sentence_number
+        self.token_number: int = token_number
+        self.offset_begin: int = offset_begin
+        self.offset_end: int = offset_end
+        self.token: str = token
+        self.layers: List = []
 
 class TsvSentence:
-    def __init__(self):
-        self.text: str
-        self.tokens: List[TsvToken]
+    def __init__(self, text: str, tokens: List[TsvToken]):
+        self.text: str = text
+        self.tokens: List[TsvToken] = tokens
 
 class TsvDocument:
     def __init__(self, schema: TsvSchema, sentences: List[TsvSentence]):
@@ -58,31 +58,65 @@ class TsvDocument:
 
 class TsvReader:
     def read_tsv(self, tsvFile: str) -> TsvDocument:
-        file1 = open(tsvFile, 'r')
-        sentences = file1.readlines()
-        iterator = iter(sentences)
+        lines = []
+        with open(tsvFile, 'r') as file1:
+            lines = file1.readlines()
+            lines = [x.rstrip('\n') for x in lines]
+        iterator = iter(lines)
+
         schema: TsvSchema = self.read_schema(iterator)
         sentences: List[TsvSentence] = self.read_sentences(iterator)
         document: TsvDocument = TsvDocument(schema, sentences)
+
         return document
 
     def read_schema(self, iterator: Iterator[str]) -> TsvSchema:
         schema: TsvSchema = TsvSchema()
         for line in iterator:
             if line.startswith(HEADER_PREFIX_FORMAT):
-                schema.format = line.split(HEADER_LAYER_PREFIX_SEPARATOR, 1)[1].strip()
+                schema.format = line.split(HEADER_LAYER_PREFIX_SEPARATOR, 1)[1]
             elif line.startswith(HEADER_PREFIX_SPAN_LAYER):
-                schema.span_types.append(line.split(HEADER_LAYER_PREFIX_SEPARATOR, 1)[1].strip())
+                schema.span_types.append(line.split(HEADER_LAYER_PREFIX_SEPARATOR, 1)[1])
             elif line.startswith(HEADER_PREFIX_CHAIN_LAYER):
-                schema.chain_layers.append(line.split(HEADER_LAYER_PREFIX_SEPARATOR, 1)[1].strip())
+                schema.chain_layers.append(line.split(HEADER_LAYER_PREFIX_SEPARATOR, 1)[1])
             elif line.startswith(HEADER_PREFIX_RELATION_LAYER):
-                schema.relation_layers.append(line.split(HEADER_LAYER_PREFIX_SEPARATOR, 1)[1].strip())
+                schema.relation_layers.append(line.split(HEADER_LAYER_PREFIX_SEPARATOR, 1)[1])
             else:
                 break
         return schema
 
     def read_sentences(self, iterator: Iterator[str]) -> List[TsvSentence]:
-        return []
+        sentences: List[TsvSentence] = []
+        tokens: List[TsvToken] = []
+        current_text = None
+        sentence_started = False
+        for line in iterator:
+            if line.startswith(SENTENCE_IDENTIFICATOR):
+                # Sentence starts
+                current_text = line.split(HEADER_LAYER_PREFIX_SEPARATOR)[1]
+                sentence_started = True
+            elif not line:
+                if sentence_started:
+                    # Sentence ends
+                    sentences.append(TsvSentence(current_text, tokens))
+                    current_text = None
+                    tokens = []
+                    sentence_started = False
+            else:
+                # parse token
+                parts = line.split(FIELD_SEPARATOR)
+                sentence_number, token_number = parts[0].split(RANGE_SEPERATOR)
+                offset_begin, offset_end = parts[1].split(RANGE_SEPERATOR)
+                token = parts[2]
+                layers = parts[3:]
+                tokens.append(TsvToken(sentence_number, token_number, offset_begin, offset_end, token, layers))
 
+        # Dirty hack to complete the last sentence in tsv
+        if sentence_started:
+                    # Sentence ends
+                    sentences.append(TsvSentence(current_text, tokens))
+                    current_text = None
+                    tokens = []
+                    sentence_started = False
 
-
+        return sentences
