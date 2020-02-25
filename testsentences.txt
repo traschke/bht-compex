@@ -1,0 +1,7 @@
+Die Studierenden beherrschen die grundlegenden Techniken des wissenschaftlichen Arbeitens.
+Die Studierenden können eine serverseitige Schnittstelle für moderne Webanwendungen konzipieren und implementieren.
+Die Studierenden erwerben eine ergonomiebezogene Sicht auf Software-Anwendungen und setzen sich mit Grundlagen der Wahrnehmungs-, Kognitions- und Handlungsprozesse auseinander.
+Sie haben in Teamarbeit typische Komplexitätsprobleme erfahren und können diese durch den Einsatz von Entwicklungsmethoden, Architektur- und Entwurfsmustern bewältigen.
+Die Studierenden sollen in der Lage sein, eine komplexe Anwendung mit projektspezifischen Basistechniken in Teamarbeit zu konzipieren und umzusetzen.
+Die Studierenden beherrschen die grundlegenden Techniken zum wissenschaftlichen Arbeiten.
+Die Studierenden können komplexe Probleme des Interface Designs lösen und Informationen verständlich, rasch erfassbar und gut auffindbar in visuellen Systemen zusammenzufassen.
