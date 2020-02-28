@@ -41,10 +41,10 @@ class LayerDefinition:
     def __init__(self, layer_type: LayerType, id: str):
         self.layer_type: LayerType = layer_type
         self.id: str = id
-        self.features: List[FeatureDefinition] = []
+        self.features_definitions: List[FeatureDefinition] = []
 
-    def add_feature(self, name: str):
-        self.features.append(FeatureDefinition(name, self))
+    def add_feature_definition(self, name: str):
+        self.features_definitions.append(FeatureDefinition(name, self))
 
 class FeatureDefinition:
     def __init__(self, name: str, layer_definition: LayerDefinition):
@@ -68,11 +68,11 @@ class TsvSchema:
     def get_feature_definitions(self) -> List[FeatureDefinition]:
         feature_definitions: List[FeatureDefinition] = []
         for span in self.span_types:
-            feature_definitions = feature_definitions + span.features
+            feature_definitions = feature_definitions + span.features_definitions
         for chain in self.chain_layers:
-            feature_definitions = feature_definitions + chain.features
+            feature_definitions = feature_definitions + chain.features_definitions
         for relation in self.relation_layers:
-            feature_definitions = feature_definitions + relation.features
+            feature_definitions = feature_definitions + relation.features_definitions
         return feature_definitions
 
 class TsvToken:
@@ -147,7 +147,7 @@ class TsvReader:
                 features = value.split("|")[1:]
                 layer_def = LayerDefinition(LayerType.SPAN_LAYER, layer_id)
                 for feature in features:
-                    layer_def.add_feature(feature)
+                    layer_def.add_feature_definition(feature)
                 schema.span_types.append(layer_def)
             elif line.startswith(HEADER_PREFIX_CHAIN_LAYER):
                 value = line.split(HEADER_LAYER_PREFIX_SEPARATOR, 1)[1]
@@ -155,7 +155,7 @@ class TsvReader:
                 features = value.split("|")[1:]
                 layer_def = LayerDefinition(LayerType.CHAIN_LAYER, layer_id)
                 for feature in features:
-                    layer_def.add_feature(feature)
+                    layer_def.add_feature_definition(feature)
                 schema.chain_layers.append(layer_def)
             elif line.startswith(HEADER_PREFIX_RELATION_LAYER):
                 value = line.split(HEADER_LAYER_PREFIX_SEPARATOR, 1)[1]
@@ -163,7 +163,7 @@ class TsvReader:
                 features = value.split("|")[1:]
                 layer_def = LayerDefinition(LayerType.RELATION_LAYER, layer_id)
                 for feature in features:
-                    layer_def.add_feature(feature)
+                    layer_def.add_feature_definition(feature)
                 schema.relation_layers.append(layer_def)
             else:
                 break
