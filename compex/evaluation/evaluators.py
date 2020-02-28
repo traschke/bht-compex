@@ -8,7 +8,7 @@ class FMeasureEvaluator:
     def evaluate_with_annotated_sentences(self, annotated_sentences: Dict[str, List[Competency]]):
         """Evaluates the parser against pre-annotated sentences"""
 
-        for annotated_sentence in annotated_sentences:
+        for sentence, annotated_sentence in annotated_sentences.items():
             # TODO Annotate with compex!
 
             # TODO Fetch true positives, false positives and false negatives competencies, objects and contexts
