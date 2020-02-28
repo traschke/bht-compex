@@ -75,39 +75,6 @@ class TsvSchema:
             feature_definitions = feature_definitions + relation.features_definitions
         return feature_definitions
 
-class TsvToken:
-    def __init__(self, sentence_number: int, token_number: int, offset_begin: int, offset_end: int, token: str, features: Dict):
-        self.sentence_number: int = sentence_number
-        self.token_number: int = token_number
-        self.offset_begin: int = offset_begin
-        self.offset_end: int = offset_end
-        self.token: str = token
-        self.features: Dict = features
-
-class TsvSentence:
-    def __init__(self, text: str, tokens: List[TsvToken]):
-        self.text: str = text
-        self.tokens: List[TsvToken] = tokens
-        # self.features: Dict[FeatureDefinition, List[Feature]] = {}
-        self.features: Dict[Feature, List[TsvToken]] = {}
-        for token in self.tokens:
-            for feature in token.features:
-                # if not feature.feature_definition in self.features:
-                #     self.features[feature.feature_definition] = []
-                # self.features[feature.feature_definition].append([feature, token])
-                if not feature in self.features:
-                    self.features[feature]: List[TsvToken] = []
-                self.features[feature].append(token)
-        # for feature_def in self.features:
-        #     for feature in feature_def:
-        #         print(feature)
-
-
-class TsvDocument:
-    def __init__(self, schema: TsvSchema, sentences: List[TsvSentence]):
-        self.schema: TsvSchema = schema
-        self.sentences: List[TsvSentence] = sentences
-
 class Feature:
     def __init__(self, feature_definition: FeatureDefinition, span_index: str, value: str):
         self.feature_definition: FeatureDefinition = feature_definition
@@ -121,6 +88,45 @@ class Feature:
             self.__class__ == other.__class__ and
             (self.feature_definition, self.span_index, self.value) == (other.feature_definition, other.span_index, other.value)
         )
+
+class TsvToken:
+    def __init__(self, sentence_number: int, token_number: int, offset_begin: int, offset_end: int, token: str, features: Dict):
+        self.sentence_number: int = sentence_number
+        self.token_number: int = token_number
+        self.offset_begin: int = offset_begin
+        self.offset_end: int = offset_end
+        self.token: str = token
+        self.features: Dict = features
+
+class TokenChunk:
+    def __init__(self, feature: Feature, tokens: List[TsvToken], relations: List):
+        self.feature: Feature = feature
+        self.tokens: List[TsvToken] = tokens
+        self.relations: List[TokenChunk] = relations
+
+class TsvSentence:
+    def __init__(self, text: str, tokens: List[TsvToken]):
+        self.text: str = text
+        self.tokens: List[TsvToken] = tokens
+        # self.features: Dict[FeatureDefinition, List[Feature]] = {}
+        self.features: Dict[Feature, List[TsvToken]] = {}
+        self.token_chunks: Dict[Feature, TokenChunk] = {}
+        for token in self.tokens:
+            for feature in token.features:
+                # if not feature.feature_definition in self.features:
+                #     self.features[feature.feature_definition] = []
+                # self.features[feature.feature_definition].append([feature, token])
+                if not feature in self.features:
+                    self.features[feature]: List[TsvToken] = []
+                self.features[feature].append(token)
+        for feature, tokens in self.features.items():
+            # TODO Add relations!!!
+            self.token_chunks[feature] = TokenChunk(feature, tokens, [])
+
+class TsvDocument:
+    def __init__(self, schema: TsvSchema, sentences: List[TsvSentence]):
+        self.schema: TsvSchema = schema
+        self.sentences: List[TsvSentence] = sentences
 
 class TsvReader:
     def read_tsv(self, tsvFile: str) -> TsvDocument:
