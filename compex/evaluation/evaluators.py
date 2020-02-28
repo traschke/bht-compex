@@ -28,7 +28,11 @@ class FMeasureEvaluator:
     """Evaluator precision, recall and f1-score"""
 
     def evaluate_with_annotated_sentences(self, evaluation_set: EvaluationSet, respect_objects: bool = False, respect_contexts = False):
-        """Evaluates the parser against pre-annotated sentences"""
+        """
+        Evaluates the parser against pre-annotated sentences.
+        By default, only bare competencies are used in the calculation.
+        Use the appropriate parameters to also consider objects and contexts of competencies.
+        """
 
         # Fetch true positives, false positives and false negatives competencies, objects and contexts
         # TODO Take objects and contexts into account!
