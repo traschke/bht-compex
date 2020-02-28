@@ -27,7 +27,7 @@ class EvaluationSet:
 class FMeasureEvaluator:
     """Evaluator precision, recall and f1-score"""
 
-    def evaluate_with_annotated_sentences(self, evaluation_set: EvaluationSet):
+    def evaluate_with_annotated_sentences(self, evaluation_set: EvaluationSet, respect_objects: bool = False, respect_contexts = False):
         """Evaluates the parser against pre-annotated sentences"""
 
         # Fetch true positives, false positives and false negatives competencies, objects and contexts
