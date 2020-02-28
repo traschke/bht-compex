@@ -1,6 +1,6 @@
 from typing import List, Iterator, Dict
 from enum import Enum
-import re
+import re, uuid
 
 # See https://webanno.github.io/webanno/releases/3.4.5/docs/user-guide.html#sect_webannotsv
 
@@ -51,8 +51,6 @@ class FeatureDefinition:
         self.name: str = name
         self.layer_definition: LayerDefinition = layer_definition
 
-
-
 class TsvSchema:
     def __init__(self):
         self.format: str = None
@@ -90,6 +88,20 @@ class TsvSentence:
     def __init__(self, text: str, tokens: List[TsvToken]):
         self.text: str = text
         self.tokens: List[TsvToken] = tokens
+        # self.features: Dict[FeatureDefinition, List[Feature]] = {}
+        self.features: Dict[Feature, List[TsvToken]] = {}
+        for token in self.tokens:
+            for feature in token.features:
+                # if not feature.feature_definition in self.features:
+                #     self.features[feature.feature_definition] = []
+                # self.features[feature.feature_definition].append([feature, token])
+                if not feature in self.features:
+                    self.features[feature]: List[TsvToken] = []
+                self.features[feature].append(token)
+        # for feature_def in self.features:
+        #     for feature in feature_def:
+        #         print(feature)
+
 
 class TsvDocument:
     def __init__(self, schema: TsvSchema, sentences: List[TsvSentence]):
@@ -97,9 +109,18 @@ class TsvDocument:
         self.sentences: List[TsvSentence] = sentences
 
 class Feature:
-    def __init__(self, feature_definition: FeatureDefinition, values: Dict[str, str]):
+    def __init__(self, feature_definition: FeatureDefinition, span_index: str, value: str):
         self.feature_definition: FeatureDefinition = feature_definition
-        self.value: Dict[str, str] = values
+        self.span_index: str = span_index
+        self.value: str = value
+        # self.value: Dict[str, str] = values
+    def __hash__(self):
+        return hash((self.feature_definition, self.span_index, self.value))
+    def __eq__(self, other):
+        return (
+            self.__class__ == other.__class__ and
+            (self.feature_definition, self.span_index, self.value) == (other.feature_definition, other.span_index, other.value)
+        )
 
 class TsvReader:
     def read_tsv(self, tsvFile: str) -> TsvDocument:
@@ -173,10 +194,10 @@ class TsvReader:
                 sentence_number, token_number = parts[0].split(RANGE_SEPERATOR)
                 offset_begin, offset_end = parts[1].split(RANGE_SEPERATOR)
                 token = parts[2]
-                layers = self.parse_features(parts[3:], schema.get_feature_definitions())
-                tokens.append(TsvToken(sentence_number, token_number, offset_begin, offset_end, token, layers))
+                features = self.parse_features(parts[3:], schema.get_feature_definitions())
+                tokens.append(TsvToken(sentence_number, token_number, offset_begin, offset_end, token, features))
 
-        # Dirty hack to complete the last sentence in tsv
+        # FIXME Dirty hack to complete the last sentence in tsv
         if sentence_started:
                     # Sentence ends
                     sentences.append(TsvSentence(current_text, tokens))
@@ -200,9 +221,11 @@ class TsvReader:
                     searcho = re.search(r"^([A-Za-z0-9\-]+)(\[(\d+(_\d+)?)\])?$", part)
                     name = searcho.group(1)
                     if searcho.group(3) is None:
-                        index = 0
+                        # FIXME Dirty hack to distinguish features without span-index
+                        # Assign each of them a random id, so they are not part of the same span
+                        span_index = uuid.uuid1()
                     else:
-                        index = searcho.group(3)
-                    parsed_features.append(Feature(feature_definitions[i], {index: name}))
+                        span_index = searcho.group(3)
+                    parsed_features.append(Feature(feature_definitions[i], span_index, name))
 
         return parsed_features
