@@ -99,10 +99,13 @@ class TsvToken:
         self.features: Dict = features
 
 class TokenChunk:
-    def __init__(self, feature: Feature, tokens: List[TsvToken], relations: List):
+    def __init__(self, feature: Feature, tokens: List[TsvToken]):
         self.feature: Feature = feature
         self.tokens: List[TsvToken] = tokens
-        self.relations: List[TokenChunk] = relations
+        self.relations: List[TokenChunk] = []
+
+    def add_relation(self, token_chunk):
+        self.relations.append(token_chunk)
 
 class TsvSentence:
     def __init__(self, text: str, tokens: List[TsvToken]):
@@ -121,7 +124,30 @@ class TsvSentence:
                 self.features[feature].append(token)
         for feature, tokens in self.features.items():
             # TODO Add relations!!!
-            self.token_chunks[feature] = TokenChunk(feature, tokens, [])
+            self.token_chunks[feature] = TokenChunk(feature, tokens)
+        for feature, token_chunk in self.token_chunks.items():
+            if token_chunk.feature.feature_definition.layer_definition.layer_type == LayerType.RELATION_LAYER:
+                print("is related to " + token_chunk.feature.value)
+                partos = token_chunk.feature.value.split("-")
+                sentence_no = partos[0]
+                token_no = partos[1]
+                child: TokenChunk = None
+                parent: TokenChunk = None
+                for f, tc in self.token_chunks.items():
+                    if tc.tokens[0].sentence_number == sentence_no and tc.tokens[0].token_number == token_no and tc.feature.feature_definition.layer_definition.layer_type != LayerType.RELATION_LAYER:
+                        print("WE HAVE A RELATION!")
+                        # token_chunk.add_relation(t)
+                        child = tc
+                    elif tc.tokens[0].sentence_number == token_chunk.tokens[0].sentence_number and tc.tokens[0].token_number == token_chunk.tokens[0].token_number and tc.feature.feature_definition.layer_definition.layer_type != LayerType.RELATION_LAYER:
+                        parent = tc
+                if parent is not None and child is not None:
+                    parent.add_relation(child)
+        features_to_del = []
+        for feature, token_chunk in self.token_chunks.items():
+            if feature.feature_definition.layer_definition.layer_type == LayerType.RELATION_LAYER:
+                features_to_del.append(feature)
+        for feature_to_del in features_to_del:
+            del self.token_chunks[feature_to_del]
 
 class TsvDocument:
     def __init__(self, schema: TsvSchema, sentences: List[TsvSentence]):
