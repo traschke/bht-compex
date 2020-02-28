@@ -11,4 +11,4 @@ class TestTsvToCompetenciesConverter:
         document: TsvDocument = reader.read_tsv(os.path.join(test_dir, "test.tsv"))
 
         sentences = convert_tsv_to_competencies(document)
-        print(sentences)
+        assert len(sentences) == 7
