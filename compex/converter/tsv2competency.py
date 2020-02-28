@@ -1,7 +1,7 @@
 from typing import List, Dict
 
 from compex.io.tsv import TsvDocument, Feature, TokenChunk
-from compex.competencies.competency_types import Competency, CompetencyObject, ObjectContext, Word
+from compex.competencies.competency_types import Competency, CompetencyObject, ObjectContext, Word, WordChunk
 
 TSV_COMPETENCY_TYPE = "CompType"
 TSV_COMPETENCY_VALUE = "competency"
@@ -12,11 +12,41 @@ def convert_tsv_to_competencies(tsv: TsvDocument) -> Dict[str, List[Competency]]
     sentences = {}
     for sentence in tsv.sentences:
         current_comps: List[Competency] = []
+        # 1. Find competencies
         for feature, token_chunk in sentence.token_chunks.items():
-            # TODO Go through chunks in reverse order to maintain relation chain
-            # TODO find the objects and contexts that are related to the competency
             if token_chunk.feature.feature_definition.name == TSV_COMPETENCY_TYPE and token_chunk.feature.value == TSV_COMPETENCY_VALUE:
                 current_comps.append(Competency(Word(token_chunk.tokens[0].token_number, token_chunk.tokens[0].token)))
 
+        # 2. Find objects of competencies
+        for feature, token_chunk in sentence.token_chunks.items():
+            if token_chunk.feature.feature_definition.name == TSV_COMPETENCY_TYPE and token_chunk.feature.value == TSV_OBJECT_VALUE:
+                for related_token_chunk in token_chunk.relations:
+                    if related_token_chunk.feature.feature_definition.name == TSV_COMPETENCY_TYPE and related_token_chunk.feature.value == TSV_COMPETENCY_VALUE:
+                        # find the competency
+                        for comp in current_comps:
+                            if comp.word.index == related_token_chunk.tokens[0].token_number:
+                                # Convert tokens from object to wordchunk
+                                words = []
+                                for token in token_chunk.tokens:
+                                    words.append(Word(token.token_number, token.token))
+                                # Leave contexts emtpy, because we don't know about them yet
+                                comp.objects.append(CompetencyObject(WordChunk(words)))
+
+        # 3. Find the context of objects
+        for feature, token_chunk in sentence.token_chunks.items():
+            if token_chunk.feature.feature_definition.name == TSV_COMPETENCY_TYPE and token_chunk.feature.value == TSV_CONTEXT_VALUE:
+                for related_token_chunk in token_chunk.relations:
+                    if related_token_chunk.feature.feature_definition.name == TSV_COMPETENCY_TYPE and related_token_chunk.feature.value == TSV_OBJECT_VALUE:
+                        # find the object
+                        for comp in current_comps:
+                            for obj in comp.objects:
+                                if obj.word_chunk.words[0].index == related_token_chunk.tokens[0].token_number:
+                                    # Convert tokens from object to wordchunk
+                                    words = []
+                                    for token in token_chunk.tokens:
+                                        words.append(Word(token.token_number, token.token))
+                                    obj.contexts.append(ObjectContext(WordChunk(words)))
+
+        # Competencies, objects and contexts converted, add them to sentence list
         sentences[sentence.text] = current_comps
     return sentences
