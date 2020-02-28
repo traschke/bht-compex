@@ -30,23 +30,11 @@ class FMeasureEvaluator:
     def evaluate_with_annotated_sentences(self, evaluation_set: EvaluationSet):
         """Evaluates the parser against pre-annotated sentences"""
 
-        # # TODO Annotate with compex!
-        # annotator = SemgrexAnnotator()
-        # compex_annotated_sentences: Dict[str, List[Competency]] = annotator.annotate_sentences(test_annotated_sentences.keys())
-
-        # TODO Fetch true positives, false positives and false negatives competencies, objects and contexts
+        # Fetch true positives, false positives and false negatives competencies, objects and contexts
+        # TODO Take objects and contexts into account!
         true_positives = 0
         false_positives = 0
         false_negatives = 0
-
-        # # Calculate true positives
-        # for sentence, data in evaluation_set.merged_data.items():
-        #     if len(data) == 2:
-        #         for annotated_data_competency in data["annotated_data"]:
-        #             for test_data_compentency in data["test_data"]:
-        #                 # TODO As now, no objects are taken into account
-        #                 if test_data_compentency == annotated_data_competency:
-        #                     true_positives += 1
 
         # Calculate true positives and false positives
         for sentence, data in evaluation_set.merged_data.items():
@@ -71,16 +59,8 @@ class FMeasureEvaluator:
                     if not is_found:
                         false_negatives += 1
 
-        # for (sentence, compex_compentency), (_, annotated_competency) in zip(compex_annotated_sentences.items(), test_annotated_sentences.items()):
-        #     None
-
-        # TODO Calculate precision
         precision = self.__calculate_precision(true_positives, false_negatives, false_positives)
-
-        # TODO Calcalate recall
         recall = self.__calculate_recall(true_positives, false_negatives)
-
-        # TODO Calculate F1-score
         f1 = self.__calculate_f1_score(precision, recall)
 
         return {
