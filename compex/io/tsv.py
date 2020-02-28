@@ -46,10 +46,28 @@ class LayerDefinition:
     def add_feature_definition(self, name: str):
         self.features_definitions.append(FeatureDefinition(name, self))
 
+    def __hash__(self):
+        return hash((self.layer_type, self.id))
+
+    def __eq__(self, other):
+        return (
+            self.__class__ == other.__class__ and
+            (self.layer_type, self.id) == (other.layer_type, other.id)
+        )
+
 class FeatureDefinition:
     def __init__(self, name: str, layer_definition: LayerDefinition):
         self.name: str = name
         self.layer_definition: LayerDefinition = layer_definition
+
+    def __hash__(self):
+        return hash((self.name, self.layer_definition))
+
+    def __eq__(self, other):
+        return (
+            self.__class__ == other.__class__ and
+            (self.name, self.layer_definition) == (other.name, other.layer_definition)
+        )
 
 class TsvSchema:
     def __init__(self):
