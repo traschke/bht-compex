@@ -1,6 +1,7 @@
 from typing import Dict, List
 
 from compex.competencies.competency_types import Competency
+from compex.annotators import SemgrexAnnotator
 
 class FMeasureEvaluator:
     """Evaluator precision, recall and f1-score"""
@@ -8,23 +9,27 @@ class FMeasureEvaluator:
     def evaluate_with_annotated_sentences(self, annotated_sentences: Dict[str, List[Competency]]):
         """Evaluates the parser against pre-annotated sentences"""
 
-        for sentence, annotated_sentence in annotated_sentences.items():
-            # TODO Annotate with compex!
+        # TODO Annotate with compex!
+        annotator = SemgrexAnnotator()
+        compex_annotated_sentences: Dict[str, List[Competency]] = annotator.annotate_sentences(annotated_sentences.keys())
 
-            # TODO Fetch true positives, false positives and false negatives competencies, objects and contexts
-            true_positives = None
-            false_positives = None
-            false_negatives = None
+        # TODO Fetch true positives, false positives and false negatives competencies, objects and contexts
+        true_positives = None
+        false_positives = None
+        false_negatives = None
+        for (sentence, compex_compentency), (_, annotated_competency) in zip(compex_annotated_sentences.items(), annotated_sentences.items()):
+            None
 
-            # TODO Calculate precision
-            precision = self.__calculate_precision(true_positives, false_negatives, false_positives)
+        # TODO Calculate precision
+        precision = self.__calculate_precision(true_positives, false_negatives, false_positives)
 
-            # TODO Calcalate recall
-            recall = self.__calculate_recall(true_positives, false_negatives)
+        # TODO Calcalate recall
+        recall = self.__calculate_recall(true_positives, false_negatives)
 
-            # TODO Calculate F1-score
-            f1 = self.__calculate_f1_score(precision, recall)
-        return
+        # TODO Calculate F1-score
+        f1 = self.__calculate_f1_score(precision, recall)
+
+        return {"precision": precision, "recall": recall, "f1": f1}
 
     def __calculate_precision(self, true_positives, false_negatives, false_positives):
         raise NotImplementedError()
