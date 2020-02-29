@@ -15,7 +15,7 @@ def convert_tsv_to_competencies(tsv: TsvDocument) -> Dict[str, List[Competency]]
         # 1. Find competencies
         for feature, token_chunk in sentence.token_chunks.items():
             if token_chunk.feature.feature_definition.name == TSV_COMPETENCY_TYPE and token_chunk.feature.value == TSV_COMPETENCY_VALUE:
-                current_comps.append(Competency(Word(token_chunk.tokens[0].token_number, token_chunk.tokens[0].token)))
+                current_comps.append(Competency(Word(convert_token_number(token_chunk.tokens[0].token_number), token_chunk.tokens[0].token)))
 
         # 2. Find objects of competencies
         for feature, token_chunk in sentence.token_chunks.items():
@@ -28,7 +28,7 @@ def convert_tsv_to_competencies(tsv: TsvDocument) -> Dict[str, List[Competency]]
                                 # Convert tokens from object to wordchunk
                                 words = []
                                 for token in token_chunk.tokens:
-                                    words.append(Word(token.token_number, token.token))
+                                    words.append(Word(convert_token_number(token.token_number), token.token))
                                 # Leave contexts emtpy, because we don't know about them yet
                                 comp.objects.append(CompetencyObject(WordChunk(words)))
 
@@ -44,9 +44,12 @@ def convert_tsv_to_competencies(tsv: TsvDocument) -> Dict[str, List[Competency]]
                                     # Convert tokens from object to wordchunk
                                     words = []
                                     for token in token_chunk.tokens:
-                                        words.append(Word(token.token_number, token.token))
+                                        words.append(Word(convert_token_number(token.token_number), token.token))
                                     obj.contexts.append(ObjectContext(WordChunk(words)))
 
         # Competencies, objects and contexts converted, add them to sentence list
         sentences[sentence.text] = current_comps
     return sentences
+
+def convert_token_number(token_number: str) -> int:
+    return int(token_number) - 1
