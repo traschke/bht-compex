@@ -145,7 +145,7 @@ class TsvSentence:
             self.token_chunks[feature] = TokenChunk(feature, tokens)
         for feature, token_chunk in self.token_chunks.items():
             if token_chunk.feature.feature_definition.layer_definition.layer_type == LayerType.RELATION_LAYER:
-                print("is related to " + token_chunk.feature.value)
+                # print("is related to " + token_chunk.feature.value)
                 partos = token_chunk.feature.value.split("-")
                 sentence_no = partos[0]
                 token_no = partos[1]
@@ -153,7 +153,7 @@ class TsvSentence:
                 parent: TokenChunk = None
                 for f, tc in self.token_chunks.items():
                     if tc.tokens[0].sentence_number == sentence_no and tc.tokens[0].token_number == token_no and tc.feature.feature_definition.layer_definition.layer_type != LayerType.RELATION_LAYER:
-                        print("WE HAVE A RELATION!")
+                        # print("WE HAVE A RELATION!")
                         # token_chunk.add_relation(t)
                         child = tc
                     elif tc.tokens[0].sentence_number == token_chunk.tokens[0].sentence_number and tc.tokens[0].token_number == token_chunk.tokens[0].token_number and tc.feature.feature_definition.layer_definition.layer_type != LayerType.RELATION_LAYER:
