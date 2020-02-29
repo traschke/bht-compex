@@ -3,6 +3,17 @@ from stanfordnlp.server import CoreNLPClient
 
 from compex.competencies.competency_types import Competency, CompetencyObject, ObjectContext, Word, WordChunk
 
+# Die Studierenden beherrschen die grundlegenden Techniken zum wissenschaftlichen Arbeiten.
+# Die Studierenden können eine serverseitige Schnittstelle für moderne Webanwendungen konzipieren und implementieren.
+# {tag:VVINF}=competency >dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det {tag:NN}=objectdet)
+# {tag:VVINF}=competency >dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det ({tag:NN}=objectdet ?>amod {tag:ADJA}=objectdetadja))
+# {tag:VVINF}=competency >dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det ({tag:NN}=objectdet ?>amod {tag:ADJA}=objectdetadja)) ?>/conj:.*/ {tag:VVINF}=competency2
+# {tag:/VVINF|VVFIN/}=competency >dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det ({tag:NN}=objectdet ?>amod {tag:ADJA}=objectdetadja)) ?>/conj:.*/ {tag:VVINF}=competency2
+# {tag:/VVINF|VVFIN/}=competency >dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det ({tag:NN}=objectdet ?>amod {tag:ADJA}=objectdetadja)) ?>nmod ({}=context ?>amod {tag:ADJA}=contextadja) ?>/conj:.*/ {tag:VVINF}=competency2
+# {tag:/VVINF|VVFIN/}=competency >dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det ({tag:NN}=objectdet ?>amod {tag:ADJA}=objectdetadja)) ?>nmod ({}=context ?>/conj:.*/ {}=context2 ?>amod {tag:ADJA}=contextadja) ?>/conj:.*/ {tag:VVINF}=competency2
+# {tag:/VVINF|VVFIN|VVIZU/}=competency >dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det ({tag:NN}=objectdet ?>amod {tag:ADJA}=objectdetadja)) ?>nmod ({}=context ?>/conj:.*/ {}=context2 ?>amod {tag:ADJA}=contextadja) ?>/conj:.*/ {tag:/VVINF|VVFIN|VVIZU/}=competency2
+# pattern = '{tag:/VVINF|VVFIN/}=competency >dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det ({tag:NN}=objectdet ?>amod {tag:ADJA}=objectdetadja)) ?>nmod ({}=context ?>/conj:.*/ {}=context2 ?>amod {tag:ADJA}=contextadja) ?>/conj:.*/ {tag:VVINF}=competency2'
+
 class SemgrexAnnotator:
     """
     An annotator that annotates compentencies, their objects and contexts.
@@ -17,14 +28,9 @@ class SemgrexAnnotator:
     pattern = '{tag:/VVINF|VVFIN|VVIZU/}=competency ?>dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det ({tag:NN}=objectdet ?>amod {tag:ADJA}=objectdetadja ?>det {tag:ART}=objectdetart)) ?>nmod ({}=context ?>/conj:.*/ {}=context2 ?>amod {tag:ADJA}=contextadja) ?>/conj:.*/ {tag:/VVINF|VVFIN|VVIZU/}=competency2'
     semgrex_properties = {"annotators": "tokenize,ssplit,depparse"}
 
-    # def annotate(self, text: str) -> Dict[str, List[Competency]]:
-    #     """Annotates a single sentence."""
-    #     matches = self.__run_corenlp_server_semgrex(text)
-    #     competencies = self.__convert_to_competencies(matches)
-    #     return competencies
-
     def annotate(self, sentences: List[str]) -> Dict[str, List[Competency]]:
         """Annotates multiple sentences."""
+        sentences = [sentence.strip() for sentence in sentences]
         text = " ".join(sentences)
         matches = self.__run_corenlp_server_semgrex(text)
         competencies = self.__convert_to_competencies(matches)
@@ -39,9 +45,6 @@ class SemgrexAnnotator:
     def __convert_to_competencies(self, input) -> List[Competency]:
         competencies: List[List[Competency]] = []
         for i, sentence in enumerate(input["sentences"]):
-            # Check, if a match is found
-            # TODO iterate through dict
-            # FIXME Keep assigment of sentence <-> competency
             sentence_competencies = []
             for key, match in sentence.items():
                 if key != "length":

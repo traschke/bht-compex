@@ -77,10 +77,10 @@ class FMeasureEvaluator:
             }
 
     def __calculate_precision(self, true_positives, false_negatives, false_positives):
-        return true_positives / (true_positives + false_positives)
+        return true_positives / (true_positives + false_positives) if true_positives or false_positives else 0.0
 
     def __calculate_recall(self, true_positives, false_negatives):
-        return true_positives / (true_positives + false_negatives)
+        return true_positives / (true_positives + false_negatives) if true_positives or false_negatives else 0.0
 
     def __calculate_f1_score(self, precision, recall):
-        return 2 * ((precision * recall) / (precision + recall))
+        return 2 * ((precision * recall) / (precision + recall)) if precision or recall else 0.0

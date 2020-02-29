@@ -9,6 +9,7 @@ pytest = "*"
 
 [packages]
 stanfordnlp = "*"
+jsonpickle = "*"
 
 [requires]
 python_version = "3.7"

@@ -1,94 +1,77 @@
-from stanfordnlp.server import CoreNLPClient
-from compex.competencies.competency_types import Word, WordChunk, Competency, CompetencyObject, ObjectContext
+import argparse
+import sys
+import jsonpickle
+from typing import Dict, List, TextIO
+
+from compex.annotators import SemgrexAnnotator
+from compex.io.tsv import TsvReader, TsvDocument
+from compex.converter.tsv2competency import convert_tsv_to_competencies
+from compex.evaluation.evaluators import EvaluationSet, FMeasureEvaluator
+from compex.competencies.competency_types import Competency
+
+def parse_args():
+    parser = argparse.ArgumentParser("compex")
+    subparser = parser.add_subparsers(dest="mode")
+
+    # Setup evaluate args
+    evaluation_parser = subparser.add_parser("evaluate", help="Evaluate the implemented extraction model.")
+    evaluation_parser.add_argument("tsv", action="store", type=argparse.FileType("r"),
+                                    help="Path to a WebAnno TSV file with annotated data. See README.md for further information.")
+    evaluation_parser.add_argument("--objects", action="store_true",
+                                    help="Consider objects in evaluation.")
+    evaluation_parser.add_argument("--contexts", action="store_true",
+                                    help="Consider contexts in evaluation.")
+
+    # Setup extract args
+    extract_parser = subparser.add_parser("extract",help="Extract competencies from given plain text sentences. Prints results as json to stdout.")
+    extract_parser.add_argument("sentences", nargs="?", action="store", type=argparse.FileType("r"), default=sys.stdin,
+                                help="Path to either a single file containing one sentence per line or a folder with multiple files. Can also be piped through stdin.")
+
+    args = parser.parse_args()
+
+    # Error handling
+    if args.mode == "evaluate":
+        if args.contexts and args.objects is False:
+            parser.error("--contexts requires --objects.")
+
+
+    return args
+
+def evaluate(tsv_file: TextIO):
+    reader: TsvReader = TsvReader()
+    document: TsvDocument = reader.read_tsv(tsv_file)
+
+    test_data: Dict[str, List[Competency]] = convert_tsv_to_competencies(document)
+
+    # TODO Get only sentences from
+    text: List[str] = []
+    for sentence in document.sentences:
+        text.append(sentence.text)
+
+    annotator = SemgrexAnnotator()
+    annotated_data = annotator.annotate(text)
+
+    evaluation_set = EvaluationSet(test_data, annotated_data)
+
+    evaluator = FMeasureEvaluator()
+    result = evaluator.evaluate_with_annotated_sentences(evaluation_set)
+    output_json = jsonpickle.encode(result, unpicklable=False)
+    print(output_json)
+
+def extract(text: List[str]):
+    annotator = SemgrexAnnotator()
+    result = annotator.annotate(text)
+    output_json = jsonpickle.encode(result, unpicklable=False)
+    print(output_json)
+
+def main():
+    args = parse_args()
+
+    if args.mode == "extract":
+        text = args.sentences.readlines()
+        extract(text)
+    elif args.mode == "evaluate":
+        evaluate(args.tsv)
 
 if __name__ == '__main__':
-    # example text
-    print('---')
-    print('input text')
-    print('')
-
-    text = "Die Studierenden beherrschen die grundlegenden Techniken des wissenschaftlichen Arbeitens."
-    # text = "Die Studierenden können eine serverseitige Schnittstelle für moderne Webanwendungen konzipieren und implementieren."
-
-    print(text)
-
-    # set up the client
-    print('---')
-    print('starting up Java Stanford CoreNLP Server...')
-
-    # set up the client
-    with CoreNLPClient(annotators=['tokenize','ssplit','depparse'], properties='german', timeout=30000, memory='16G') as client:
-        # Dependency parse, semrex
-        # Die Studierenden beherrschen die grundlegenden Techniken zum wissenschaftlichen Arbeiten.
-        # Die Studierenden können eine serverseitige Schnittstelle für moderne Webanwendungen konzipieren und implementieren.
-        # {tag:VVINF}=competency >dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det {tag:NN}=objectdet)
-        # {tag:VVINF}=competency >dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det ({tag:NN}=objectdet ?>amod {tag:ADJA}=objectdetadja))
-        # {tag:VVINF}=competency >dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det ({tag:NN}=objectdet ?>amod {tag:ADJA}=objectdetadja)) ?>/conj:.*/ {tag:VVINF}=competency2
-        # {tag:/VVINF|VVFIN/}=competency >dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det ({tag:NN}=objectdet ?>amod {tag:ADJA}=objectdetadja)) ?>/conj:.*/ {tag:VVINF}=competency2
-        # {tag:/VVINF|VVFIN/}=competency >dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det ({tag:NN}=objectdet ?>amod {tag:ADJA}=objectdetadja)) ?>nmod ({}=context ?>amod {tag:ADJA}=contextadja) ?>/conj:.*/ {tag:VVINF}=competency2
-        # {tag:/VVINF|VVFIN/}=competency >dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det ({tag:NN}=objectdet ?>amod {tag:ADJA}=objectdetadja)) ?>nmod ({}=context ?>/conj:.*/ {}=context2 ?>amod {tag:ADJA}=contextadja) ?>/conj:.*/ {tag:VVINF}=competency2
-        # {tag:/VVINF|VVFIN|VVIZU/}=competency >dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det ({tag:NN}=objectdet ?>amod {tag:ADJA}=objectdetadja)) ?>nmod ({}=context ?>/conj:.*/ {}=context2 ?>amod {tag:ADJA}=contextadja) ?>/conj:.*/ {tag:/VVINF|VVFIN|VVIZU/}=competency2
-        # pattern = '{tag:/VVINF|VVFIN/}=competency >dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det ({tag:NN}=objectdet ?>amod {tag:ADJA}=objectdetadja)) ?>nmod ({}=context ?>/conj:.*/ {}=context2 ?>amod {tag:ADJA}=contextadja) ?>/conj:.*/ {tag:VVINF}=competency2'
-        pattern = '{tag:/VVINF|VVFIN|VVIZU/}=competency >dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det ({tag:NN}=objectdet ?>amod {tag:ADJA}=objectdetadja ?>det {tag:ART}=objectdetart)) ?>nmod ({}=context ?>/conj:.*/ {}=context2 ?>amod {tag:ADJA}=contextadja) ?>/conj:.*/ {tag:/VVINF|VVFIN|VVIZU/}=competency2'
-        matches = client.semgrex(text, pattern, properties={"annotators": "tokenize,ssplit,depparse"})
-        print(matches)
-
-        # Parse the values from semgrex
-        temp = matches['sentences'][0]["0"]
-        competency = Competency(Word(temp["$competency"]["begin"], temp["$competency"]["text"]))
-
-        if "$object" in temp:
-            object_chunk = WordChunk()
-
-            if "$objectadja" in temp:
-                object_chunk.words.append(Word(temp["$objectadja"]["begin"], temp["$objectadja"]["text"]))
-
-            object_chunk.words.append(Word(temp["$object"]["begin"], temp["$object"]["text"]))
-
-            if "$objectdet" in temp:
-                if "$objectdetadja" in temp:
-                    object_chunk.words.append(Word(temp["$objectdetadja"]["begin"], temp["$objectdetadja"]["text"]))
-                if "$objectdetart" in temp:
-                    object_chunk.words.append(Word(temp["$objectdetart"]["begin"], temp["$objectdetart"]["text"]))
-
-                object_chunk.words.append(Word(temp["$objectdet"]["begin"], temp["$objectdet"]["text"]))
-
-            # Sort the words by index to remain context
-            object_chunk.words.sort(key=lambda word: word.index)
-
-            contexts = []
-
-            if "$context" in temp:
-                context_chunk = WordChunk()
-                if "$contextadja" in temp:
-                    context_chunk.words.append(Word(temp["$contextadja"]["begin"], temp["$contextadja"]["text"]))
-
-                context_chunk.words.append(Word(temp["$context"]["begin"], temp["$context"]["text"]))
-
-                # Sort the words by index to remain context
-                context_chunk.words.sort(key=lambda word: word.index)
-
-                contexts.append(ObjectContext(context_chunk))
-
-
-            # Add the object to the competency
-            competency.objects.append(CompetencyObject(object_chunk, contexts))
-
-        print("Competency : {}".format(competency))
-        # print("  Object   : {}".format(competency.objects[0]))
-        # print("    Context: {}".format(competency.objects[0].contexts[0]))
-
-        # if "$object" in matches['sentences'][0]["0"]:
-        #     obj = matches['sentences'][0]["0"]["$object"]["text"]
-        # if "$objectadja" in matches['sentences'][0]["0"]:
-        #     obj_adja = matches['sentences'][0]["0"]["$objectadja"]["text"]
-        # if "$objectdet" in matches['sentences'][0]["0"]:
-        #     obj_det = matches['sentences'][0]["0"]["$objectdet"]["text"]
-        # if "$objectdetadja" in matches['sentences'][0]["0"]:
-        #     obj_det_adja = matches['sentences'][0]["0"]["$objectdetadja"]["text"]
-        # print("Object: {} {} {} {}".format(obj_adja, obj, obj_det_adja, obj_det))
-
-        # if "$context" in matches['sentences'][0]["0"]:
-        #     print("Context: " + matches['sentences'][0]["0"]["$context"]["text"])
-        # else:
-        #     print("Context: NO!")
+    main()

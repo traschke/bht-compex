@@ -71,6 +71,9 @@ class Competency:
     def __str__(self) -> str:
         return "{}: {}".format(self.word.word, str(self.objects))
 
+    def __repr__(self):
+        return self.__str__()
+
 class Sentence:
     def __init__(self, words: List[Word], competencies: List[Competency] = None):
         self.words: List[Word] = []
@@ -81,3 +84,6 @@ class Sentence:
 
     def __str__(self) -> str:
         return " ".join(x.word for x in self.words)
+
+    def __repr__(self):
+        return self.__str__()

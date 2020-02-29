@@ -5,11 +5,31 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: CORENLP",
+            "name": "Extract",
             "type": "python",
             "request": "launch",
-            "program": "${file}",
+            "program": "${workspaceFolder}/compex/__main__.py",
+            "args": [
+                "extract",
+                "${workspaceFolder}/testsentences.txt"
+            ],
             "env": {
+                "PYTHONPATH":"${workspaceRoot}",
+                "CORENLP_HOME": "/home/timo/Downloads/stanford-corenlp-full-2018-10-05"
+            },
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Evaluate",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/compex/__main__.py",
+            "args": [
+                "evaluate",
+                "${workspaceFolder}/tests/evaluation/test.tsv"
+            ],
+            "env": {
+                "PYTHONPATH":"${workspaceRoot}",
                 "CORENLP_HOME": "/home/timo/Downloads/stanford-corenlp-full-2018-10-05"
             },
             "console": "integratedTerminal"

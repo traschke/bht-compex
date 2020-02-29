@@ -1,4 +1,4 @@
-from typing import List, Iterator, Dict
+from typing import List, Iterator, Dict, TextIO
 from enum import Enum
 import re, uuid
 
@@ -173,11 +173,9 @@ class TsvDocument:
         self.sentences: List[TsvSentence] = sentences
 
 class TsvReader:
-    def read_tsv(self, tsvFile: str) -> TsvDocument:
-        lines = []
-        with open(tsvFile, 'r') as file1:
-            lines = file1.readlines()
-            lines = [x.rstrip('\n') for x in lines]
+    def read_tsv(self, tsvFile: TextIO) -> TsvDocument:
+        lines = tsvFile.readlines()
+        lines = [x.rstrip('\n') for x in lines]
         iterator = iter(lines)
 
         schema: TsvSchema = self.read_schema(iterator)
