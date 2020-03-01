@@ -34,8 +34,17 @@ class ObjectContext:
     def __init__(self, word_chunk: WordChunk):
         self.word_chunk: WordChunk = word_chunk
 
+    def __hash__(self):
+        return hash(self.word_chunk)
+
+    def __eq__(self, other):
+        return (self.__class__ == other.__class__ and self.word_chunk == other.word_chunk)
+
     def __str__(self) -> str:
         return " ".join(x.word for x in self.word_chunk.words)
+
+    def __repr__(self):
+        return self.__str__()
 
 class CompetencyObject:
     def __init__(self, word_chunk: WordChunk, contexts: List[ObjectContext] = None):
@@ -44,6 +53,13 @@ class CompetencyObject:
             self.contexts: List[ObjectContext] = []
         else:
             self.contexts: List[ObjectContext] = contexts
+
+    def __hash__(self):
+        return hash(self.word_chunk)
+
+    def __eq__(self, other):
+        # TODO Consider contexts!
+        return (self.__class__ == other.__class__ and self.word_chunk == other.word_chunk)
 
     def __str__(self) -> str:
         return " ".join(x.word for x in self.word_chunk.words)
@@ -63,6 +79,7 @@ class Competency:
         return hash(self.word)
 
     def __eq__(self, other):
+        # FIXME Consider objects too
         return (
             self.__class__ == other.__class__ and
             self.word == other.word

@@ -27,7 +27,7 @@ class EvaluationSet:
 class FMeasureEvaluator:
     """Evaluator precision, recall and f1-score"""
 
-    def evaluate_with_annotated_sentences(self, evaluation_set: EvaluationSet, respect_objects: bool = False, respect_contexts = False):
+    def evaluate_with_annotated_sentences(self, evaluation_set: EvaluationSet, consider_objects: bool = False, consider_contexts = False):
         """
         Evaluates the parser against pre-annotated sentences.
         By default, only bare competencies are used in the calculation.
@@ -38,32 +38,80 @@ class FMeasureEvaluator:
         # TODO Take objects and contexts into account!
         true_positives = 0
         false_positives = 0
+        true_negatives = 0
         false_negatives = 0
 
         # Calculate true positives and false positives
         for sentence, data in evaluation_set.merged_data.items():
             if len(data) == 2:
                 for annotated_data_competency in data["annotated_data"]:
-                    is_found: bool = False
+                    competency_is_found: bool = False
                     for test_data_compentency in data["test_data"]:
-                        if test_data_compentency == annotated_data_competency:
-                            is_found = True
+                        if test_data_compentency.word == annotated_data_competency.word:
+                            competency_is_found = True
                             true_positives += 1
-                    if not is_found:
+                            if consider_objects:
+                                # Check the competencies objects
+                                for annotated_object in annotated_data_competency.objects:
+                                    is_whole_object_found: bool = False
+                                    for test_data_object in test_data_compentency.objects:
+                                        if test_data_object == annotated_object:
+                                            is_whole_object_found = True
+                                            # Add the count of the objects words to
+                                            true_positives += len(annotated_object.word_chunk.words)
+                                            break
+                                    # Check each word of objects if the whole object is not correct
+                                    if not is_whole_object_found:
+                                        for annotated_object_word in annotated_object.word_chunk.words:
+                                            for test_data_object in test_data_compentency.objects:
+                                                is_object_word_found: bool = False
+                                                for test_data_object_word in test_data_object.word_chunk.words:
+                                                    if annotated_object_word == test_data_object_word:
+                                                        is_object_word_found = True
+                                                        true_positives += 1
+                                                        break
+                                                if not is_object_word_found:
+                                                    false_positives += 1
+                            break
+                    if not competency_is_found:
                         false_positives += 1
 
-        # Calculate false negatives
+        # Calculate false negatives and true negatives
         for sentence, data in evaluation_set.merged_data.items():
             if len(data) == 2:
                 for test_data_compentency in data["test_data"]:
-                    is_found: bool = False
+                    competency_is_found: bool = False
                     for annotated_data_competency in data["annotated_data"]:
                         if test_data_compentency == annotated_data_competency:
-                            is_found = True
-                    if not is_found:
+                            competency_is_found = True
+                            true_negatives += 1
+                            if consider_objects:
+                                # Check the competencies objects
+                                for test_data_object in test_data_compentency.objects:
+                                    is_whole_object_found: bool = False
+                                    for annotated_object in annotated_data_competency.objects:
+                                        if test_data_object == annotated_object:
+                                            is_whole_object_found = True
+                                            # Add the count of the objects words to
+                                            true_negatives += len(annotated_object.word_chunk.words)
+                                            break
+                                    # Check each word of objects if the whole object is not correct
+                                    if not is_whole_object_found:
+                                        for test_data_object_word in test_data_object.word_chunk.words:
+                                            for annotated_data_object in annotated_data_competency.objects:
+                                                is_object_word_found: bool = False
+                                                for annotated_object_word in annotated_data_object.word_chunk.words:
+                                                    if annotated_object_word == test_data_object_word:
+                                                        is_object_word_found = True
+                                                        true_negatives += 1
+                                                        break
+                                                if not is_object_word_found:
+                                                    false_negatives += 1
+                            break
+                    if not competency_is_found:
                         false_negatives += 1
 
-        precision = self.__calculate_precision(true_positives, false_negatives, false_positives)
+        precision = self.__calculate_precision(true_positives, false_positives)
         recall = self.__calculate_recall(true_positives, false_negatives)
         f1 = self.__calculate_f1_score(precision, recall)
 
@@ -73,10 +121,11 @@ class FMeasureEvaluator:
             "f1": f1,
             "true_positives": true_positives,
             "false_positives": false_positives,
+            "true_negatives": true_negatives,
             "false_negatives": false_negatives
             }
 
-    def __calculate_precision(self, true_positives, false_negatives, false_positives):
+    def __calculate_precision(self, true_positives, false_positives):
         return true_positives / (true_positives + false_positives) if true_positives or false_positives else 0.0
 
     def __calculate_recall(self, true_positives, false_negatives):
