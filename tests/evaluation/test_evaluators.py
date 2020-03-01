@@ -45,6 +45,7 @@ class TestFMeasureEvaluator:
         assert result["false_negatives"] == 2
         # Make sure all true positives are found. There are 6 competencies in the tsv!
         assert result["true_positives"] == 6
+
         # Check the resulting measurement data
         # 6 / (6 + 1)
         assert result["precision"] == 0.8571428571428571
@@ -53,17 +54,17 @@ class TestFMeasureEvaluator:
         assert result["f1"] == 0.7999999999999999
 
     def test_FMeasureEvaluator_with_objects(self):
-        # Inject a false positive to the annotated data
+        # Inject a false positive to the annotated data, so that we have a competency, that is 2/3 correct and 1/3 incorrect
         d1 = self.annotated_data["Die Studierenden sollen in der Lage sein, eine komplexe Anwendung mit projektspezifischen Basistechniken in Teamarbeit zu konzipieren und umzusetzen."]
         d1.append(
             Competency(
-                Word(9, "wow"),
+                Word(9, "wow"), # correct
                 [
                     CompetencyObject(
                         WordChunk(
                             [
-                                Word(3, "nice"),
-                                Word(4, "false positive")
+                                Word(3, "nice"), # correct
+                                Word(4, "false positive") # incorrect
                             ]
                         )
                     )
@@ -71,18 +72,18 @@ class TestFMeasureEvaluator:
             )
         )
 
-        # Inject a false negative to the test data
+        # Inject  two false negatives to the test data, so that we have a competency, that is 1/2 correct and a 1/2 false
         d2 = self.test_data["Die Studierenden sollen in der Lage sein, eine komplexe Anwendung mit projektspezifischen Basistechniken in Teamarbeit zu konzipieren und umzusetzen."]
         d2.append(
             Competency(
-                Word(9, "wow"),
+                Word(9, "wow"), # correct
                 [
                     CompetencyObject(
                         WordChunk(
                             [
-                                Word(3, "nice"),
-                                Word(5, "false negative1"),
-                                Word(6, "false negative2")
+                                Word(3, "nice"), # correct
+                                Word(5, "false negative1"), # incorrect
+                                Word(6, "false negative2") # incorrect
                             ]
                         )
                     )
@@ -93,15 +94,16 @@ class TestFMeasureEvaluator:
         evaluation_set = EvaluationSet(self.test_data, self.annotated_data)
         result = self.evaluator.evaluate_with_annotated_sentences(evaluation_set, True, False)
 
-        # Make sure, the one false positive we've injected earlier is found
-        assert result["false_positives"] == 1
-        # Make sure, the two false negatives we've injected earlier are found
-        assert result["false_negatives"] == 2
-        # Make sure all true positives are found. There are 6 competencies in the tsv!
-        assert result["true_positives"] == 28
+        # Make sure, the 1/3 false positive we've injected earlier is found
+        assert result["false_positives"] == 0.3333333333333333
+        # Make sure, the 1/2 false negative we've injected earlier is found
+        assert result["false_negatives"] == 0.5
+        # Make sure all true positives are found. There are 6 competencies in the tsv + the 2/3 correct one we've injected
+        assert result["true_positives"] == 6.666666666666666
+
         # Check the resulting measurement data
-        # 28 / (28 + 1)
-        assert result["precision"] == 0.9655172413793104
-        # 28 / (28 + 2)
-        assert result["recall"] == 0.9333333333333333
-        assert result["f1"] == 0.9491525423728815
+        # 6.666666666666666 / (6.666666666666666 + 0.3333333333333333)
+        assert result["precision"] == 0.9523809523809524
+        # 6.666666666666666 / (6.666666666666666 + 0.5)
+        assert result["recall"] == 0.9302325581395349
+        assert result["f1"] == 0.9411764705882354

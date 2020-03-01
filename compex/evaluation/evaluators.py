@@ -63,7 +63,11 @@ class FMeasureEvaluator:
     def __count_positive_negative(self, evaluation_set: EvaluationSet, mode: CalculationType = CalculationType.POSITIVE, consider_objects: bool = False, consider_contexts: bool = False):
         """
         Counts either positive or negative based objects in evaluationset.
-        Default is positive.
+        A completely correct competency gets a score of 1.0. If considered, every object and context
+        is treated equally in the calculation, so that a correct competency which has a two worded object,
+        but only one of them is found, it's 2/3 correct (competency + one object word) and 1/3 incorrect
+        (the other object word). If the competency is not found, it's score is 0.0.
+        Default mode is positive.
         """
         trues = 0
         falses = 0
@@ -79,11 +83,13 @@ class FMeasureEvaluator:
                     dict2 = data["annotated_data"]
 
                 for dict1_competency in dict1:
+                    in_comp_trues = 0
+                    in_comp_falses = 0
                     competency_is_found: bool = False
                     for dict2_compentency in dict2:
                         if dict2_compentency.word == dict1_competency.word:
                             competency_is_found = True
-                            trues += 1
+                            in_comp_trues += 1
                             if consider_objects:
                                 # Check the competencies objects
                                 for dict1_object in dict1_competency.objects:
@@ -92,7 +98,7 @@ class FMeasureEvaluator:
                                         if dict2_object == dict1_object:
                                             is_whole_object_found = True
                                             # Add the count of the objects words to
-                                            trues += len(dict1_object.word_chunk.words)
+                                            in_comp_trues += len(dict1_object.word_chunk.words)
                                             break
                                     # Check each word of objects if the whole object is not correct
                                     if not is_whole_object_found:
@@ -102,13 +108,15 @@ class FMeasureEvaluator:
                                                 for dict2_object_word in dict2_object.word_chunk.words:
                                                     if dict1_object_word == dict2_object_word:
                                                         is_object_word_found = True
-                                                        trues += 1
+                                                        in_comp_trues += 1
                                                         break
                                                 if not is_object_word_found:
-                                                    falses += 1
+                                                    in_comp_falses += 1
                             break
                     if not competency_is_found:
-                        falses += 1
+                        in_comp_falses += 1
+                    trues += in_comp_trues / (in_comp_trues + in_comp_falses)
+                    falses += in_comp_falses / (in_comp_trues + in_comp_falses)
 
         return [trues, falses]
 
