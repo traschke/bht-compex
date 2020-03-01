@@ -24,7 +24,7 @@ def convert_tsv_to_competencies(tsv: TsvDocument) -> Dict[str, List[Competency]]
                     if related_token_chunk.feature.feature_definition.name == TSV_COMPETENCY_TYPE and related_token_chunk.feature.value == TSV_COMPETENCY_VALUE:
                         # find the competency
                         for comp in current_comps:
-                            if comp.word.index == related_token_chunk.tokens[0].token_number:
+                            if comp.word.index == convert_token_number(related_token_chunk.tokens[0].token_number):
                                 # Convert tokens from object to wordchunk
                                 words = []
                                 for token in token_chunk.tokens:
@@ -40,7 +40,7 @@ def convert_tsv_to_competencies(tsv: TsvDocument) -> Dict[str, List[Competency]]
                         # find the object
                         for comp in current_comps:
                             for obj in comp.objects:
-                                if obj.word_chunk.words[0].index == related_token_chunk.tokens[0].token_number:
+                                if obj.word_chunk.words[0].index == convert_token_number(related_token_chunk.tokens[0].token_number):
                                     # Convert tokens from object to wordchunk
                                     words = []
                                     for token in token_chunk.tokens:
