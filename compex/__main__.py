@@ -57,7 +57,8 @@ def evaluate(tsv_file: TextIO, consider_objects: bool = False, consider_contexts
     output_json = jsonpickle.encode(result, unpicklable=False)
     print(output_json)
 
-def extract(text: List[str]):
+def extract(text_file: TextIO):
+    text = text_file.readlines()
     annotator = SemgrexAnnotator()
     result = annotator.annotate(text)
     output_json = jsonpickle.encode(result, unpicklable=False)
@@ -67,8 +68,7 @@ def main():
     args = parse_args()
 
     if args.mode == "extract":
-        text = args.sentences.readlines()
-        extract(text)
+        extract(args.sentences)
     elif args.mode == "evaluate":
         evaluate(args.tsv, args.objects, args.contexts)
 
