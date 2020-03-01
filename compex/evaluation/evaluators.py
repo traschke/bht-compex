@@ -103,15 +103,40 @@ class FMeasureEvaluator:
                                     # Check each word of objects if the whole object is not correct
                                     if not is_whole_object_found:
                                         for dict1_object_word in dict1_object.word_chunk.words:
+                                            is_object_word_found: bool = False
                                             for dict2_object in dict2_compentency.objects:
-                                                is_object_word_found: bool = False
                                                 for dict2_object_word in dict2_object.word_chunk.words:
                                                     if dict1_object_word == dict2_object_word:
                                                         is_object_word_found = True
                                                         in_comp_trues += 1
                                                         break
-                                                if not is_object_word_found:
-                                                    in_comp_falses += 1
+                                                if is_object_word_found:
+                                                    break
+                                            if not is_object_word_found:
+                                                in_comp_falses += 1
+                                    # Check the objects contexts
+                                    if consider_contexts:
+                                        for dict1_context in dict1_object.contexts:
+                                            is_whole_context_found: bool = False
+                                            for dict2_context in dict2_object.contexts:
+                                                if dict2_context == dict1_context:
+                                                    is_whole_context_found = True
+                                                    in_comp_trues += len(dict1_context.word_chunk.words)
+                                                    break
+                                            # Check each word of context if the whole context is not correct
+                                            if not is_whole_context_found:
+                                                for dict1_context_word in dict1_context.word_chunk.words:
+                                                    is_context_word_found: bool = False
+                                                    for dict2_context in dict2_object.contexts:
+                                                        for dict2_context_word in dict2_context.word_chunk.words:
+                                                            if dict1_context_word == dict2_context_word:
+                                                                is_context_word_found = True
+                                                                in_comp_trues += 1
+                                                                break
+                                                        if is_context_word_found:
+                                                            break
+                                                    if not is_context_word_found:
+                                                        in_comp_falses += 1
                             break
                     if not competency_is_found:
                         in_comp_falses += 1
