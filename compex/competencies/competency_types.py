@@ -14,6 +14,12 @@ class Word:
             (self.index, self.word) == (other.index, other.word)
         )
 
+    def __str__(self) -> str:
+        return "<{}: {}>".format(self.index, self.word)
+
+    def __repr__(self):
+        return self.__str__()
+
 class WordChunk:
     def __init__(self, words: List[Word] = None):
         if words is None:
