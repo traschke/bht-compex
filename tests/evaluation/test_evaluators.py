@@ -218,3 +218,153 @@ class TestFMeasureEvaluator:
         assert result["recall"] == 0.9113924050632911
         assert result["f1"] == 0.914866581956798
 
+    def test_FMeasureEvaluator_100(self):
+        d1 = self.annotated_data["Die Studierenden sollen in der Lage sein, eine komplexe Anwendung mit projektspezifischen Basistechniken in Teamarbeit zu konzipieren und umzusetzen."]
+        d1.append(
+            Competency(Word(99, "Correct"))
+        )
+
+        d2 = self.test_data["Die Studierenden sollen in der Lage sein, eine komplexe Anwendung mit projektspezifischen Basistechniken in Teamarbeit zu konzipieren und umzusetzen."]
+        d2.append(
+            Competency(Word(99, "Correct"))
+        )
+        evaluation_set = EvaluationSet(self.test_data, self.annotated_data)
+        result = self.evaluator.evaluate_with_annotated_sentences(evaluation_set, False, False)
+
+        # Make sure, the 3/5 false positive we've injected earlier is found
+        assert result["false_positives"] == 0
+        # Make sure, the 5/7 false negative we've injected earlier is found
+        assert result["false_negatives"] == 0
+        # Make sure all true positives are found. There are 6 competencies in the tsv + the 2/5 correct one we've injected
+        assert result["true_positives"] == 7
+
+        # Check the resulting measurement data
+        # 6.4 / (6.4 + 0.6)
+        assert result["precision"] == 1
+        # 6.4 / (6.4 + 0.7142857142857143)
+        assert result["recall"] == 1
+        assert result["f1"] == 1
+
+    def test_FMeasureEvaluator_with_objects_100(self):
+        d1 = self.annotated_data["Die Studierenden sollen in der Lage sein, eine komplexe Anwendung mit projektspezifischen Basistechniken in Teamarbeit zu konzipieren und umzusetzen."]
+        d1.append(
+            Competency(
+                Word(99, "Correct"),
+                [
+                    CompetencyObject(
+                        WordChunk(
+                            [
+                                Word(89, "Correct"),
+                                Word(90, "nice"),
+                            ]
+                        )
+                    )
+                ]
+            )
+        )
+
+        d2 = self.test_data["Die Studierenden sollen in der Lage sein, eine komplexe Anwendung mit projektspezifischen Basistechniken in Teamarbeit zu konzipieren und umzusetzen."]
+        d2.append(
+            Competency(
+                Word(99, "Correct"),
+                [
+                    CompetencyObject(
+                        WordChunk(
+                            [
+                                Word(89, "Correct"),
+                                Word(90, "nice"),
+                            ]
+                        )
+                    )
+                ]
+            )
+        )
+
+        evaluation_set = EvaluationSet(self.test_data, self.annotated_data)
+        result = self.evaluator.evaluate_with_annotated_sentences(evaluation_set, True, False)
+
+        # Make sure, the 3/5 false positive we've injected earlier is found
+        assert result["false_positives"] == 0
+        # Make sure, the 5/7 false negative we've injected earlier is found
+        assert result["false_negatives"] == 0
+        # Make sure all true positives are found. There are 6 competencies in the tsv + the 2/5 correct one we've injected
+        assert result["true_positives"] == 7
+
+        # Check the resulting measurement data
+        # 6.4 / (6.4 + 0.6)
+        assert result["precision"] == 1
+        # 6.4 / (6.4 + 0.7142857142857143)
+        assert result["recall"] == 1
+        assert result["f1"] == 1
+
+    def test_FMeasureEvaluator_with_objects_and_contexts_100(self):
+        d1 = self.annotated_data["Die Studierenden sollen in der Lage sein, eine komplexe Anwendung mit projektspezifischen Basistechniken in Teamarbeit zu konzipieren und umzusetzen."]
+        d1.append(
+            Competency(
+                Word(99, "Correct"),
+                [
+                    CompetencyObject(
+                        WordChunk(
+                            [
+                                Word(89, "Correct"),
+                                Word(90, "nice"),
+                            ]
+                        ),
+                        [
+                            ObjectContext(
+                                WordChunk(
+                                    [
+                                        Word(100, "such"),
+                                        Word(101, "wow")
+                                    ]
+                                )
+                            )
+                        ]
+                    )
+                ]
+            )
+        )
+
+        d2 = self.test_data["Die Studierenden sollen in der Lage sein, eine komplexe Anwendung mit projektspezifischen Basistechniken in Teamarbeit zu konzipieren und umzusetzen."]
+        d2.append(
+            Competency(
+                Word(99, "Correct"),
+                [
+                    CompetencyObject(
+                        WordChunk(
+                            [
+                                Word(89, "Correct"),
+                                Word(90, "nice"),
+                            ]
+                        ),
+                        [
+                            ObjectContext(
+                                WordChunk(
+                                    [
+                                        Word(100, "such"),
+                                        Word(101, "wow")
+                                    ]
+                                )
+                            )
+                        ]
+                    )
+                ]
+            )
+        )
+
+        evaluation_set = EvaluationSet(self.test_data, self.annotated_data)
+        result = self.evaluator.evaluate_with_annotated_sentences(evaluation_set, True, True)
+
+        # Make sure, the 3/5 false positive we've injected earlier is found
+        assert result["false_positives"] == 0
+        # Make sure, the 5/7 false negative we've injected earlier is found
+        assert result["false_negatives"] == 0
+        # Make sure all true positives are found. There are 6 competencies in the tsv + the 2/5 correct one we've injected
+        assert result["true_positives"] == 7
+
+        # Check the resulting measurement data
+        # 6.4 / (6.4 + 0.6)
+        assert result["precision"] == 1
+        # 6.4 / (6.4 + 0.7142857142857143)
+        assert result["recall"] == 1
+        assert result["f1"] == 1
