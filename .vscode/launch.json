@@ -33,6 +33,22 @@
                 "CORENLP_HOME": "/home/timo/Downloads/stanford-corenlp-full-2018-10-05"
             },
             "console": "integratedTerminal"
+        },
+        {
+            "name": "Evaluate with objects",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/compex/__main__.py",
+            "args": [
+                "evaluate",
+                "--objects",
+                "${workspaceFolder}/tests/evaluation/test.tsv"
+            ],
+            "env": {
+                "PYTHONPATH":"${workspaceRoot}",
+                "CORENLP_HOME": "/home/timo/Downloads/stanford-corenlp-full-2018-10-05"
+            },
+            "console": "integratedTerminal"
         }
     ]
 }

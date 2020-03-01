@@ -37,13 +37,12 @@ def parse_args():
 
     return args
 
-def evaluate(tsv_file: TextIO):
+def evaluate(tsv_file: TextIO, consider_objects: bool = False, consider_contexts: bool = False):
     reader: TsvReader = TsvReader()
     document: TsvDocument = reader.read_tsv(tsv_file)
 
     test_data: Dict[str, List[Competency]] = convert_tsv_to_competencies(document)
 
-    # TODO Get only sentences from
     text: List[str] = []
     for sentence in document.sentences:
         text.append(sentence.text)
@@ -54,7 +53,7 @@ def evaluate(tsv_file: TextIO):
     evaluation_set = EvaluationSet(test_data, annotated_data)
 
     evaluator = FMeasureEvaluator()
-    result = evaluator.evaluate_with_annotated_sentences(evaluation_set)
+    result = evaluator.evaluate_with_annotated_sentences(evaluation_set, consider_objects, consider_contexts)
     output_json = jsonpickle.encode(result, unpicklable=False)
     print(output_json)
 
@@ -71,7 +70,7 @@ def main():
         text = args.sentences.readlines()
         extract(text)
     elif args.mode == "evaluate":
-        evaluate(args.tsv)
+        evaluate(args.tsv, args.objects, args.contexts)
 
 if __name__ == '__main__':
     main()
