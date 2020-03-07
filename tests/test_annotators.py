@@ -3,7 +3,7 @@ import os
 
 from compex.annotators import SemgrexAnnotator
 from compex.competencies.competency_types import Competency, CompetencyObject, ObjectContext, Word, WordChunk
-from compex.taxonomy.taxonomy_manager import TaxonomyManager, BloomsTaxonomyLevelEnum
+from compex.taxonomy.taxonomy_manager import TaxonomyManager, BloomsTaxonomyDimensionEnum
 
 class TestSemgrexAnnotator:
     def test_simple(self):

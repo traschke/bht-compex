@@ -8,10 +8,10 @@ from compex.io.tsv import TsvReader, TsvDocument
 from compex.converter.tsv2competency import convert_tsv_to_competencies
 from compex.evaluation.evaluators import EvaluationSet, FMeasureEvaluator
 from compex.competencies.competency_types import Competency
-from compex.taxonomy.taxonomy_manager import TaxonomyManager, BloomsTaxonomyLevelEnum
+from compex.taxonomy.taxonomy_manager import TaxonomyManager, BloomsTaxonomyDimensionEnum
 
 class BloomsTaxonomyLevelEnumHandler(jsonpickle.handlers.BaseHandler):
-    def flatten(self, obj: BloomsTaxonomyLevelEnum, data):  # data contains {}
+    def flatten(self, obj: BloomsTaxonomyDimensionEnum, data):  # data contains {}
         data = obj.value
         return data
 
@@ -70,7 +70,7 @@ def extract(text_file: TextIO, taxonomy_json: TextIO):
     if taxonomy_json:
         taxonomy_manager = TaxonomyManager()
         taxonomy_verbs = taxonomy_manager.read_json(taxonomy_json)
-        jsonpickle.handlers.registry.register(BloomsTaxonomyLevelEnum, BloomsTaxonomyLevelEnumHandler)
+        jsonpickle.handlers.registry.register(BloomsTaxonomyDimensionEnum, BloomsTaxonomyLevelEnumHandler)
     text = text_file.readlines()
     annotator = SemgrexAnnotator()
     result = annotator.annotate(text, taxonomy_verbs)

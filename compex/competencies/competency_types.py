@@ -1,7 +1,7 @@
 from typing import List
 from enum import Enum
 
-from compex.taxonomy.taxonomy_manager import BloomsTaxonomyLevelEnum
+from compex.taxonomy.taxonomy_manager import BloomsTaxonomyDimensionEnum
 
 class Word:
     def __init__(self, index: int, word: str):
@@ -77,13 +77,13 @@ class CompetencyObject:
         return self.__str__()
 
 class Competency:
-    def __init__(self, word: Word, objects: List[CompetencyObject] = None, taxonomy_level: BloomsTaxonomyLevelEnum = None):
+    def __init__(self, word: Word, objects: List[CompetencyObject] = None, taxonomy_dimension: BloomsTaxonomyDimensionEnum = None):
         self.word: Word = word
         if objects is None:
             self.objects: List[CompetencyObject] = []
         else:
             self.objects: List[CompetencyObject] = objects
-        self.taxonomy_level = taxonomy_level
+        self.taxonomy_dimension = taxonomy_dimension
 
     def __hash__(self):
         return hash(self.word)

@@ -2,7 +2,7 @@ from typing import Dict, List
 from stanfordnlp.server import CoreNLPClient
 
 from compex.competencies.competency_types import Competency, CompetencyObject, ObjectContext, Word, WordChunk
-from compex.taxonomy.taxonomy_manager import TaxonomyManager, BloomsTaxonomyLevelEnum
+from compex.taxonomy.taxonomy_manager import TaxonomyManager, BloomsTaxonomyDimensionEnum
 
 # Die Studierenden beherrschen die grundlegenden Techniken zum wissenschaftlichen Arbeiten.
 # Die Studierenden können eine serverseitige Schnittstelle für moderne Webanwendungen konzipieren und implementieren.
@@ -29,7 +29,7 @@ class SemgrexAnnotator:
     pattern = '{tag:/VVINF|VVFIN|VVIZU/}=competency ?>dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det ({tag:NN}=objectdet ?>amod {tag:ADJA}=objectdetadja ?>det {tag:ART}=objectdetart)) ?>nmod ({}=context ?>/conj:.*/ {}=context2 ?>amod {tag:ADJA}=contextadja) ?>/conj:.*/ {tag:/VVINF|VVFIN|VVIZU/}=competency2'
     semgrex_properties = {"annotators": "tokenize,ssplit,depparse"}
 
-    def annotate(self, sentences: List[str], taxonomy_verbs: Dict[str, BloomsTaxonomyLevelEnum] = None) -> Dict[str, List[Competency]]:
+    def annotate(self, sentences: List[str], taxonomy_verbs: Dict[str, BloomsTaxonomyDimensionEnum] = None) -> Dict[str, List[Competency]]:
         """Annotates multiple sentences."""
         sentences = [sentence.strip() for sentence in sentences]
         text = " ".join(sentences)
@@ -43,7 +43,7 @@ class SemgrexAnnotator:
             matches = client.semgrex(text, self.pattern, properties=self.semgrex_properties)
         return matches
 
-    def __convert_to_competencies(self, input: Dict, taxonomy_verbs: Dict[str, BloomsTaxonomyLevelEnum] = None) -> List[Competency]:
+    def __convert_to_competencies(self, input: Dict, taxonomy_verbs: Dict[str, BloomsTaxonomyDimensionEnum] = None) -> List[Competency]:
         competencies: List[List[Competency]] = []
 
         for i, sentence in enumerate(input["sentences"]):
@@ -55,8 +55,8 @@ class SemgrexAnnotator:
                     taxonomy_verb_found: bool = False
                     if taxonomy_verbs:
                         if competency_text in taxonomy_verbs:
-                            taxonomy_level: BloomsTaxonomyLevelEnum = taxonomy_verbs[competency_text]
-                            competency = Competency(Word(temp["$competency"]["begin"], competency_text), taxonomy_level=taxonomy_level)
+                            taxonomy_level: BloomsTaxonomyDimensionEnum = taxonomy_verbs[competency_text]
+                            competency = Competency(Word(temp["$competency"]["begin"], competency_text), taxonomy_dimension=taxonomy_level)
                             taxonomy_verb_found = True
                     else:
                         competency = Competency(Word(temp["$competency"]["begin"], competency_text))
