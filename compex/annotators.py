@@ -28,7 +28,7 @@ class SemgrexAnnotator:
     pattern = '{tag:/VVINF|VVFIN|VVIZU/}=competency ?>dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det ({tag:NN}=objectdet ?>amod {tag:ADJA}=objectdetadja ?>det {tag:ART}=objectdetart)) ?>nmod ({}=context ?>/conj:.*/ {}=context2 ?>amod {tag:ADJA}=contextadja) ?>/conj:.*/ {tag:/VVINF|VVFIN|VVIZU/}=competency2'
     semgrex_properties = {"annotators": "tokenize,ssplit,depparse"}
 
-    def annotate(self, sentences: List[str]) -> Dict[str, List[Competency]]:
+    def annotate(self, sentences: List[str], use_bloom: bool = False) -> Dict[str, List[Competency]]:
         """Annotates multiple sentences."""
         sentences = [sentence.strip() for sentence in sentences]
         text = " ".join(sentences)
@@ -37,12 +37,12 @@ class SemgrexAnnotator:
         dicti = dict(zip(sentences, competencies))
         return dicti
 
-    def __run_corenlp_server_semgrex(self, text: str):
+    def __run_corenlp_server_semgrex(self, text: str) -> Dict:
         with CoreNLPClient(annotators=self.annotators, properties=self.properties, timeout=self.timeout, memory=self.memory) as client:
             matches = client.semgrex(text, self.pattern, properties=self.semgrex_properties)
         return matches
 
-    def __convert_to_competencies(self, input) -> List[Competency]:
+    def __convert_to_competencies(self, input: Dict, use_bloom: bool = False) -> List[Competency]:
         competencies: List[List[Competency]] = []
         for i, sentence in enumerate(input["sentences"]):
             sentence_competencies = []
