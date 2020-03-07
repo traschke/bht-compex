@@ -66,6 +66,14 @@
                 "CORENLP_HOME": "/home/timo/Downloads/stanford-corenlp-full-2018-10-05"
             },
             "console": "integratedTerminal"
+        },
+        {
+            "type": "bashdb",
+            "request": "launch",
+            "name": "download_corenlp",
+            "cwd": "${workspaceFolder}",
+            "program": "${workspaceFolder}/download_corenlp.sh",
+            "args": []
         }
     ]
 }
