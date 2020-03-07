@@ -15,7 +15,7 @@ class TestFMeasureEvaluator:
     def setup_method(self, method):
         test_dir = os.path.dirname(__file__)
         reader = TsvReader()
-        with open(os.path.join(test_dir, "test.tsv"), 'r') as tsv_file:
+        with open(os.path.join(test_dir, "../resources/test.tsv"), 'r') as tsv_file:
             document: TsvDocument = reader.read_tsv(tsv_file)
 
             # Read a sample tsv to get test_data

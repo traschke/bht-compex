@@ -58,7 +58,7 @@ class TestSemgrexAnnotator:
 
         taxonomy_manager = TaxonomyManager()
         test_dir = os.path.dirname(__file__)
-        with open(os.path.join(test_dir, "test.json"), 'r') as json_file:
+        with open(os.path.join(test_dir, "resources/test.json"), 'r') as json_file:
             taxonomy_verbs = taxonomy_manager.read_json(json_file)
 
             annotator = SemgrexAnnotator()
@@ -91,7 +91,7 @@ class TestSemgrexAnnotator:
 
             taxonomy_manager = TaxonomyManager()
             test_dir = os.path.dirname(__file__)
-            with open(os.path.join(test_dir, "test.json"), 'r') as json_file:
+            with open(os.path.join(test_dir, "resources/test.json"), 'r') as json_file:
                 taxonomy_verbs = taxonomy_manager.read_json(json_file)
 
                 annotator = SemgrexAnnotator()
