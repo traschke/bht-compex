@@ -12,7 +12,8 @@ These instructions will get you a copy of the project up and running on your loc
 * [pipenv](https://github.com/pypa/pipenv)
 * (optional) [pyenv](https://github.com/pyenv/pyenv) to automatically install required Pythons
   * If pyenv is not installed, Python 3.7 is required, otherwise pyenv will install it
-* Java 1.8+ for CoreNLP server (more about it later)
+* Java 1.8+ for CoreNLP server
+* [Stanford CoreNLP](https://stanfordnlp.github.io/CoreNLP/index.html)
 
 ### Installing
 
