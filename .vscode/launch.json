@@ -20,6 +20,23 @@
             "console": "integratedTerminal"
         },
         {
+            "name": "Extract with taxonomy",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/compex/__main__.py",
+            "args": [
+                "extract",
+                "${workspaceFolder}/testsentences.txt",
+                "--taxonomyjson",
+                "${workspaceFolder}/tests/taxonomy/test.json"
+            ],
+            "env": {
+                "PYTHONPATH":"${workspaceRoot}",
+                "CORENLP_HOME": "/home/timo/Downloads/stanford-corenlp-full-2018-10-05"
+            },
+            "console": "integratedTerminal"
+        },
+        {
             "name": "Evaluate",
             "type": "python",
             "request": "launch",
