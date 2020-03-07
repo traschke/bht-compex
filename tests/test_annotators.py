@@ -6,7 +6,7 @@ from compex.competencies.competency_types import Competency, CompetencyObject, O
 from compex.taxonomy.taxonomy_manager import TaxonomyManager, BloomsTaxonomyDimensionEnum
 
 class TestSemgrexAnnotator:
-    def test_simple(self):
+    def test_simple_without_taxonomy(self):
         os.environ["CORENLP_HOME"] = "/home/timo/Downloads/stanford-corenlp-full-2018-10-05"
         sample = [
             "Studierende implementieren.",
