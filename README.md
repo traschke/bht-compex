@@ -8,9 +8,11 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
+* Python 3.7 
 * [pipenv](https://github.com/pypa/pipenv)
 * (optional) [pyenv](https://github.com/pyenv/pyenv) to automatically install required Pythons
   * If pyenv is not installed, Python 3.7 is required, otherwise pyenv will install it
+* Java 1.8+ for CoreNLP server (more about it later)
 
 ### Installing
 
@@ -20,8 +22,7 @@ Setup a python virtual environment and download all dependencies
 $ pipenv install
 ```
 
-(optinal) Download required CoreNLP Java server and german models to `./.corenlp`
-
+ComPex requires an installation of CoreNLP with german models. Download required CoreNLP Java server and german models from [here](https://stanfordnlp.github.io/CoreNLP/download.html) to destination of your choosing. You can use the following script to automate this process, which downloads all required files to `./.corenlp`:
 ```
 $ ./download_corenlp.sh
 ```
@@ -32,15 +33,13 @@ Enter pipenv virtual environment
 $ pipenv shell
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
 ### Running
-Set environment variable `$CORENLP_HOME` to your directory, where CoreNLP is extracted to.
+Set environment variable `$CORENLP_HOME` to the directory, where CoreNLP and german models are located. If you used the helper script `download_corenlp.sh`, the files are in `./.corenlp`.
 ```
 $ export CORENLP_HOME=./.corenlp
 ```
 
-Get help
+Show help
 ```
 $ python -m compex -h
 ```
