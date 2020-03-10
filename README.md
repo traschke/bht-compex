@@ -19,52 +19,52 @@ These instructions will get you a copy of the project up and running on your loc
 
 Setup a python virtual environment and download all dependencies
 
-```
+```console
 $ pipenv install
 ```
 
 ComPex requires an installation of CoreNLP with german models. Download required CoreNLP Java server and german models from [here](https://stanfordnlp.github.io/CoreNLP/download.html) to destination of your choosing. You can use the following script to automate this process, which downloads all required files to `./.corenlp`:
-```
+```console
 $ ./download_corenlp.sh
 ```
 
 Enter pipenv virtual environment
 
-```
+```console
 $ pipenv shell
 ```
 
 ### Running
 Set environment variable `$CORENLP_HOME` to the directory, where CoreNLP and german models are located. If you used the helper script `download_corenlp.sh`, the files are in `./.corenlp`.
-```
+```console
 $ export CORENLP_HOME=./.corenlp
 ```
 
 Show help
-```
+```console
 $ python -m compex -h
 ```
 
 #### Extraction
 
 Show help
-```
+```console
 $ python -m compex extract -h
 ```
 
 Extract competencies of a simple sentence (you can pipe textdata into compex!)
-```
+```console
 $ echo "Die studierenden beherrschen grundlegende Techniken des wissenschaftlichen Arbeitens." | python -m compex extract
 ```
 
 or use a file
-```
+```console
 $ python -m compex extract testsentences.txt
 ```
 
 Check for taxonomy verbs. Checks if a found competency verb is in the given taxonomy verb dictionary. If not, it's ignored. In addition, this parameter fills the `taxonomy_dimension` parameter of the extracted competency. You can use the sample file `blooms_taxonomy.json`.
-```
-python -m compex extract --taxonomyjson blooms_taxonomy.json testsentences.txt
+```console
+$ python -m compex extract --taxonomyjson blooms_taxonomy.json testsentences.txt
 ```
 
 Sample output (formatted for better readability)
@@ -88,22 +88,22 @@ Evaluate compex against pre-annotated data. Outputs recall, precision and F1.
 To evaluate a pre-annoted [WebAnno](https://webanno.github.io/webanno/) TSV 3.2 file is needed. See [here](https://webanno.github.io/webanno/releases/3.6.4/docs/user-guide.html#sect_webannotsv) for the file format. You can use WebAnno to annotate data and evaluate compex with it. Use the ?? and ?? for the project files.
 
 Show help
-```
+```console
 $ python -m compex evaluate -h
 ```
 
 Evaluate only competency verbs
-```
+```console
 $ python -m compex evaluate tests/resources/test.tsv
 ```
 
 Evaluate competency verbs and objects
-```
+```console
 $ python -m compex evaluate --objects tests/resources/test.tsv
 ```
 
 Evaluate competency verbs, objects and contexts
-```
+```console
 $ python -m compex evaluate --objects --contexts tests/resources/test.tsv
 ```
 
@@ -124,7 +124,7 @@ Sample output (formatted for better readability)
 
 Run unit tests. CoreNLP server in `./.corenlp` is required!
 
-```
+```console
 $ pytest
 ```
 
