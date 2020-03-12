@@ -1,7 +1,7 @@
 import pytest
 import os
 
-from compex.annotators import SemgrexAnnotator
+from compex.extractor.corenlp_semgrex_extractor import SemgrexAnnotator
 from compex.model.competency import Competency, CompetencyObject, ObjectContext, Word, WordChunk
 from compex.model.taxonomy import TaxonomyManager, BloomsTaxonomyDimensionEnum
 
@@ -10,7 +10,7 @@ class TestSemgrexAnnotator:
 
     def setup_class(self):
         self.test_dir = os.path.dirname(__file__)
-        os.environ["CORENLP_HOME"] = os.path.join(self.test_dir, "../.corenlp")
+        os.environ["CORENLP_HOME"] = os.path.join(self.test_dir, "../../.corenlp")
 
     def test_simple_without_taxonomy(self):
         sample = [
@@ -61,7 +61,7 @@ class TestSemgrexAnnotator:
         )
 
         taxonomy_manager = TaxonomyManager()
-        with open(os.path.join(self.test_dir, "resources/test.json"), 'r') as json_file:
+        with open(os.path.join(self.test_dir, "../resources/test.json"), 'r') as json_file:
             taxonomy_verbs = taxonomy_manager.read_json(json_file)
 
             annotator = SemgrexAnnotator()
@@ -91,7 +91,7 @@ class TestSemgrexAnnotator:
             )
 
             taxonomy_manager = TaxonomyManager()
-            with open(os.path.join(self.test_dir, "resources/test.json"), 'r') as json_file:
+            with open(os.path.join(self.test_dir, "../resources/test.json"), 'r') as json_file:
                 taxonomy_verbs = taxonomy_manager.read_json(json_file)
 
                 annotator = SemgrexAnnotator()

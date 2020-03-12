@@ -2,7 +2,7 @@ from typing import Dict, List
 from enum import Enum
 
 from compex.model.competency import Competency
-from compex.annotators import SemgrexAnnotator
+from compex.extractor.corenlp_semgrex_extractor import SemgrexAnnotator
 
 class EvaluationSet:
     def __init__(self, test_data: Dict[str, List[Competency]], annotated_data: Dict[str, List[Competency]]):
