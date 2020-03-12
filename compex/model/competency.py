@@ -1,7 +1,7 @@
 from typing import List
 from enum import Enum
 
-from compex.taxonomy.taxonomy_manager import BloomsTaxonomyDimensionEnum
+from compex.model.taxonomy import BloomsTaxonomyDimensionEnum
 
 class Word:
     def __init__(self, index: int, word: str):

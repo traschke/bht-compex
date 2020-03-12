@@ -1,8 +1,8 @@
 from typing import Dict, List
 from stanfordnlp.server import CoreNLPClient
 
-from compex.competencies.competency_types import Competency, CompetencyObject, ObjectContext, Word, WordChunk
-from compex.taxonomy.taxonomy_manager import TaxonomyManager, BloomsTaxonomyDimensionEnum
+from compex.model.competency import Competency, CompetencyObject, ObjectContext, Word, WordChunk
+from compex.model.taxonomy import TaxonomyManager, BloomsTaxonomyDimensionEnum
 
 # Die Studierenden beherrschen die grundlegenden Techniken zum wissenschaftlichen Arbeiten.
 # Die Studierenden können eine serverseitige Schnittstelle für moderne Webanwendungen konzipieren und implementieren.

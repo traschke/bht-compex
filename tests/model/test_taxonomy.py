@@ -1,7 +1,7 @@
 import pytest
 import os
 
-from compex.taxonomy.taxonomy_manager import TaxonomyManager, BloomsTaxonomyDimensionEnum
+from compex.model.taxonomy import TaxonomyManager, BloomsTaxonomyDimensionEnum
 
 class TestTaxonomyManager:
     def test_load_json(self):

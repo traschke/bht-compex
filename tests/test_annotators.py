@@ -2,8 +2,8 @@ import pytest
 import os
 
 from compex.annotators import SemgrexAnnotator
-from compex.competencies.competency_types import Competency, CompetencyObject, ObjectContext, Word, WordChunk
-from compex.taxonomy.taxonomy_manager import TaxonomyManager, BloomsTaxonomyDimensionEnum
+from compex.model.competency import Competency, CompetencyObject, ObjectContext, Word, WordChunk
+from compex.model.taxonomy import TaxonomyManager, BloomsTaxonomyDimensionEnum
 
 class TestSemgrexAnnotator:
     test_dir = None

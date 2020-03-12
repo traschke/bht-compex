@@ -1,7 +1,7 @@
 from typing import Dict, List
 from enum import Enum
 
-from compex.competencies.competency_types import Competency
+from compex.model.competency import Competency
 from compex.annotators import SemgrexAnnotator
 
 class EvaluationSet:

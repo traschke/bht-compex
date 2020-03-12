@@ -1,7 +1,7 @@
 from typing import List, Dict
 
 from compex.io.tsv import TsvDocument, Feature, TokenChunk
-from compex.competencies.competency_types import Competency, CompetencyObject, ObjectContext, Word, WordChunk
+from compex.model.competency import Competency, CompetencyObject, ObjectContext, Word, WordChunk
 
 TSV_COMPETENCY_TYPE = "CompType"
 TSV_COMPETENCY_VALUE = "competency"

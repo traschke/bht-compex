@@ -3,9 +3,9 @@ import os
 import copy
 from typing import Dict, List
 from compex.io.tsv import TsvReader, TsvDocument
-from compex.competencies.competency_types import Competency, CompetencyObject, ObjectContext, Word, WordChunk
+from compex.model.competency import Competency, CompetencyObject, ObjectContext, Word, WordChunk
 from compex.converter.tsv2competency import convert_tsv_to_competencies
-from compex.evaluation.evaluators import EvaluationSet, FMeasureEvaluator
+from compex.evaluator.evaluators import EvaluationSet, FMeasureEvaluator
 
 class TestFMeasureEvaluator:
     evaluator = None
