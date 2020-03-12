@@ -3,12 +3,12 @@ import sys
 import jsonpickle
 from typing import Dict, List, TextIO
 
-from compex.annotators import SemgrexAnnotator
+from compex.extractor.corenlp_semgrex_extractor import SemgrexAnnotator
 from compex.io.tsv import TsvReader, TsvDocument
 from compex.converter.tsv2competency import convert_tsv_to_competencies
-from compex.evaluation.evaluators import EvaluationSet, FMeasureEvaluator
-from compex.competencies.competency_types import Competency
-from compex.taxonomy.taxonomy_manager import TaxonomyManager, BloomsTaxonomyDimensionEnum
+from compex.evaluator.evaluators import EvaluationSet, FMeasureEvaluator
+from compex.model.competency import Competency
+from compex.model.taxonomy import TaxonomyManager, BloomsTaxonomyDimensionEnum
 
 class BloomsTaxonomyLevelEnumHandler(jsonpickle.handlers.BaseHandler):
     def flatten(self, obj: BloomsTaxonomyDimensionEnum, data):  # data contains {}

@@ -15,7 +15,7 @@
             ],
             "env": {
                 "PYTHONPATH":"${workspaceRoot}",
-                "CORENLP_HOME": "/home/timo/Downloads/stanford-corenlp-full-2018-10-05"
+                "CORENLP_HOME": "${workspaceRoot}/.corenlp"
             },
             "console": "integratedTerminal"
         },
@@ -28,11 +28,11 @@
                 "extract",
                 "${workspaceFolder}/testsentences.txt",
                 "--taxonomyjson",
-                "${workspaceFolder}/tests/taxonomy/test.json"
+                "${workspaceFolder}/tests/resources/test.json"
             ],
             "env": {
                 "PYTHONPATH":"${workspaceRoot}",
-                "CORENLP_HOME": "/home/timo/Downloads/stanford-corenlp-full-2018-10-05"
+                "CORENLP_HOME": "${workspaceRoot}/.corenlp"
             },
             "console": "integratedTerminal"
         },
@@ -43,11 +43,11 @@
             "program": "${workspaceFolder}/compex/__main__.py",
             "args": [
                 "evaluate",
-                "${workspaceFolder}/tests/evaluation/test.tsv"
+                "${workspaceFolder}/tests/resources/test.tsv"
             ],
             "env": {
                 "PYTHONPATH":"${workspaceRoot}",
-                "CORENLP_HOME": "/home/timo/Downloads/stanford-corenlp-full-2018-10-05"
+                "CORENLP_HOME": "${workspaceRoot}/.corenlp"
             },
             "console": "integratedTerminal"
         },
@@ -59,11 +59,11 @@
             "args": [
                 "evaluate",
                 "--objects",
-                "${workspaceFolder}/tests/evaluation/test.tsv"
+                "${workspaceFolder}/tests/resources/test.tsv"
             ],
             "env": {
                 "PYTHONPATH":"${workspaceRoot}",
-                "CORENLP_HOME": "/home/timo/Downloads/stanford-corenlp-full-2018-10-05"
+                "CORENLP_HOME": "${workspaceRoot}/.corenlp"
             },
             "console": "integratedTerminal"
         },
