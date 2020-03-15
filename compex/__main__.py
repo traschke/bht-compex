@@ -1,6 +1,8 @@
 import argparse
 import sys
+import os
 import jsonpickle
+from pathlib import Path
 from typing import Dict, List, TextIO
 
 from compex.extractor.corenlp_semgrex_extractor import SemgrexAnnotator
@@ -15,14 +17,47 @@ class BloomsTaxonomyLevelEnumHandler(jsonpickle.handlers.BaseHandler):
         data = obj.value
         return data
 
+class FileGlob(object):
+    def __init__(self, mode='r', glob_expr='**/*', bufsize=-1, encoding=None, errors=None):
+        self._glob_expr = glob_expr
+        self._mode = mode
+        self._bufsize = bufsize
+        self._encoding = encoding
+        self._errors = errors
+
+    def __call__(self, string):
+        is_File = False
+        if os.path.isfile(string):
+            is_File = True
+        elif os.path.isdir(string):
+            is_File = False
+        else:
+            raise argparse.ArgumentTypeError(f"readable_dir:{string} is not a valid path or file")
+
+        if is_File:
+            file_paths = [Path(string)]
+        else:
+            file_paths = Path(string).rglob(self._glob_expr)
+
+        files = []
+        for file_path in file_paths:
+            try:
+                files.append(open(file_path, self._mode, self._bufsize, self._encoding, self._errors))
+            except OSError as e:
+                message = "can't open '%s': %s"
+                raise argparse.ArgumentTypeError(message % (file_path, e))
+
+        return files
+
+
 def parse_args():
     parser = argparse.ArgumentParser("compex")
     subparser = parser.add_subparsers(dest="mode")
 
     # Setup evaluate args
     evaluation_parser = subparser.add_parser("evaluate", help="Evaluate the implemented extraction model.")
-    evaluation_parser.add_argument("tsv", action="store", type=argparse.FileType("r"),
-                                    help="Path to a WebAnno TSV file with annotated data. See README.md for further information.")
+    evaluation_parser.add_argument("tsvpath", action="store", type=FileGlob(glob_expr="*.tsv", mode="r"),
+                                    help="Path to a folder containing WebAnno TSV files with annotated data. See README.md for further information.")
     evaluation_parser.add_argument("--objects", action="store_true",
                                     help="Consider objects in evaluation.")
     evaluation_parser.add_argument("--contexts", action="store_true",
@@ -45,15 +80,17 @@ def parse_args():
 
     return args
 
-def evaluate(tsv_file: TextIO, consider_objects: bool = False, consider_contexts: bool = False):
-    reader: TsvReader = TsvReader()
-    document: TsvDocument = reader.read_tsv(tsv_file)
-
-    test_data: Dict[str, List[Competency]] = convert_tsv_to_competencies(document)
-
+def evaluate(tsv_files: List[TextIO], consider_objects: bool = False, consider_contexts: bool = False):
+    test_data: Dict[str, List[Competency]] = {}
     text: List[str] = []
-    for sentence in document.sentences:
-        text.append(sentence.text)
+
+    reader: TsvReader = TsvReader()
+    for tsv_file in tsv_files:
+        document: TsvDocument = reader.read_tsv(tsv_file)
+        test_data.update(convert_tsv_to_competencies(document))
+
+    for sentence in test_data:
+        text.append(sentence)
 
     annotator = SemgrexAnnotator()
     annotated_data = annotator.annotate(text)
@@ -83,7 +120,7 @@ def main():
     if args.mode == "extract":
         extract(args.sentences, args.taxonomyjson)
     elif args.mode == "evaluate":
-        evaluate(args.tsv, args.objects, args.contexts)
+        evaluate(args.tsvpath, args.objects, args.contexts)
 
 if __name__ == '__main__':
     main()

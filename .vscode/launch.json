@@ -52,6 +52,21 @@
             "console": "integratedTerminal"
         },
         {
+            "name": "Evaluate folder",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/compex/__main__.py",
+            "args": [
+                "evaluate",
+                "${workspaceFolder}/tests/resources/"
+            ],
+            "env": {
+                "PYTHONPATH":"${workspaceRoot}",
+                "CORENLP_HOME": "${workspaceRoot}/.corenlp"
+            },
+            "console": "integratedTerminal"
+        },
+        {
             "name": "Evaluate with objects",
             "type": "python",
             "request": "launch",
