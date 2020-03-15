@@ -57,7 +57,7 @@ def parse_args():
     # Setup evaluate args
     evaluation_parser = subparser.add_parser("evaluate", help="Evaluate the implemented extraction model.")
     evaluation_parser.add_argument("tsvpath", action="store", type=FileGlob(glob_expr="*.tsv", mode="r"),
-                                    help="Path to a folder containing WebAnno TSV files with annotated data. See README.md for further information.")
+                                    help="Path a single or multiple (a folder) WebAnno TSV file(s) with annotated data. Scans recursively if folder. See README.md for further information.")
     evaluation_parser.add_argument("--objects", action="store_true",
                                     help="Consider objects in evaluation.")
     evaluation_parser.add_argument("--contexts", action="store_true",
