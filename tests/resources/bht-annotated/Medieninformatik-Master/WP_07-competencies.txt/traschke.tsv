@@ -1,0 +1,37 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden kennen fortgeschrittene Techniken der modernen hardware-gestützten 3D-Computergraﬁk unter Einsatz programmierbarer Graﬁkbeschleuniger.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-23	kennen	competency	_	
+1-4	24-40	fortgeschrittene	object[1]	1-3[0_1]	
+1-5	41-50	Techniken	object[1]	_	
+1-6	51-54	der	object[1]	_	
+1-7	55-63	modernen	object[1]	_	
+1-8	64-83	hardware-gestützten	object[1]	_	
+1-9	84-100	3D-Computergraﬁk	object[1]	_	
+1-10	101-106	unter	_	_	
+1-11	107-114	Einsatz	context[2]	1-4[1_2]	
+1-12	115-131	programmierbarer	context[2]	_	
+1-13	132-150	Graﬁkbeschleuniger	context[2]	_	
+1-14	150-151	.	_	_	
+
+#Text=Sie können die Möglichkeiten und Grenzen der vermittelten Techniken einschätzen und diese praktisch anwenden.
+2-1	152-155	Sie	_	_	
+2-2	156-162	können	_	_	
+2-3	163-166	die	_	_	
+2-4	167-180	Möglichkeiten	object[3]	2-10[0_3]|2-14[0_3]	
+2-5	181-184	und	object[3]	_	
+2-6	185-192	Grenzen	object[3]	_	
+2-7	193-196	der	object[3]	_	
+2-8	197-209	vermittelten	object[3]	_	
+2-9	210-219	Techniken	object[3]	_	
+2-10	220-231	einschätzen	competency	_	
+2-11	232-235	und	_	_	
+2-12	236-241	diese	_	_	
+2-13	242-251	praktisch	_	_	
+2-14	252-260	anwenden	competency	_	
+2-15	260-261	.	_	_	

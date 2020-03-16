@@ -1,0 +1,44 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden kennen die grundlegenden und fortgeschrittenen Konzepte, Ideen und Prinzipien, die nahezu allen Programmiersprachen zugrunde liegen.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-23	kennen	competency	1-8|1-10|1-12	
+1-4	24-27	die	_	_	
+1-5	28-41	grundlegenden	_	_	
+1-6	42-45	und	_	_	
+1-7	46-63	fortgeschrittenen	_	_	
+1-8	64-72	Konzepte	object	1-17	
+1-9	72-73	,	_	_	
+1-10	74-79	Ideen	object	1-17	
+1-11	80-83	und	_	_	
+1-12	84-94	Prinzipien	object	1-17	
+1-13	94-95	,	_	_	
+1-14	96-99	die	_	_	
+1-15	100-106	nahezu	_	_	
+1-16	107-112	allen	_	_	
+1-17	113-132	Programmiersprachen	context	_	
+1-18	133-141	zugrunde	_	_	
+1-19	142-148	liegen	_	_	
+1-20	148-149	.	_	_	
+
+#Text=Die Studierenden können aktuelle und zukünftige Programmiersprachen schnell erlernen, kompetent bewerten und efﬁzient einsetzen.
+2-1	150-153	Die	_	_	
+2-2	154-166	Studierenden	_	_	
+2-3	167-173	können	_	_	
+2-4	174-182	aktuelle	_	_	
+2-5	183-186	und	_	_	
+2-6	187-197	zukünftige	_	_	
+2-7	198-217	Programmiersprachen	object	2-9|2-12|2-15	
+2-8	218-225	schnell	_	_	
+2-9	226-234	erlernen	competency	_	
+2-10	234-235	,	_	_	
+2-11	236-245	kompetent	_	_	
+2-12	246-254	bewerten	competency	_	
+2-13	255-258	und	_	_	
+2-14	259-267	efﬁzient	_	_	
+2-15	268-277	einsetzen	competency	_	
+2-16	277-278	.	_	_	

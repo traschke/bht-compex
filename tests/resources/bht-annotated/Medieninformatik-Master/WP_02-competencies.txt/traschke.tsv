@@ -1,0 +1,98 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden können den Einsatz von Softwaresystemen in Unternehmen fallspeziﬁsch unter Bezugnahme auf fachliche Aspekte wie Wertschöpfungsketten, Geschäftsprozesse etc. motivieren.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-23	können	_	_	
+1-4	24-27	den	_	_	
+1-5	28-35	Einsatz	object[1]	1-22[0_1]	
+1-6	36-39	von	object[1]	_	
+1-7	40-56	Softwaresystemen	object[1]	_	
+1-8	57-59	in	context[2]	1-5[1_2]	
+1-9	60-71	Unternehmen	context[2]	_	
+1-10	72-85	fallspeziﬁsch	context[2]	_	
+1-11	86-91	unter	context[2]	_	
+1-12	92-102	Bezugnahme	context[2]	_	
+1-13	103-106	auf	context[2]	_	
+1-14	107-116	fachliche	context[2]	_	
+1-15	117-124	Aspekte	context[2]	_	
+1-16	125-128	wie	context[2]	_	
+1-17	129-149	Wertschöpfungsketten	context[2]	_	
+1-18	149-150	,	context[2]	_	
+1-19	151-168	Geschäftsprozesse	context[2]	_	
+1-20	169-172	etc	context[2]	_	
+1-21	172-173	.	context[2]	_	
+1-22	174-184	motivieren	competency	_	
+1-23	184-185	.	_	_	
+
+#Text=Die Studierenden kennen technologiegetriebene Ansätze der Unternehmensführung und können aktuelle Softwaretechnologien für deren Umsetzung identiﬁzieren.
+2-1	186-189	Die	_	_	
+2-2	190-202	Studierenden	_	_	
+2-3	203-209	kennen	competency	_	
+2-4	210-231	technologiegetriebene	object[3]	2-3[0_3]	
+2-5	232-239	Ansätze	object[3]	_	
+2-6	240-243	der	context[4]	2-4[3_4]	
+2-7	244-263	Unternehmensführung	context[4]	_	
+2-8	264-267	und	_	_	
+2-9	268-274	können	_	_	
+2-10	275-283	aktuelle	object[5]	2-15[0_5]	
+2-11	284-304	Softwaretechnologien	object[5]	_	
+2-12	305-308	für	context[6]	2-10[5_6]	
+2-13	309-314	deren	context[6]	_	
+2-14	315-324	Umsetzung	context[6]	_	
+2-15	325-338	identiﬁzieren	competency	_	
+2-16	338-339	.	_	_	
+
+#Text=Die Studierenden kennen Verfahren der Analyse, Konzeption und Veriﬁkation von Geschäftsmodellen und können diese auf gegebene Fallbeispiele und eigene Projektideen anwenden.
+3-1	340-343	Die	_	_	
+3-2	344-356	Studierenden	_	_	
+3-3	357-363	kennen	competency	_	
+3-4	364-373	Verfahren	object[7]	3-3[0_7]	
+3-5	374-377	der	object[7]	_	
+3-6	378-385	Analyse	object[7]	_	
+3-7	385-386	,	object[7]	_	
+3-8	387-397	Konzeption	object[7]	_	
+3-9	398-401	und	object[7]	_	
+3-10	402-413	Veriﬁkation	object[7]	_	
+3-11	414-417	von	_	_	
+3-12	418-435	Geschäftsmodellen	context	3-4[7_0]	
+3-13	436-439	und	_	_	
+3-14	440-446	können	_	_	
+3-15	447-452	diese	_	_	
+3-16	453-456	auf	_	_	
+3-17	457-465	gegebene	object[8]	3-22[0_8]	
+3-18	466-479	Fallbeispiele	object[8]	_	
+3-19	480-483	und	object[8]	_	
+3-20	484-490	eigene	object[8]	_	
+3-21	491-503	Projektideen	object[8]	_	
+3-22	504-512	anwenden	competency	_	
+3-23	512-513	.	_	_	
+
+#Text=Die Studierenden können den zur Veriﬁkation eines Geschäftsmodells erforderlichen minimalen Funktionsumfang eines Softwaresystems erarbeiten und können diesen unter Verwendung aktueller Softwaretechnologien implementatorisch umsetzen.
+4-1	514-517	Die	_	_	
+4-2	518-530	Studierenden	_	_	
+4-3	531-537	können	_	_	
+4-4	538-541	den	_	_	
+4-5	542-545	zur	_	_	
+4-6	546-557	Veriﬁkation	_	_	
+4-7	558-563	eines	_	_	
+4-8	564-580	Geschäftsmodells	_	_	
+4-9	581-595	erforderlichen	_	_	
+4-10	596-605	minimalen	object[9]	4-14[0_9]|4-23[0_9]	
+4-11	606-621	Funktionsumfang	object[9]	_	
+4-12	622-627	eines	context[10]	4-10[9_10]	
+4-13	628-643	Softwaresystems	context[10]	_	
+4-14	644-654	erarbeiten	competency	_	
+4-15	655-658	und	_	_	
+4-16	659-665	können	_	_	
+4-17	666-672	diesen	_	_	
+4-18	673-678	unter	_	_	
+4-19	679-689	Verwendung	_	_	
+4-20	690-699	aktueller	_	_	
+4-21	700-720	Softwaretechnologien	_	_	
+4-22	721-738	implementatorisch	_	_	
+4-23	739-747	umsetzen	competency	_	
+4-24	747-748	.	_	_	

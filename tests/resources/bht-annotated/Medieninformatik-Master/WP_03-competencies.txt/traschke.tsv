@@ -1,0 +1,112 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studenten erlernen den Aufbau und die Wirkungsweise von Datenplattformen in Unternehmen.
+1-1	0-3	Die	_	_	
+1-2	4-13	Studenten	_	_	
+1-3	14-22	erlernen	competency	_	
+1-4	23-26	den	_	_	
+1-5	27-33	Aufbau	object[1]	1-3[0_1]	
+1-6	34-37	und	object[1]	_	
+1-7	38-41	die	object[1]	_	
+1-8	42-55	Wirkungsweise	object[1]	_	
+1-9	56-59	von	object[1]	_	
+1-10	60-76	Datenplattformen	object[1]	_	
+1-11	77-79	in	_	_	
+1-12	80-91	Unternehmen	context	1-5[1_0]	
+1-13	91-92	.	_	_	
+
+#Text=Dazu arbeiten die Studenten an konkreten Fallbeispielen von ausgesuchten Unternehmen oder aus aktuellen Forschungsprojekten.
+2-1	93-97	Dazu	_	_	
+2-2	98-106	arbeiten	competency	_	
+2-3	107-110	die	_	_	
+2-4	111-120	Studenten	_	_	
+2-5	121-123	an	_	_	
+2-6	124-133	konkreten	object[2]	2-2[0_2]	
+2-7	134-148	Fallbeispielen	object[2]	_	
+2-8	149-152	von	_	_	
+2-9	153-165	ausgesuchten	context[3]	2-6[2_3]	
+2-10	166-177	Unternehmen	context[3]	_	
+2-11	178-182	oder	_	_	
+2-12	183-186	aus	_	_	
+2-13	187-196	aktuellen	context[4]	2-6[2_4]	
+2-14	197-216	Forschungsprojekten	context[4]	_	
+2-15	216-217	.	_	_	
+
+#Text=Dabei kommen insbesondere Verfahren des maschinellen Lernens, Suchmaschinen und Text-Mining-Methoden zum Einsatz.
+3-1	218-223	Dabei	_	_	
+3-2	224-230	kommen	_	_	
+3-3	231-243	insbesondere	_	_	
+3-4	244-253	Verfahren	object[5]	_	
+3-5	254-257	des	object[5]	_	
+3-6	258-270	maschinellen	object[5]	_	
+3-7	271-278	Lernens	object[5]	_	
+3-8	278-279	,	object[5]	_	
+3-9	280-293	Suchmaschinen	object[5]	_	
+3-10	294-297	und	object[5]	_	
+3-11	298-318	Text-Mining-Methoden	object[5]	_	
+3-12	319-322	zum	_	_	
+3-13	323-330	Einsatz	_	_	
+3-14	330-331	.	_	_	
+
+#Text=Die Studenten lernen, selbst die Messbarkeit von Verfahren zu deﬁnieren, erarbeiten Methoden der Datensammlung, -bereinigung, -analyse sowie für das Anlegen von Feedbackloops zur weiteren Verbesserung der Datenqualität.
+4-1	332-335	Die	_	_	
+4-2	336-345	Studenten	_	_	
+4-3	346-352	lernen	_	_	
+4-4	352-353	,	_	_	
+4-5	354-360	selbst	_	_	
+4-6	361-364	die	_	_	
+4-7	365-376	Messbarkeit	object[6]	4-11[0_6]	
+4-8	377-380	von	object[6]	_	
+4-9	381-390	Verfahren	object[6]	_	
+4-10	391-393	zu	_	_	
+4-11	394-403	deﬁnieren	competency	_	
+4-12	403-404	,	_	_	
+4-13	405-415	erarbeiten	competency	_	
+4-14	416-424	Methoden	object[7]	4-13[0_7]	
+4-15	425-428	der	object[7]	_	
+4-16	429-442	Datensammlung	object[7]	_	
+4-17	442-443	,	object[7]	_	
+4-18	444-445	-	object[7]	_	
+4-19	445-456	bereinigung	object[7]	_	
+4-20	456-457	,	object[7]	_	
+4-21	458-459	-	object[7]	_	
+4-22	459-466	analyse	object[7]	_	
+4-23	467-472	sowie	_	_	
+4-24	473-476	für	_	_	
+4-25	477-480	das	_	_	
+4-26	481-488	Anlegen	_	_	
+4-27	489-492	von	_	_	
+4-28	493-506	Feedbackloops	_	_	
+4-29	507-510	zur	_	_	
+4-30	511-519	weiteren	_	_	
+4-31	520-532	Verbesserung	_	_	
+4-32	533-536	der	_	_	
+4-33	537-550	Datenqualität	_	_	
+4-34	550-551	.	_	_	
+
+#Text=Im Anschluss haben die Studenten die Möglichkeit, ihre Kenntnisse in einer Masterarbeit in einem Forschungsprojekt an der Beuth-HS zu vertiefen.
+5-1	552-554	Im	_	_	
+5-2	555-564	Anschluss	_	_	
+5-3	565-570	haben	_	_	
+5-4	571-574	die	_	_	
+5-5	575-584	Studenten	_	_	
+5-6	585-588	die	_	_	
+5-7	589-600	Möglichkeit	_	_	
+5-8	600-601	,	_	_	
+5-9	602-606	ihre	_	_	
+5-10	607-617	Kenntnisse	_	_	
+5-11	618-620	in	_	_	
+5-12	621-626	einer	_	_	
+5-13	627-639	Masterarbeit	_	_	
+5-14	640-642	in	_	_	
+5-15	643-648	einem	_	_	
+5-16	649-666	Forschungsprojekt	_	_	
+5-17	667-669	an	_	_	
+5-18	670-673	der	_	_	
+5-19	674-682	Beuth-HS	_	_	
+5-20	683-685	zu	_	_	
+5-21	686-695	vertiefen	_	_	
+5-22	695-696	.	_	_	

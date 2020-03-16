@@ -1,0 +1,214 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Lernziel des Moduls ist, weitere Phasen des Software-Lebenszyklus zu vermitteln, die sich an die aus dem Software Engineering bekannten Dev-Phasen anschließen.
+1-1	0-8	Lernziel	_	_	
+1-2	9-12	des	_	_	
+1-3	13-19	Moduls	_	_	
+1-4	20-23	ist	_	_	
+1-5	23-24	,	_	_	
+1-6	25-32	weitere	_	_	
+1-7	33-39	Phasen	_	_	
+1-8	40-43	des	_	_	
+1-9	44-65	Software-Lebenszyklus	_	_	
+1-10	66-68	zu	_	_	
+1-11	69-79	vermitteln	_	_	
+1-12	79-80	,	_	_	
+1-13	81-84	die	_	_	
+1-14	85-89	sich	_	_	
+1-15	90-92	an	_	_	
+1-16	93-96	die	_	_	
+1-17	97-100	aus	_	_	
+1-18	101-104	dem	_	_	
+1-19	105-113	Software	_	_	
+1-20	114-125	Engineering	_	_	
+1-21	126-135	bekannten	_	_	
+1-22	136-146	Dev-Phasen	_	_	
+1-23	147-158	anschließen	_	_	
+1-24	158-159	.	_	_	
+
+#Text=Die Teilnehmer kennen am Ende typische OpsProzesse: Build, Test, Package, Release, Provision, Deploy, Conﬁgure, Monitor, Control / Manage.
+2-1	160-163	Die	_	_	
+2-2	164-174	Teilnehmer	_	_	
+2-3	175-181	kennen	competency	_	
+2-4	182-184	am	_	_	
+2-5	185-189	Ende	_	_	
+2-6	190-198	typische	_	_	
+2-7	199-210	OpsProzesse	object	2-3	
+2-8	210-211	:	_	_	
+2-9	212-217	Build	_	_	
+2-10	217-218	,	_	_	
+2-11	219-223	Test	_	_	
+2-12	223-224	,	_	_	
+2-13	225-232	Package	_	_	
+2-14	232-233	,	_	_	
+2-15	234-241	Release	_	_	
+2-16	241-242	,	_	_	
+2-17	243-252	Provision	_	_	
+2-18	252-253	,	_	_	
+2-19	254-260	Deploy	_	_	
+2-20	260-261	,	_	_	
+2-21	262-270	Conﬁgure	_	_	
+2-22	270-271	,	_	_	
+2-23	272-279	Monitor	_	_	
+2-24	279-280	,	_	_	
+2-25	281-288	Control	_	_	
+2-26	289-290	/	_	_	
+2-27	291-297	Manage	_	_	
+2-28	297-298	.	_	_	
+
+#Text=Zuständigkeiten, Rollen und das Zusammenspiel von Teams werden erkannt und was es bedeutet, Rollen und Prozesse für einen geordneten Betrieb eines Service zusammenzuführen.
+3-1	299-314	Zuständigkeiten	object	3-10	
+3-2	314-315	,	_	_	
+3-3	316-322	Rollen	object	3-10	
+3-4	323-326	und	_	_	
+3-5	327-330	das	_	_	
+3-6	331-344	Zusammenspiel	object[1]	3-10[0_1]	
+3-7	345-348	von	object[1]	_	
+3-8	349-354	Teams	object[1]	_	
+3-9	355-361	werden	_	_	
+3-10	362-369	erkannt	competency	_	
+3-11	370-373	und	_	_	
+3-12	374-377	was	_	_	
+3-13	378-380	es	_	_	
+3-14	381-389	bedeutet	_	_	
+3-15	389-390	,	_	_	
+3-16	391-397	Rollen	_	_	
+3-17	398-401	und	_	_	
+3-18	402-410	Prozesse	_	_	
+3-19	411-414	für	_	_	
+3-20	415-420	einen	_	_	
+3-21	421-431	geordneten	_	_	
+3-22	432-439	Betrieb	_	_	
+3-23	440-445	eines	_	_	
+3-24	446-453	Service	_	_	
+3-25	454-470	zusammenzuführen	_	_	
+3-26	470-471	.	_	_	
+
+#Text=Die Studierenden kennen Unterschiede zwischen Software Entwicklungs-, Test-, Stagingund Produktionsumgebungen sowie die Herausforderungen, die sich für den nahtlosen Übergang bei schnellen Software-Releasefolgen ergeben.
+4-1	472-475	Die	_	_	
+4-2	476-488	Studierenden	_	_	
+4-3	489-495	kennen	competency	_	
+4-4	496-508	Unterschiede	object	4-3	
+4-5	509-517	zwischen	context[2]	4-4[0_2]	
+4-6	518-526	Software	context[2]	_	
+4-7	527-539	Entwicklungs	context[2]	_	
+4-8	539-540	-	context[2]	_	
+4-9	540-541	,	context[2]	_	
+4-10	542-546	Test	context[2]	_	
+4-11	546-547	-	context[2]	_	
+4-12	547-548	,	context[2]	_	
+4-13	549-559	Stagingund	context[2]	_	
+4-14	560-581	Produktionsumgebungen	context[2]	_	
+4-15	582-587	sowie	_	_	
+4-16	588-591	die	_	_	
+4-17	592-609	Herausforderungen	object	4-3	
+4-18	609-610	,	_	_	
+4-19	611-614	die	_	_	
+4-20	615-619	sich	_	_	
+4-21	620-623	für	_	_	
+4-22	624-627	den	_	_	
+4-23	628-637	nahtlosen	context[3]	4-17[0_3]	
+4-24	638-646	Übergang	context[3]	_	
+4-25	647-650	bei	context[3]	_	
+4-26	651-660	schnellen	context[3]	_	
+4-27	661-683	Software-Releasefolgen	context[3]	_	
+4-28	684-691	ergeben	_	_	
+4-29	691-692	.	_	_	
+
+#Text=Die Teilnehmer haben ein Verständnis von Continuous Delivery und Continuous Integration sowie von Technologien der Automatisierung.
+5-1	693-696	Die	_	_	
+5-2	697-707	Teilnehmer	_	_	
+5-3	708-713	haben	_	_	
+5-4	714-717	ein	_	_	
+5-5	718-729	Verständnis	competency	_	
+5-6	730-733	von	_	_	
+5-7	734-744	Continuous	object[4]	5-5[0_4]	
+5-8	745-753	Delivery	object[4]	_	
+5-9	754-757	und	_	_	
+5-10	758-768	Continuous	object[5]	5-5[0_5]	
+5-11	769-780	Integration	object[5]	_	
+5-12	781-786	sowie	_	_	
+5-13	787-790	von	_	_	
+5-14	791-803	Technologien	object[6]	5-5[0_6]	
+5-15	804-807	der	object[6]	_	
+5-16	808-823	Automatisierung	object[6]	_	
+5-17	823-824	.	_	_	
+
+#Text=Es ist bekannt, was eine DevOps Toolchain ist und aus welchen Bausteinen (Werkzeugen) sie bestehen kann.
+6-1	825-827	Es	_	_	
+6-2	828-831	ist	_	_	
+6-3	832-839	bekannt	competency	_	
+6-4	839-840	,	_	_	
+6-5	841-844	was	_	_	
+6-6	845-849	eine	_	_	
+6-7	850-856	DevOps	object[7]	6-3[0_7]	
+6-8	857-866	Toolchain	object[7]	_	
+6-9	867-870	ist	_	_	
+6-10	871-874	und	_	_	
+6-11	875-878	aus	_	_	
+6-12	879-886	welchen	_	_	
+6-13	887-897	Bausteinen	object	6-3	
+6-14	898-899	(	_	_	
+6-15	899-909	Werkzeugen	_	_	
+6-16	909-910	)	_	_	
+6-17	911-914	sie	_	_	
+6-18	915-923	bestehen	_	_	
+6-19	924-928	kann	_	_	
+6-20	928-929	.	_	_	
+
+#Text=Vertreter verbreiteter DevOps-Werkzeuge werden vorgestellt.
+7-1	930-939	Vertreter	_	_	
+7-2	940-952	verbreiteter	_	_	
+7-3	953-969	DevOps-Werkzeuge	_	_	
+7-4	970-976	werden	_	_	
+7-5	977-988	vorgestellt	_	_	
+7-6	988-989	.	_	_	
+
+#Text=Als wichtige technische Mittel werden die Containerisierung von Software sowie die Schaffung virtueller Ablaufumgebungen mit deﬁnierten Eigenschaften vermittelt und können von den Teilnehmern praktisch angewendet werden.
+8-1	990-993	Als	_	_	
+8-2	994-1002	wichtige	_	_	
+8-3	1003-1013	technische	_	_	
+8-4	1014-1020	Mittel	_	_	
+8-5	1021-1027	werden	_	_	
+8-6	1028-1031	die	_	_	
+8-7	1032-1049	Containerisierung	object	8-25	
+8-8	1050-1053	von	_	_	
+8-9	1054-1062	Software	context	8-7	
+8-10	1063-1068	sowie	_	_	
+8-11	1069-1072	die	_	_	
+8-12	1073-1082	Schaffung	_	_	
+8-13	1083-1093	virtueller	object[8]	8-25[0_8]	
+8-14	1094-1110	Ablaufumgebungen	object[8]	_	
+8-15	1111-1114	mit	_	_	
+8-16	1115-1125	deﬁnierten	_	_	
+8-17	1126-1139	Eigenschaften	_	_	
+8-18	1140-1150	vermittelt	_	_	
+8-19	1151-1154	und	_	_	
+8-20	1155-1161	können	_	_	
+8-21	1162-1165	von	_	_	
+8-22	1166-1169	den	_	_	
+8-23	1170-1181	Teilnehmern	_	_	
+8-24	1182-1191	praktisch	_	_	
+8-25	1192-1202	angewendet	competency	_	
+8-26	1203-1209	werden	_	_	
+8-27	1209-1210	.	_	_	
+
+#Text=Die Teilnehmer kennen Aufgaben, Kompetenzen und Anforderungen an das Berufsbild eines DevOps Engineers.
+9-1	1211-1214	Die	_	_	
+9-2	1215-1225	Teilnehmer	_	_	
+9-3	1226-1232	kennen	competency	_	
+9-4	1233-1241	Aufgaben	object	9-3	
+9-5	1241-1242	,	_	_	
+9-6	1243-1254	Kompetenzen	object	9-3	
+9-7	1255-1258	und	_	_	
+9-8	1259-1272	Anforderungen	object	9-3	
+9-9	1273-1275	an	_	_	
+9-10	1276-1279	das	_	_	
+9-11	1280-1290	Berufsbild	context[9]	9-8[0_9]|9-6[0_9]|9-4[0_9]	
+9-12	1291-1296	eines	context[9]	_	
+9-13	1297-1303	DevOps	context[9]	_	
+9-14	1304-1313	Engineers	context[9]	_	
+9-15	1313-1314	.	_	_	

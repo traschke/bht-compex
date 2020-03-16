@@ -1,0 +1,94 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden kennen die Grundbegriffe und aktuelle Methoden des Requirements Engineering sowie der agilen Entwicklungsplanung.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-23	kennen	competency	_	
+1-4	24-27	die	_	_	
+1-5	28-41	Grundbegriffe	object	1-3	
+1-6	42-45	und	_	_	
+1-7	46-54	aktuelle	object[1]	1-3[0_1]	
+1-8	55-63	Methoden	object[1]	_	
+1-9	64-67	des	_	_	
+1-10	68-80	Requirements	context[2]	1-5[0_2]|1-7[1_2]	
+1-11	81-92	Engineering	context[2]	_	
+1-12	93-98	sowie	_	_	
+1-13	99-102	der	_	_	
+1-14	103-109	agilen	context[3]	1-5[0_3]|1-7[1_3]	
+1-15	110-129	Entwicklungsplanung	context[3]	_	
+1-16	129-130	.	_	_	
+
+#Text=Sie können geeignete Dokumentationsund Kommunikationsformen für Anforderungen auswählen und in klassische und agile SoftwareEntwicklungsprozesse einbetten.
+2-1	131-134	Sie	_	_	
+2-2	135-141	können	_	_	
+2-3	142-151	geeignete	_	_	
+2-4	152-169	Dokumentationsund	context[4]	2-7[0_4]	
+2-5	170-190	Kommunikationsformen	context[4]	_	
+2-6	191-194	für	_	_	
+2-7	195-208	Anforderungen	object	2-15|2-8	
+2-8	209-218	auswählen	competency	_	
+2-9	219-222	und	_	_	
+2-10	223-225	in	_	_	
+2-11	226-236	klassische	_	_	
+2-12	237-240	und	_	_	
+2-13	241-246	agile	context[5]	2-7[0_5]	
+2-14	247-275	SoftwareEntwicklungsprozesse	context[5]	_	
+2-15	276-285	einbetten	competency	_	
+2-16	285-286	.	_	_	
+
+#Text=Sie können systematisch Anforderungen ermitteln, kommunizieren, dokumentieren, prüfen, abstimmen, verfeinern und mit Hilfe geeigneter Tools verwalten und aktuell halten.
+3-1	287-290	Sie	_	_	
+3-2	291-297	können	_	_	
+3-3	298-310	systematisch	_	_	
+3-4	311-324	Anforderungen	object	3-5|3-7|3-9|3-11|3-13|3-15|3-21	
+3-5	325-334	ermitteln	competency	_	
+3-6	334-335	,	_	_	
+3-7	336-349	kommunizieren	competency	_	
+3-8	349-350	,	_	_	
+3-9	351-364	dokumentieren	competency	_	
+3-10	364-365	,	_	_	
+3-11	366-372	prüfen	competency	_	
+3-12	372-373	,	_	_	
+3-13	374-383	abstimmen	competency	_	
+3-14	383-384	,	_	_	
+3-15	385-395	verfeinern	competency	_	
+3-16	396-399	und	_	_	
+3-17	400-403	mit	_	_	
+3-18	404-409	Hilfe	_	_	
+3-19	410-420	geeigneter	_	_	
+3-20	421-426	Tools	_	_	
+3-21	427-436	verwalten	competency	_	
+3-22	437-440	und	_	_	
+3-23	441-448	aktuell	_	_	
+3-24	449-455	halten	_	_	
+3-25	455-456	.	_	_	
+
+#Text=Sie können die Qualität von Anforderungsbeschreibungen bewerten, diese systematisch verbessern, und Speziﬁkationen, Tests und Entwicklungs-Schritte (Slices) aus Anforderungen ableiten.
+4-1	457-460	Sie	_	_	
+4-2	461-467	können	_	_	
+4-3	468-471	die	_	_	
+4-4	472-480	Qualität	object	4-7|4-11	
+4-5	481-484	von	_	_	
+4-6	485-511	Anforderungsbeschreibungen	context	4-4	
+4-7	512-520	bewerten	competency	_	
+4-8	520-521	,	_	_	
+4-9	522-527	diese	_	_	
+4-10	528-540	systematisch	_	_	
+4-11	541-551	verbessern	competency	_	
+4-12	551-552	,	_	_	
+4-13	553-556	und	_	_	
+4-14	557-571	Speziﬁkationen	object	4-24	
+4-15	571-572	,	_	_	
+4-16	573-578	Tests	object	4-24	
+4-17	579-582	und	_	_	
+4-18	583-604	Entwicklungs-Schritte	object	4-24	
+4-19	605-606	(	_	_	
+4-20	606-612	Slices	_	_	
+4-21	612-613	)	_	_	
+4-22	614-617	aus	_	_	
+4-23	618-631	Anforderungen	context	4-18|4-16|4-16	
+4-24	632-640	ableiten	competency	_	
+4-25	640-641	.	_	_	

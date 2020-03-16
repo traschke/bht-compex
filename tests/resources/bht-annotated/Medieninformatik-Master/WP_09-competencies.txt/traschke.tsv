@@ -1,0 +1,101 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Maschinelles Sehen ist wesentlicher Bestandteil aktueller Technologien von der Erweiterten Realität (AR) bis hin zum Autonomen Fahren.
+1-1	0-12	Maschinelles	_	_	
+1-2	13-18	Sehen	_	_	
+1-3	19-22	ist	_	_	
+1-4	23-35	wesentlicher	_	_	
+1-5	36-47	Bestandteil	_	_	
+1-6	48-57	aktueller	_	_	
+1-7	58-70	Technologien	_	_	
+1-8	71-74	von	_	_	
+1-9	75-78	der	_	_	
+1-10	79-90	Erweiterten	_	_	
+1-11	91-99	Realität	_	_	
+1-12	100-101	(	_	_	
+1-13	101-103	AR	_	_	
+1-14	103-104	)	_	_	
+1-15	105-108	bis	_	_	
+1-16	109-112	hin	_	_	
+1-17	113-116	zum	_	_	
+1-18	117-126	Autonomen	_	_	
+1-19	127-133	Fahren	_	_	
+1-20	133-134	.	_	_	
+
+#Text=Dieses Modul vermittelt Studierenden die Grundlagen dieser Systeme, insbesondere Algorithmen zur Verarbeitung von großen Bild-, Videound 3DModelldatenbanken, Grundlagen des Augmented Reality Trackings und Ansätze des Maschinellen Lernens und des Deep Learnings auf Bilddaten.
+2-1	135-141	Dieses	_	_	
+2-2	142-147	Modul	_	_	
+2-3	148-158	vermittelt	_	_	
+2-4	159-171	Studierenden	_	_	
+2-5	172-175	die	_	_	
+2-6	176-186	Grundlagen	_	_	
+2-7	187-193	dieser	_	_	
+2-8	194-201	Systeme	_	_	
+2-9	201-202	,	_	_	
+2-10	203-215	insbesondere	_	_	
+2-11	216-227	Algorithmen	_	_	
+2-12	228-231	zur	_	_	
+2-13	232-244	Verarbeitung	_	_	
+2-14	245-248	von	_	_	
+2-15	249-255	großen	_	_	
+2-16	256-260	Bild	_	_	
+2-17	260-261	-	_	_	
+2-18	261-262	,	_	_	
+2-19	263-271	Videound	_	_	
+2-20	272-291	3DModelldatenbanken	_	_	
+2-21	291-292	,	_	_	
+2-22	293-303	Grundlagen	_	_	
+2-23	304-307	des	_	_	
+2-24	308-317	Augmented	_	_	
+2-25	318-325	Reality	_	_	
+2-26	326-335	Trackings	_	_	
+2-27	336-339	und	_	_	
+2-28	340-347	Ansätze	_	_	
+2-29	348-351	des	_	_	
+2-30	352-364	Maschinellen	_	_	
+2-31	365-372	Lernens	_	_	
+2-32	373-376	und	_	_	
+2-33	377-380	des	_	_	
+2-34	381-385	Deep	_	_	
+2-35	386-395	Learnings	_	_	
+2-36	396-399	auf	_	_	
+2-37	400-409	Bilddaten	_	_	
+2-38	409-410	.	_	_	
+
+#Text=In praktischen Programmierübungen werden diese Methoden von den Teilnehmern angewendet und implementiert.
+3-1	411-413	In	_	_	
+3-2	414-425	praktischen	_	_	
+3-3	426-444	Programmierübungen	_	_	
+3-4	445-451	werden	_	_	
+3-5	452-457	diese	_	_	
+3-6	458-466	Methoden	object	3-10|3-12	
+3-7	467-470	von	_	_	
+3-8	471-474	den	_	_	
+3-9	475-486	Teilnehmern	_	_	
+3-10	487-497	angewendet	competency	_	
+3-11	498-501	und	_	_	
+3-12	502-515	implementiert	competency	_	
+3-13	515-516	.	_	_	
+
+#Text=Die Studierenden können die genannten Techniken danach selbstständig einsetzen und kennen deren Einsatzschwerpunkte, Vorteile und Schwächen.
+4-1	517-520	Die	_	_	
+4-2	521-533	Studierenden	_	_	
+4-3	534-540	können	_	_	
+4-4	541-544	die	_	_	
+4-5	545-554	genannten	_	_	
+4-6	555-564	Techniken	object	4-9	
+4-7	565-571	danach	_	_	
+4-8	572-585	selbstständig	_	_	
+4-9	586-595	einsetzen	competency	_	
+4-10	596-599	und	_	_	
+4-11	600-606	kennen	competency	_	
+4-12	607-612	deren	_	_	
+4-13	613-632	Einsatzschwerpunkte	object	4-11	
+4-14	632-633	,	_	_	
+4-15	634-642	Vorteile	object	4-11	
+4-16	643-646	und	_	_	
+4-17	647-656	Schwächen	object	4-11	
+4-18	656-657	.	_	_	

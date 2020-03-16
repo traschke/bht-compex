@@ -1,0 +1,114 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden erwerben notwendige Kompetenzen für die selbstständige Durchführung eines kompletten Usability-Konzeptionsprozesses bis zur Erstellung eines interaktiven High-Fidelity Prototypen.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-25	erwerben	competency	_	
+1-4	26-36	notwendige	_	_	
+1-5	37-48	Kompetenzen	_	_	
+1-6	49-52	für	_	_	
+1-7	53-56	die	_	_	
+1-8	57-71	selbstständige	object[1]	1-3[0_1]	
+1-9	72-84	Durchführung	object[1]	_	
+1-10	85-90	eines	_	_	
+1-11	91-101	kompletten	_	_	
+1-12	102-132	Usability-Konzeptionsprozesses	context	1-8[1_0]	
+1-13	133-136	bis	_	_	
+1-14	137-140	zur	_	_	
+1-15	141-151	Erstellung	_	_	
+1-16	152-157	eines	_	_	
+1-17	158-170	interaktiven	_	_	
+1-18	171-184	High-Fidelity	_	_	
+1-19	185-195	Prototypen	_	_	
+1-20	195-196	.	_	_	
+
+#Text=Die Teilnehmer/innen erlernen qualitative, kollaborative und StrukturierungsMethoden für die Erfassung der Requirements/Anforderungen sowie zur formativen Evaluation.
+2-1	197-200	Die	_	_	
+2-2	201-211	Teilnehmer	_	_	
+2-3	211-212	/	_	_	
+2-4	212-217	innen	_	_	
+2-5	218-226	erlernen	competency	_	
+2-6	227-238	qualitative	_	_	
+2-7	238-239	,	_	_	
+2-8	240-253	kollaborative	_	_	
+2-9	254-257	und	_	_	
+2-10	258-281	StrukturierungsMethoden	object	2-5	
+2-11	282-285	für	_	_	
+2-12	286-289	die	_	_	
+2-13	290-299	Erfassung	context[2]	2-10[0_2]	
+2-14	300-303	der	context[2]	_	
+2-15	304-316	Requirements	context[2]	_	
+2-16	316-317	/	context[2]	_	
+2-17	317-330	Anforderungen	context[2]	_	
+2-18	331-336	sowie	_	_	
+2-19	337-340	zur	_	_	
+2-20	341-351	formativen	context[3]	2-10[0_3]	
+2-21	352-362	Evaluation	context[3]	_	
+2-22	362-363	.	_	_	
+
+#Text=Sie kennen die wesentlichen Qualitätsaspekte und Techniken für die Konzeption und Evaluation von User Interface (UI), Interaction (IxD) und User Experience Design (UX).
+3-1	364-367	Sie	_	_	
+3-2	368-374	kennen	competency	_	
+3-3	375-378	die	_	_	
+3-4	379-391	wesentlichen	object[4]	3-2[0_4]	
+3-5	392-408	Qualitätsaspekte	object[4]	_	
+3-6	409-412	und	_	_	
+3-7	413-422	Techniken	object	3-2	
+3-8	423-426	für	_	_	
+3-9	427-430	die	_	_	
+3-10	431-441	Konzeption	context	3-4[4_0]|3-7	
+3-11	442-445	und	_	_	
+3-12	446-456	Evaluation	context	3-4[4_0]|3-7	
+3-13	457-460	von	_	_	
+3-14	461-465	User	_	_	
+3-15	466-475	Interface	_	_	
+3-16	476-477	(	_	_	
+3-17	477-479	UI	_	_	
+3-18	479-480	)	_	_	
+3-19	480-481	,	_	_	
+3-20	482-493	Interaction	_	_	
+3-21	494-495	(	_	_	
+3-22	495-498	IxD	_	_	
+3-23	498-499	)	_	_	
+3-24	500-503	und	_	_	
+3-25	504-508	User	_	_	
+3-26	509-519	Experience	_	_	
+3-27	520-526	Design	_	_	
+3-28	527-528	(	_	_	
+3-29	528-530	UX	_	_	
+3-30	530-531	)	_	_	
+3-31	531-532	.	_	_	
+
+#Text=Die Teilnehmer/innen beherrschen mindestens ein Prototyping-Werkzeug.
+4-1	533-536	Die	_	_	
+4-2	537-547	Teilnehmer	_	_	
+4-3	547-548	/	_	_	
+4-4	548-553	innen	_	_	
+4-5	554-565	beherrschen	competency	_	
+4-6	566-576	mindestens	_	_	
+4-7	577-580	ein	_	_	
+4-8	581-601	Prototyping-Werkzeug	object	4-5	
+4-9	601-602	.	_	_	
+
+#Text=Es werden Usabilityund Interaktionsaspekte topaktueller und sich in der Forschung beﬁndender Softwareund Mediensysteme sowie Interaktionsund Endgeräte analysiert.
+5-1	603-605	Es	_	_	
+5-2	606-612	werden	_	_	
+5-3	613-625	Usabilityund	object[5]	5-17[0_5]	
+5-4	626-645	Interaktionsaspekte	object[5]	_	
+5-5	646-658	topaktueller	context[6]	5-3[5_6]	
+5-6	659-662	und	context[6]	_	
+5-7	663-667	sich	context[6]	_	
+5-8	668-670	in	context[6]	_	
+5-9	671-674	der	context[6]	_	
+5-10	675-684	Forschung	context[6]	_	
+5-11	685-695	beﬁndender	context[6]	_	
+5-12	696-707	Softwareund	context[6]	_	
+5-13	708-721	Mediensysteme	context[6]	_	
+5-14	722-727	sowie	context[6]	_	
+5-15	728-743	Interaktionsund	context[6]	_	
+5-16	744-753	Endgeräte	context[6]	_	
+5-17	754-764	analysiert	competency	_	
+5-18	764-765	.	_	_	

@@ -1,0 +1,65 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden lernen aktuelle Technologien für Echtzeitkodierung, - übertragung und -distribution von mehrkanaligen Bewegtbildund Audiobeiträgen kennen.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-23	lernen	competency	_	
+1-4	24-32	aktuelle	object[1]	1-3[0_1]	
+1-5	33-45	Technologien	object[1]	_	
+1-6	46-49	für	object[1]	_	
+1-7	50-67	Echtzeitkodierung	object[1]	_	
+1-8	67-68	,	object[1]	_	
+1-9	69-70	-	object[1]	_	
+1-10	71-82	übertragung	object[1]	_	
+1-11	83-86	und	object[1]	_	
+1-12	87-88	-	object[1]	_	
+1-13	88-100	distribution	object[1]	_	
+1-14	101-104	von	_	_	
+1-15	105-118	mehrkanaligen	context[2]	1-4[1_2]	
+1-16	119-132	Bewegtbildund	context[2]	_	
+1-17	133-147	Audiobeiträgen	context[2]	_	
+1-18	148-154	kennen	_	_	
+1-19	154-155	.	_	_	
+
+#Text=Dazu gehören auch Techniken der Interaktivität, der Vernetzung und Synchronisation von Internetund Broadcast-Medieninhalten sowie von Applikationen auf mehreren Geräten.
+2-1	156-160	Dazu	_	_	
+2-2	161-168	gehören	_	_	
+2-3	169-173	auch	_	_	
+2-4	174-183	Techniken	_	_	
+2-5	184-187	der	_	_	
+2-6	188-202	Interaktivität	_	_	
+2-7	202-203	,	_	_	
+2-8	204-207	der	_	_	
+2-9	208-218	Vernetzung	_	_	
+2-10	219-222	und	_	_	
+2-11	223-238	Synchronisation	_	_	
+2-12	239-242	von	_	_	
+2-13	243-254	Internetund	_	_	
+2-14	255-279	Broadcast-Medieninhalten	_	_	
+2-15	280-285	sowie	_	_	
+2-16	286-289	von	_	_	
+2-17	290-303	Applikationen	_	_	
+2-18	304-307	auf	_	_	
+2-19	308-316	mehreren	_	_	
+2-20	317-324	Geräten	_	_	
+2-21	324-325	.	_	_	
+
+#Text=Die Teilnehmer sind im Stande vernetzte und interaktive Medien-Systeme zu entwerfen und zu implementieren.
+3-1	326-329	Die	_	_	
+3-2	330-340	Teilnehmer	_	_	
+3-3	341-345	sind	_	_	
+3-4	346-348	im	_	_	
+3-5	349-355	Stande	_	_	
+3-6	356-365	vernetzte	object[3]	3-11[0_3]|3-14[0_3]	
+3-7	366-369	und	object[3]	_	
+3-8	370-381	interaktive	object[3]	_	
+3-9	382-396	Medien-Systeme	object[3]	_	
+3-10	397-399	zu	_	_	
+3-11	400-409	entwerfen	competency	_	
+3-12	410-413	und	_	_	
+3-13	414-416	zu	_	_	
+3-14	417-431	implementieren	competency	_	
+3-15	431-432	.	_	_	

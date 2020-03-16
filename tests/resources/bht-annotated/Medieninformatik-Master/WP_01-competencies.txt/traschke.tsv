@@ -1,0 +1,109 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden können komplexe Anwendungsszenarien und Geschäftsprozesse im Hinblick auf die Umsetzung einer mehrschichtigen Softwarearchitektur für Unternehmen analysieren.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-23	können	_	_	
+1-4	24-32	komplexe	_	_	
+1-5	33-52	Anwendungsszenarien	object[1]	1-18[0_1]	
+1-6	53-56	und	object[1]	_	
+1-7	57-74	Geschäftsprozesse	object[1]	_	
+1-8	75-77	im	context[2]	1-5[1_2]	
+1-9	78-86	Hinblick	context[2]	_	
+1-10	87-90	auf	context[2]	_	
+1-11	91-94	die	context[2]	_	
+1-12	95-104	Umsetzung	context[2]	_	
+1-13	105-110	einer	context[2]	_	
+1-14	111-126	mehrschichtigen	context[2]	_	
+1-15	127-146	Softwarearchitektur	context[2]	_	
+1-16	147-150	für	context[2]	_	
+1-17	151-162	Unternehmen	context[2]	_	
+1-18	163-174	analysieren	competency	_	
+1-19	174-175	.	_	_	
+
+#Text=Die Studierenden kennen „Services“ als fachliches und softwarearchitektonisches Konzept und können den Funktionsumfang eines Softwaresystems in einzelne Services differenzieren.
+2-1	176-179	Die	_	_	
+2-2	180-192	Studierenden	_	_	
+2-3	193-199	kennen	competency	_	
+2-4	200-201	„	_	_	
+2-5	201-209	Services	object	2-3	
+2-6	209-210	“	_	_	
+2-7	211-214	als	_	_	
+2-8	215-225	fachliches	_	_	
+2-9	226-229	und	_	_	
+2-10	230-255	softwarearchitektonisches	_	_	
+2-11	256-263	Konzept	_	_	
+2-12	264-267	und	_	_	
+2-13	268-274	können	_	_	
+2-14	275-278	den	_	_	
+2-15	279-294	Funktionsumfang	context[3]	2-19[4_3]	
+2-16	295-300	eines	context[3]	_	
+2-17	301-316	Softwaresystems	context[3]	_	
+2-18	317-319	in	_	_	
+2-19	320-328	einzelne	object[4]	2-21[0_4]	
+2-20	329-337	Services	object[4]	_	
+2-21	338-352	differenzieren	competency	_	
+2-22	352-353	.	_	_	
+
+#Text=Die Studierenden können eine Anwendungsdomäne im Hinblick auf die durch ein Softwaresystem zu persistierenden Daten modellieren und können auf dieser Grundlage Entscheidungen bezüglich geeigneter Datenhaltungsparadigmen für die Persistierung treffen.
+3-1	354-357	Die	_	_	
+3-2	358-370	Studierenden	_	_	
+3-3	371-377	können	_	_	
+3-4	378-382	eine	_	_	
+3-5	383-399	Anwendungsdomäne	object	3-16	
+3-6	400-402	im	_	_	
+3-7	403-411	Hinblick	_	_	
+3-8	412-415	auf	_	_	
+3-9	416-419	die	_	_	
+3-10	420-425	durch	context[5]	3-5[0_5]	
+3-11	426-429	ein	context[5]	_	
+3-12	430-444	Softwaresystem	context[5]	_	
+3-13	445-447	zu	context[5]	_	
+3-14	448-463	persistierenden	context[5]	_	
+3-15	464-469	Daten	context[5]	_	
+3-16	470-481	modellieren	competency	_	
+3-17	482-485	und	_	_	
+3-18	486-492	können	_	_	
+3-19	493-496	auf	_	_	
+3-20	497-503	dieser	_	_	
+3-21	504-513	Grundlage	_	_	
+3-22	514-528	Entscheidungen	object	3-29	
+3-23	529-538	bezüglich	context[6]	3-22[0_6]	
+3-24	539-549	geeigneter	context[6]	_	
+3-25	550-573	Datenhaltungsparadigmen	context[6]	_	
+3-26	574-577	für	context[6]	_	
+3-27	578-581	die	context[6]	_	
+3-28	582-595	Persistierung	context[6]	_	
+3-29	596-603	treffen	competency	_	
+3-30	603-604	.	_	_	
+
+#Text=Die Studierenden kennen alternative Technologien und Frameworks zur Implementierung mehrschichtiger serverseitig betriebener komponentenbasierter Softwaresysteme und können deren Konzepte und Ausdrucksmittel vergleichen, beurteilen und anwenden.
+4-1	605-608	Die	_	_	
+4-2	609-621	Studierenden	_	_	
+4-3	622-628	kennen	competency	_	
+4-4	629-640	alternative	object[7]	4-3[0_7]	
+4-5	641-653	Technologien	object[7]	_	
+4-6	654-657	und	object[7]	_	
+4-7	658-668	Frameworks	object[7]	_	
+4-8	669-672	zur	_	_	
+4-9	673-688	Implementierung	context[8]	4-4[7_8]	
+4-10	689-704	mehrschichtiger	context[8]	_	
+4-11	705-717	serverseitig	context[8]	_	
+4-12	718-729	betriebener	context[8]	_	
+4-13	730-750	komponentenbasierter	context[8]	_	
+4-14	751-766	Softwaresysteme	context[8]	_	
+4-15	767-770	und	_	_	
+4-16	771-777	können	_	_	
+4-17	778-783	deren	_	_	
+4-18	784-792	Konzepte	object[9]	4-21[0_9]|4-23[0_9]|4-25[0_9]	
+4-19	793-796	und	object[9]	_	
+4-20	797-812	Ausdrucksmittel	object[9]	_	
+4-21	813-824	vergleichen	competency	_	
+4-22	824-825	,	_	_	
+4-23	826-836	beurteilen	competency	_	
+4-24	837-840	und	_	_	
+4-25	841-849	anwenden	competency	_	
+4-26	849-850	.	_	_	

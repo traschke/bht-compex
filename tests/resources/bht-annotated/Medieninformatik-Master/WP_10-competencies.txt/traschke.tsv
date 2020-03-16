@@ -1,0 +1,223 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Vertiefte Kenntnisse der multimedialen Informationsverarbeitung.
+1-1	0-9	Vertiefte	_	_	
+1-2	10-20	Kenntnisse	competency	_	
+1-3	21-24	der	_	_	
+1-4	25-38	multimedialen	object[1]	1-2[0_1]	
+1-5	39-63	Informationsverarbeitung	object[1]	_	
+1-6	63-64	.	_	_	
+
+#Text=Dabei werden einerseits wichtige Prinzipien der menschlichen Wahrnehmung, der neuronalen Verarbeitung und des Lernens auf der Höhe des aktuellen Forschungsstands erworben, andererseits soll eine Erarbeitung und Durchdringung dieses Wissensgebiets in Hinblick auf dessen Relevanz für die Medieninformatik erfolgen.
+2-1	65-70	Dabei	_	_	
+2-2	71-77	werden	_	_	
+2-3	78-88	einerseits	_	_	
+2-4	89-97	wichtige	_	_	
+2-5	98-108	Prinzipien	_	_	
+2-6	109-112	der	_	_	
+2-7	113-125	menschlichen	object[2]	2-22[0_2]	
+2-8	126-137	Wahrnehmung	object[2]	_	
+2-9	137-138	,	_	_	
+2-10	139-142	der	_	_	
+2-11	143-153	neuronalen	object[3]	2-22[0_3]	
+2-12	154-166	Verarbeitung	object[3]	_	
+2-13	167-170	und	_	_	
+2-14	171-174	des	_	_	
+2-15	175-182	Lernens	object	2-22	
+2-16	183-186	auf	_	_	
+2-17	187-190	der	_	_	
+2-18	191-195	Höhe	context[4]	2-15[0_4]|2-11[3_4]|2-7[2_4]	
+2-19	196-199	des	context[4]	_	
+2-20	200-209	aktuellen	context[4]	_	
+2-21	210-226	Forschungsstands	context[4]	_	
+2-22	227-235	erworben	competency	_	
+2-23	235-236	,	_	_	
+2-24	237-249	andererseits	_	_	
+2-25	250-254	soll	_	_	
+2-26	255-259	eine	_	_	
+2-27	260-271	Erarbeitung	_	_	
+2-28	272-275	und	_	_	
+2-29	276-289	Durchdringung	_	_	
+2-30	290-296	dieses	_	_	
+2-31	297-311	Wissensgebiets	_	_	
+2-32	312-314	in	_	_	
+2-33	315-323	Hinblick	_	_	
+2-34	324-327	auf	_	_	
+2-35	328-334	dessen	_	_	
+2-36	335-343	Relevanz	_	_	
+2-37	344-347	für	_	_	
+2-38	348-351	die	_	_	
+2-39	352-368	Medieninformatik	_	_	
+2-40	369-377	erfolgen	_	_	
+2-41	377-378	.	_	_	
+
+#Text=Dabei soll ein Verständnis dafür ausgebildet werden, dass multimediale Datenströme und deren Verarbeitung stets auf die Wahrnehmung des Menschen ausgerichtet sind, bzw. großenteils Wahrnehmungsprozesse imitieren und simulieren.
+3-1	379-384	Dabei	_	_	
+3-2	385-389	soll	_	_	
+3-3	390-393	ein	_	_	
+3-4	394-405	Verständnis	_	_	
+3-5	406-411	dafür	_	_	
+3-6	412-423	ausgebildet	_	_	
+3-7	424-430	werden	_	_	
+3-8	430-431	,	_	_	
+3-9	432-436	dass	_	_	
+3-10	437-449	multimediale	_	_	
+3-11	450-461	Datenströme	_	_	
+3-12	462-465	und	_	_	
+3-13	466-471	deren	_	_	
+3-14	472-484	Verarbeitung	_	_	
+3-15	485-490	stets	_	_	
+3-16	491-494	auf	_	_	
+3-17	495-498	die	_	_	
+3-18	499-510	Wahrnehmung	_	_	
+3-19	511-514	des	_	_	
+3-20	515-523	Menschen	_	_	
+3-21	524-536	ausgerichtet	_	_	
+3-22	537-541	sind	_	_	
+3-23	541-542	,	_	_	
+3-24	543-546	bzw	_	_	
+3-25	546-547	.	_	_	
+3-26	548-559	großenteils	_	_	
+3-27	560-580	Wahrnehmungsprozesse	_	_	
+3-28	581-590	imitieren	_	_	
+3-29	591-594	und	_	_	
+3-30	595-605	simulieren	_	_	
+3-31	605-606	.	_	_	
+
+#Text=Wichtige Beispiele sind hier User Interfaces, Audio-und Video-Codecs, sowie Bildund Sprachverarbeitung.
+4-1	607-615	Wichtige	_	_	
+4-2	616-625	Beispiele	_	_	
+4-3	626-630	sind	_	_	
+4-4	631-635	hier	_	_	
+4-5	636-640	User	_	_	
+4-6	641-651	Interfaces	_	_	
+4-7	651-652	,	_	_	
+4-8	653-662	Audio-und	_	_	
+4-9	663-675	Video-Codecs	_	_	
+4-10	675-676	,	_	_	
+4-11	677-682	sowie	_	_	
+4-12	683-690	Bildund	_	_	
+4-13	691-709	Sprachverarbeitung	_	_	
+4-14	709-710	.	_	_	
+
+#Text=Das Lehrkonzept ist daher darauf ausgerichtet, zu den Vorgängen in der menschlichen Informationsverarbeitung stets die technologischen Auswirkungen und Anwendungen zu verdeutlichen.
+5-1	711-714	Das	_	_	
+5-2	715-726	Lehrkonzept	_	_	
+5-3	727-730	ist	_	_	
+5-4	731-736	daher	_	_	
+5-5	737-743	darauf	_	_	
+5-6	744-756	ausgerichtet	_	_	
+5-7	756-757	,	_	_	
+5-8	758-760	zu	_	_	
+5-9	761-764	den	_	_	
+5-10	765-774	Vorgängen	_	_	
+5-11	775-777	in	_	_	
+5-12	778-781	der	_	_	
+5-13	782-794	menschlichen	_	_	
+5-14	795-819	Informationsverarbeitung	_	_	
+5-15	820-825	stets	_	_	
+5-16	826-829	die	_	_	
+5-17	830-845	technologischen	_	_	
+5-18	846-858	Auswirkungen	_	_	
+5-19	859-862	und	_	_	
+5-20	863-874	Anwendungen	_	_	
+5-21	875-877	zu	_	_	
+5-22	878-891	verdeutlichen	_	_	
+5-23	891-892	.	_	_	
+
+#Text=In Bezug auf die menschliche Informationsverarbeitung ist dabei die Aneignung wichtiger Prinzipien psycho-physischer Versuchsmethoden und Messverfahren erforderlich, da nur diese die Qualität technischer Verfahren abschätzen lassen.
+6-1	893-895	In	_	_	
+6-2	896-901	Bezug	_	_	
+6-3	902-905	auf	_	_	
+6-4	906-909	die	_	_	
+6-5	910-921	menschliche	_	_	
+6-6	922-946	Informationsverarbeitung	_	_	
+6-7	947-950	ist	_	_	
+6-8	951-956	dabei	_	_	
+6-9	957-960	die	_	_	
+6-10	961-970	Aneignung	_	_	
+6-11	971-980	wichtiger	_	_	
+6-12	981-991	Prinzipien	_	_	
+6-13	992-1009	psycho-physischer	_	_	
+6-14	1010-1026	Versuchsmethoden	_	_	
+6-15	1027-1030	und	_	_	
+6-16	1031-1044	Messverfahren	_	_	
+6-17	1045-1057	erforderlich	_	_	
+6-18	1057-1058	,	_	_	
+6-19	1059-1061	da	_	_	
+6-20	1062-1065	nur	_	_	
+6-21	1066-1071	diese	_	_	
+6-22	1072-1075	die	_	_	
+6-23	1076-1084	Qualität	_	_	
+6-24	1085-1096	technischer	_	_	
+6-25	1097-1106	Verfahren	_	_	
+6-26	1107-1117	abschätzen	_	_	
+6-27	1118-1124	lassen	_	_	
+6-28	1124-1125	.	_	_	
+
+#Text=Praktische Erfahrung der Bedeutung der menschlichen Wahrnehmung für akustische, visuelle und taktile Nutzerschnittstellen und eine Erarbeitung von deren wichtigsten technischen Prinzipien werden angestrebt.
+7-1	1126-1136	Praktische	_	_	
+7-2	1137-1146	Erfahrung	_	_	
+7-3	1147-1150	der	_	_	
+7-4	1151-1160	Bedeutung	_	_	
+7-5	1161-1164	der	_	_	
+7-6	1165-1177	menschlichen	_	_	
+7-7	1178-1189	Wahrnehmung	_	_	
+7-8	1190-1193	für	_	_	
+7-9	1194-1204	akustische	_	_	
+7-10	1204-1205	,	_	_	
+7-11	1206-1214	visuelle	_	_	
+7-12	1215-1218	und	_	_	
+7-13	1219-1226	taktile	_	_	
+7-14	1227-1247	Nutzerschnittstellen	_	_	
+7-15	1248-1251	und	_	_	
+7-16	1252-1256	eine	_	_	
+7-17	1257-1268	Erarbeitung	_	_	
+7-18	1269-1272	von	_	_	
+7-19	1273-1278	deren	_	_	
+7-20	1279-1290	wichtigsten	_	_	
+7-21	1291-1302	technischen	_	_	
+7-22	1303-1313	Prinzipien	_	_	
+7-23	1314-1320	werden	_	_	
+7-24	1321-1331	angestrebt	_	_	
+7-25	1331-1332	.	_	_	
+
+#Text=In den Übungen entwickeln die Studierenden eigene Wahrnehmungsexperimente, führen diese innerhalb der Veranstaltung durch und werten die Ergebnisse wissenschaftlich aus.
+8-1	1333-1335	In	_	_	
+8-2	1336-1339	den	_	_	
+8-3	1340-1347	Übungen	_	_	
+8-4	1348-1358	entwickeln	competency	_	
+8-5	1359-1362	die	_	_	
+8-6	1363-1375	Studierenden	_	_	
+8-7	1376-1382	eigene	_	_	
+8-8	1383-1406	Wahrnehmungsexperimente	object	8-4|8-10	
+8-9	1406-1407	,	_	_	
+8-10	1408-1414	führen	competency	_	
+8-11	1415-1420	diese	_	_	
+8-12	1421-1430	innerhalb	_	_	
+8-13	1431-1434	der	_	_	
+8-14	1435-1448	Veranstaltung	_	_	
+8-15	1449-1454	durch	_	_	
+8-16	1455-1458	und	_	_	
+8-17	1459-1465	werten	competency	_	
+8-18	1466-1469	die	_	_	
+8-19	1470-1480	Ergebnisse	object	8-17	
+8-20	1481-1497	wissenschaftlich	context	8-19	
+8-21	1498-1501	aus	_	_	
+8-22	1501-1502	.	_	_	
+
+#Text=Alternativ bearbeiten sie Projekte im Spannungsfeld zwischen Wahrnehmung und Technik.
+9-1	1503-1513	Alternativ	_	_	
+9-2	1514-1524	bearbeiten	competency	_	
+9-3	1525-1528	sie	_	_	
+9-4	1529-1537	Projekte	object	9-2	
+9-5	1538-1540	im	_	_	
+9-6	1541-1554	Spannungsfeld	_	_	
+9-7	1555-1563	zwischen	_	_	
+9-8	1564-1575	Wahrnehmung	context[5]	9-4[0_5]	
+9-9	1576-1579	und	context[5]	_	
+9-10	1580-1587	Technik	context[5]	_	
+9-11	1587-1588	.	_	_	

@@ -1,0 +1,111 @@
+#FORMAT=WebAnno TSV 3.2
+
+
+#Text=Die Studierenden erwerben neue und vertiefen vorhandene Kompetenzen in mehreren Bereichen: • Analyse: Eine gegebene Fragestellung unter Einsatz wissenschaftlicher • Design und Realisierung: Lösungsstrategien entwickeln und diese mit • Technologie: Wissen aus verschiedenen Bereichen kombinieren und ziel• Methoden: Verschiedene innovative Methoden zur Lösung praktischer • Projektmanagement: Fähigkeit zur Projektplanung, zum Aufbau einer • Soziale Interaktion: Anwendung von Konﬂiktlösungsstrategien.
+1-1	0-3	Die	
+1-2	4-16	Studierenden	
+1-3	17-25	erwerben	
+1-4	26-30	neue	
+1-5	31-34	und	
+1-6	35-44	vertiefen	
+1-7	45-55	vorhandene	
+1-8	56-67	Kompetenzen	
+1-9	68-70	in	
+1-10	71-79	mehreren	
+1-11	80-89	Bereichen	
+1-12	89-90	:	
+1-13	91-92	•	
+1-14	93-100	Analyse	
+1-15	100-101	:	
+1-16	102-106	Eine	
+1-17	107-115	gegebene	
+1-18	116-129	Fragestellung	
+1-19	130-135	unter	
+1-20	136-143	Einsatz	
+1-21	144-162	wissenschaftlicher	
+1-22	163-164	•	
+1-23	165-171	Design	
+1-24	172-175	und	
+1-25	176-188	Realisierung	
+1-26	188-189	:	
+1-27	190-207	Lösungsstrategien	
+1-28	208-218	entwickeln	
+1-29	219-222	und	
+1-30	223-228	diese	
+1-31	229-232	mit	
+1-32	233-234	•	
+1-33	235-246	Technologie	
+1-34	246-247	:	
+1-35	248-254	Wissen	
+1-36	255-258	aus	
+1-37	259-272	verschiedenen	
+1-38	273-282	Bereichen	
+1-39	283-294	kombinieren	
+1-40	295-298	und	
+1-41	299-303	ziel	
+1-42	303-304	•	
+1-43	305-313	Methoden	
+1-44	313-314	:	
+1-45	315-327	Verschiedene	
+1-46	328-338	innovative	
+1-47	339-347	Methoden	
+1-48	348-351	zur	
+1-49	352-358	Lösung	
+1-50	359-370	praktischer	
+1-51	371-372	•	
+1-52	373-390	Projektmanagement	
+1-53	390-391	:	
+1-54	392-401	Fähigkeit	
+1-55	402-405	zur	
+1-56	406-420	Projektplanung	
+1-57	420-421	,	
+1-58	422-425	zum	
+1-59	426-432	Aufbau	
+1-60	433-438	einer	
+1-61	439-440	•	
+1-62	441-448	Soziale	
+1-63	449-460	Interaktion	
+1-64	460-461	:	
+1-65	462-471	Anwendung	
+1-66	472-475	von	
+1-67	476-500	Konﬂiktlösungsstrategien	
+1-68	500-501	.	
+
+#Text=Organisationsstruktur und zur gezielten Steuerung von Projekten.
+2-1	502-523	Organisationsstruktur	
+2-2	524-527	und	
+2-3	528-531	zur	
+2-4	532-541	gezielten	
+2-5	542-551	Steuerung	
+2-6	552-555	von	
+2-7	556-565	Projekten	
+2-8	565-566	.	
+
+#Text=Methoden und Erkenntnisse eigenständig analysieren können.
+3-1	567-575	Methoden	
+3-2	576-579	und	
+3-3	580-592	Erkenntnisse	
+3-4	593-605	eigenständig	
+3-5	606-617	analysieren	
+3-6	618-624	können	
+3-7	624-625	.	
+
+#Text=den erworbenen Kenntnissen umzusetzen können.
+4-1	626-629	den	
+4-2	630-640	erworbenen	
+4-3	641-652	Kenntnissen	
+4-4	653-663	umzusetzen	
+4-5	664-670	können	
+4-6	670-671	.	
+
+#Text=Probleme anwenden können.
+5-1	672-680	Probleme	
+5-2	681-689	anwenden	
+5-3	690-696	können	
+5-4	696-697	.	
+
+#Text=gerichtet einsetzen können.
+6-1	698-707	gerichtet	
+6-2	708-717	einsetzen	
+6-3	718-724	können	
+6-4	724-725	.	

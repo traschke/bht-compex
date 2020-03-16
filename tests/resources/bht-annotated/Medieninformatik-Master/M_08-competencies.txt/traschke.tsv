@@ -1,0 +1,54 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden sind in der Lage, sich selbständig neue wissenschaftliche und technische Themenbereiche anzueignen - Lesen, Verstehen und Interpretieren wissenschaftlicher Publikationen und deren mathematischnaturwissenchaftlichen Ergebnisse.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-21	sind	_	_	
+1-4	22-24	in	_	_	
+1-5	25-28	der	_	_	
+1-6	29-33	Lage	_	_	
+1-7	33-34	,	_	_	
+1-8	35-39	sich	_	_	
+1-9	40-51	selbständig	context[1]	1-14[0_1]	
+1-10	52-56	neue	context[1]	_	
+1-11	57-74	wissenschaftliche	context[1]	_	
+1-12	75-78	und	context[1]	_	
+1-13	79-89	technische	context[1]	_	
+1-14	90-104	Themenbereiche	object	1-15	
+1-15	105-115	anzueignen	competency	_	
+1-16	116-117	-	_	_	
+1-17	118-123	Lesen	_	_	
+1-18	123-124	,	_	_	
+1-19	125-134	Verstehen	_	_	
+1-20	135-138	und	_	_	
+1-21	139-153	Interpretieren	_	_	
+1-22	154-172	wissenschaftlicher	_	_	
+1-23	173-186	Publikationen	_	_	
+1-24	187-190	und	_	_	
+1-25	191-196	deren	_	_	
+1-26	197-231	mathematischnaturwissenchaftlichen	_	_	
+1-27	232-242	Ergebnisse	_	_	
+1-28	242-243	.	_	_	
+
+#Text=Das Seminar regt insbesondere zur eigenen wissenschaftlichen Forschungsarbeit an und trainiert das Verfassen wissenschaftlicher Texte und Präsentationen.
+2-1	244-247	Das	_	_	
+2-2	248-255	Seminar	_	_	
+2-3	256-260	regt	competency	_	
+2-4	261-273	insbesondere	_	_	
+2-5	274-277	zur	_	_	
+2-6	278-285	eigenen	_	_	
+2-7	286-304	wissenschaftlichen	object[2]	_	
+2-8	305-321	Forschungsarbeit	object[2]	_	
+2-9	322-324	an	_	_	
+2-10	325-328	und	_	_	
+2-11	329-338	trainiert	_	_	
+2-12	339-342	das	_	_	
+2-13	343-352	Verfassen	competency	_	
+2-14	353-371	wissenschaftlicher	object[3]	2-13[0_3]	
+2-15	372-377	Texte	object[3]	_	
+2-16	378-381	und	object[3]	_	
+2-17	382-396	Präsentationen	object[3]	_	
+2-18	396-397	.	_	_	

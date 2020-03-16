@@ -1,0 +1,30 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Kenntnisse der Vorgehensmodelle des Software-Engineerings sowie der Programmierung werden als bekannt vorausgesetzt.
+1-1	0-10	Kenntnisse	competency	_	
+1-2	11-14	der	_	_	
+1-3	15-31	Vorgehensmodelle	object	1-1	
+1-4	32-35	des	_	_	
+1-5	36-57	Software-Engineerings	context	1-3	
+1-6	58-63	sowie	_	_	
+1-7	64-67	der	_	_	
+1-8	68-82	Programmierung	context	1-3	
+1-9	83-89	werden	_	_	
+1-10	90-93	als	_	_	
+1-11	94-101	bekannt	_	_	
+1-12	102-115	vorausgesetzt	_	_	
+1-13	115-116	.	_	_	
+
+#Text=Erste praktische Erfahrung in der Software-Enwicklung sind hilfreich.
+2-1	117-122	Erste	_	_	
+2-2	123-133	praktische	_	_	
+2-3	134-143	Erfahrung	competency	_	
+2-4	144-146	in	_	_	
+2-5	147-150	der	_	_	
+2-6	151-170	Software-Enwicklung	object	2-3	
+2-7	171-175	sind	_	_	
+2-8	176-185	hilfreich	_	_	
+2-9	185-186	.	_	_	
