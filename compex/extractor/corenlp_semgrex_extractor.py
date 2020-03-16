@@ -32,72 +32,76 @@ class SemgrexAnnotator:
     def annotate(self, sentences: List[str], taxonomy_verbs: Dict[str, BloomsTaxonomyDimensionEnum] = None) -> Dict[str, List[Competency]]:
         """Annotates multiple sentences."""
         sentences = [sentence.strip() for sentence in sentences]
-        text = " ".join(sentences)
-        matches = self.__run_corenlp_server_semgrex(text)
-        competencies = self.__convert_to_competencies(matches, taxonomy_verbs)
-        dicti = dict(zip(sentences, competencies))
-        return dicti
-
-    def __run_corenlp_server_semgrex(self, text: str) -> Dict:
+        matches = {}
         with CoreNLPClient(annotators=self.annotators, properties=self.properties, timeout=self.timeout, memory=self.memory) as client:
-            matches = client.semgrex(text, self.pattern, properties=self.semgrex_properties)
+            for sentence in sentences:
+                match = self.__run_corenlp_server_semgrex(client, sentence)
+                matches[sentence] = match
+
+        competencies = self.__convert_to_competencies(matches, taxonomy_verbs)
+        return competencies
+
+    def __run_corenlp_server_semgrex(self, client, text: str) -> Dict:
+        matches = client.semgrex(text, self.pattern, properties=self.semgrex_properties)
         return matches
 
-    def __convert_to_competencies(self, input: Dict, taxonomy_verbs: Dict[str, BloomsTaxonomyDimensionEnum] = None) -> List[Competency]:
-        competencies: List[List[Competency]] = []
+    def __convert_to_competencies(self, input: Dict[str, Dict], taxonomy_verbs: Dict[str, BloomsTaxonomyDimensionEnum] = None) -> Dict[str, List[Competency]]:
+        # competencies: List[List[Competency]] = []
+        competencies: Dict[str, List[Competency]] = {}
 
-        for i, sentence in enumerate(input["sentences"]):
-            sentence_competencies = []
-            for key, match in sentence.items():
-                if key != "length":
-                    temp = match
-                    competency_text = temp["$competency"]["text"]
-                    taxonomy_verb_found: bool = False
-                    if taxonomy_verbs:
-                        if competency_text in taxonomy_verbs:
-                            taxonomy_level: BloomsTaxonomyDimensionEnum = taxonomy_verbs[competency_text]
-                            competency = Competency(Word(temp["$competency"]["begin"], competency_text), taxonomy_dimension=taxonomy_level)
-                            taxonomy_verb_found = True
-                    else:
-                        competency = Competency(Word(temp["$competency"]["begin"], competency_text))
+        for sentenceSem, dicto in input.items():
+            for i, sentence in enumerate(dicto["sentences"]):
+                sentence_competencies = []
+                for key, match in sentence.items():
+                    if key != "length":
+                        temp = match
+                        competency_text = temp["$competency"]["text"]
+                        taxonomy_verb_found: bool = False
+                        if taxonomy_verbs:
+                            if competency_text in taxonomy_verbs:
+                                taxonomy_level: BloomsTaxonomyDimensionEnum = taxonomy_verbs[competency_text]
+                                competency = Competency(Word(temp["$competency"]["begin"], competency_text), taxonomy_dimension=taxonomy_level)
+                                taxonomy_verb_found = True
+                        else:
+                            competency = Competency(Word(temp["$competency"]["begin"], competency_text))
 
-                    if not taxonomy_verbs or taxonomy_verb_found:
-                        if "$object" in temp:
-                            object_chunk = WordChunk()
+                        if not taxonomy_verbs or taxonomy_verb_found:
+                            if "$object" in temp:
+                                object_chunk = WordChunk()
 
-                            if "$objectadja" in temp:
-                                object_chunk.words.append(Word(temp["$objectadja"]["begin"], temp["$objectadja"]["text"]))
+                                if "$objectadja" in temp:
+                                    object_chunk.words.append(Word(temp["$objectadja"]["begin"], temp["$objectadja"]["text"]))
 
-                            object_chunk.words.append(Word(temp["$object"]["begin"], temp["$object"]["text"]))
+                                object_chunk.words.append(Word(temp["$object"]["begin"], temp["$object"]["text"]))
 
-                            if "$objectdet" in temp:
-                                if "$objectdetadja" in temp:
-                                    object_chunk.words.append(Word(temp["$objectdetadja"]["begin"], temp["$objectdetadja"]["text"]))
-                                if "$objectdetart" in temp:
-                                    object_chunk.words.append(Word(temp["$objectdetart"]["begin"], temp["$objectdetart"]["text"]))
+                                if "$objectdet" in temp:
+                                    if "$objectdetadja" in temp:
+                                        object_chunk.words.append(Word(temp["$objectdetadja"]["begin"], temp["$objectdetadja"]["text"]))
+                                    if "$objectdetart" in temp:
+                                        object_chunk.words.append(Word(temp["$objectdetart"]["begin"], temp["$objectdetart"]["text"]))
 
-                                object_chunk.words.append(Word(temp["$objectdet"]["begin"], temp["$objectdet"]["text"]))
-
-                            # Sort the words by index to remain context
-                            object_chunk.words.sort(key=lambda word: word.index)
-
-                            contexts = []
-
-                            if "$context" in temp:
-                                context_chunk = WordChunk()
-                                if "$contextadja" in temp:
-                                    context_chunk.words.append(Word(temp["$contextadja"]["begin"], temp["$contextadja"]["text"]))
-
-                                context_chunk.words.append(Word(temp["$context"]["begin"], temp["$context"]["text"]))
+                                    object_chunk.words.append(Word(temp["$objectdet"]["begin"], temp["$objectdet"]["text"]))
 
                                 # Sort the words by index to remain context
-                                context_chunk.words.sort(key=lambda word: word.index)
+                                object_chunk.words.sort(key=lambda word: word.index)
 
-                                contexts.append(ObjectContext(context_chunk))
+                                contexts = []
+
+                                if "$context" in temp:
+                                    context_chunk = WordChunk()
+                                    if "$contextadja" in temp:
+                                        context_chunk.words.append(Word(temp["$contextadja"]["begin"], temp["$contextadja"]["text"]))
+
+                                    context_chunk.words.append(Word(temp["$context"]["begin"], temp["$context"]["text"]))
+
+                                    # Sort the words by index to remain context
+                                    context_chunk.words.sort(key=lambda word: word.index)
+
+                                    contexts.append(ObjectContext(context_chunk))
 
 
-                            # Add the object to the competency
-                            competency.objects.append(CompetencyObject(object_chunk, contexts))
-                        sentence_competencies.append(competency)
-            competencies.append(sentence_competencies)
+                                # Add the object to the competency
+                                competency.objects.append(CompetencyObject(object_chunk, contexts))
+                            sentence_competencies.append(competency)
+                competencies[sentenceSem] = sentence_competencies
         return competencies
