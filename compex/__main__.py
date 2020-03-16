@@ -12,13 +12,16 @@ from compex.evaluator.evaluators import EvaluationSet, FMeasureEvaluator
 from compex.model.competency import Competency
 from compex.model.taxonomy import TaxonomyManager, BloomsTaxonomyDimensionEnum
 
+
 class BloomsTaxonomyLevelEnumHandler(jsonpickle.handlers.BaseHandler):
     def flatten(self, obj: BloomsTaxonomyDimensionEnum, data):  # data contains {}
         data = obj.value
         return data
 
+
 class FileGlob(object):
-    def __init__(self, mode='r', glob_expr='**/*', bufsize=-1, encoding=None, errors=None):
+    def __init__(self, mode='r', glob_expr='**/*',
+                 bufsize=-1, encoding=None, errors=None):
         self._glob_expr = glob_expr
         self._mode = mode
         self._bufsize = bufsize
@@ -32,7 +35,8 @@ class FileGlob(object):
         elif os.path.isdir(string):
             is_File = False
         else:
-            raise argparse.ArgumentTypeError(f"readable_dir:{string} is not a valid path or file")
+            raise argparse.ArgumentTypeError(
+                f"readable_dir:{string} is not a valid path or file")
 
         if is_File:
             file_paths = [Path(string)]
@@ -42,7 +46,8 @@ class FileGlob(object):
         files = []
         for file_path in file_paths:
             try:
-                files.append(open(file_path, self._mode, self._bufsize, self._encoding, self._errors))
+                files.append(open(file_path, self._mode,
+                                  self._bufsize, self._encoding, self._errors))
             except OSError as e:
                 message = "can't open '%s': %s"
                 raise argparse.ArgumentTypeError(message % (file_path, e))
@@ -55,16 +60,18 @@ def parse_args():
     subparser = parser.add_subparsers(dest="mode")
 
     # Setup evaluate args
-    evaluation_parser = subparser.add_parser("evaluate", help="Evaluate the implemented extraction model.")
+    evaluation_parser = subparser.add_parser(
+        "evaluate", help="Evaluate the implemented extraction model.")
     evaluation_parser.add_argument("tsvpath", action="store", type=FileGlob(glob_expr="*.tsv", mode="r"),
-                                    help="Path a single or multiple (a folder) WebAnno TSV file(s) with annotated data. Scans recursively if folder. See README.md for further information.")
+                                   help="Path a single or multiple (a folder) WebAnno TSV file(s) with annotated data. Scans recursively if folder. See README.md for further information.")
     evaluation_parser.add_argument("--objects", action="store_true",
-                                    help="Consider objects in evaluation.")
+                                   help="Consider objects in evaluation.")
     evaluation_parser.add_argument("--contexts", action="store_true",
-                                    help="Consider contexts in evaluation.")
+                                   help="Consider contexts in evaluation.")
 
     # Setup extract args
-    extract_parser = subparser.add_parser("extract",help="Extract competencies from given plain text sentences. Prints results as json to stdout.")
+    extract_parser = subparser.add_parser(
+        "extract", help="Extract competencies from given plain text sentences. Prints results as json to stdout.")
     extract_parser.add_argument("sentences", nargs="?", action="store", type=argparse.FileType("r"), default=sys.stdin,
                                 help="Path to either a single file containing one sentence per line or a folder with multiple files. Can also be piped through stdin.")
     extract_parser.add_argument("--taxonomyjson", action="store", type=argparse.FileType("r"),
@@ -77,10 +84,11 @@ def parse_args():
         if args.contexts and args.objects is False:
             parser.error("--contexts requires --objects.")
 
-
     return args
 
-def evaluate(tsv_files: List[TextIO], consider_objects: bool = False, consider_contexts: bool = False):
+
+def evaluate(tsv_files: List[TextIO], consider_objects: bool = False,
+             consider_contexts: bool = False):
     test_data: Dict[str, List[Competency]] = {}
     text: List[str] = []
 
@@ -98,21 +106,25 @@ def evaluate(tsv_files: List[TextIO], consider_objects: bool = False, consider_c
     evaluation_set = EvaluationSet(test_data, annotated_data)
 
     evaluator = FMeasureEvaluator()
-    result = evaluator.evaluate_with_annotated_sentences(evaluation_set, consider_objects, consider_contexts)
+    result = evaluator.evaluate_with_annotated_sentences(
+        evaluation_set, consider_objects, consider_contexts)
     output_json = jsonpickle.encode(result, unpicklable=False)
     print(output_json)
+
 
 def extract(text_file: TextIO, taxonomy_json: TextIO):
     taxonomy_verbs = None
     if taxonomy_json:
         taxonomy_manager = TaxonomyManager()
         taxonomy_verbs = taxonomy_manager.read_json(taxonomy_json)
-        jsonpickle.handlers.registry.register(BloomsTaxonomyDimensionEnum, BloomsTaxonomyLevelEnumHandler)
+        jsonpickle.handlers.registry.register(
+            BloomsTaxonomyDimensionEnum, BloomsTaxonomyLevelEnumHandler)
     text = text_file.readlines()
     annotator = SemgrexAnnotator()
     result = annotator.annotate(text, taxonomy_verbs)
     output_json = jsonpickle.encode(result, unpicklable=False)
     print(output_json)
+
 
 def main():
     args = parse_args()
@@ -121,6 +133,7 @@ def main():
         extract(args.sentences, args.taxonomyjson)
     elif args.mode == "evaluate":
         evaluate(args.tsvpath, args.objects, args.contexts)
+
 
 if __name__ == '__main__':
     main()
