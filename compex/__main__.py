@@ -68,6 +68,8 @@ def parse_args():
                                    help="Consider objects in evaluation.")
     evaluation_parser.add_argument("--contexts", action="store_true",
                                    help="Consider contexts in evaluation.")
+    evaluation_parser.add_argument("--taxonomyjson", action="store", type=argparse.FileType("r"),
+                                   help="Check if competency verbs are part of a taxonomy json file. If found, append their taxonomy dimension. If not found, a competency is not valid.")
 
     # Setup extract args
     extract_parser = subparser.add_parser(
@@ -88,7 +90,14 @@ def parse_args():
 
 
 def evaluate(tsv_files: List[TextIO], consider_objects: bool = False,
-             consider_contexts: bool = False):
+             consider_contexts: bool = False, taxonomy_json: TextIO = None):
+    taxonomy_verbs = None
+    if taxonomy_json:
+        taxonomy_manager = TaxonomyManager()
+        taxonomy_verbs = taxonomy_manager.read_json(taxonomy_json)
+        jsonpickle.handlers.registry.register(
+            BloomsTaxonomyDimensionEnum, BloomsTaxonomyLevelEnumHandler)
+
     test_data: Dict[str, List[Competency]] = {}
     text: List[str] = []
 
@@ -101,7 +110,7 @@ def evaluate(tsv_files: List[TextIO], consider_objects: bool = False,
         text.append(sentence)
 
     annotator = SemgrexAnnotator()
-    annotated_data = annotator.annotate(text)
+    annotated_data = annotator.annotate(text, taxonomy_verbs)
 
     evaluation_set = EvaluationSet(test_data, annotated_data)
 
@@ -132,7 +141,7 @@ def main():
     if args.mode == "extract":
         extract(args.sentences, args.taxonomyjson)
     elif args.mode == "evaluate":
-        evaluate(args.tsvpath, args.objects, args.contexts)
+        evaluate(args.tsvpath, args.objects, args.contexts, args.taxonomyjson)
 
 
 if __name__ == '__main__':
