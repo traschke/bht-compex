@@ -29,7 +29,6 @@ $ ./download_corenlp.sh
 ```
 
 Enter pipenv virtual environment
-
 ```console
 $ pipenv shell
 ```
@@ -62,12 +61,17 @@ or use a file
 $ python -m compex extract testsentences.txt
 ```
 
+or use `stdin`
+```console
+$ python -m compex extract < testsentences.txt
+```
+
 Check for taxonomy verbs. Checks if a found competency verb is in the given taxonomy verb dictionary. If not, it's ignored. In addition, this parameter fills the `taxonomy_dimension` parameter of the extracted competency. You can use the sample file `blooms_taxonomy.json`.
 ```console
 $ python -m compex extract --taxonomyjson blooms_taxonomy.json testsentences.txt
 ```
 
-Sample output (formatted for better readability)
+Sample output on `stdout` (formatted for better readability)
 ```json
 {
     "Die studierenden beherrschen grundlegende Techniken des wissenschaftlichen Arbeitens.": [
@@ -107,16 +111,25 @@ Evaluate competency verbs, objects and contexts
 $ python -m compex evaluate --objects --contexts tests/resources/test.tsv
 ```
 
-Sample output (formatted for better readability)
+It is possible to use a dedicated taxonomy json file just like with the `extract` function
+```console
+$ python -m compex evaluate --taxonomyjson blooms_taxonomy.json tests/resources/test.tsv
+```
+
+Sample evaluation output on `stdout` (formatted for better readability)
 ```json
 {
-    "f1": 0.7058823529411764,
-    "false_negatives": 0.0,
-    "false_positives": 5.0,
-    "precision": 0.5454545454545454,
-    "recall": 1.0,
-    "true_negatives": 6.0,
-    "true_positives": 6.0
+    "f1": 0.5024705551113972,
+    "negatives": {
+        "false": 168.36206347622323,
+        "true": 81.63793652377686
+    },
+    "positives": {
+        "false": 137.53333333333336,
+        "true": 154.4666666666666
+    },
+    "precision": 0.5289954337899542,
+    "recall": 0.4784786862008745
 }
 ```
 
