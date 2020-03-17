@@ -16,9 +16,9 @@ from compex.model.taxonomy import TaxonomyManager, BloomsTaxonomyDimensionEnum
 # pattern = '{tag:/VVINF|VVFIN/}=competency >dobj ({}=object ?>amod {tag:ADJA}=objectadja ?>det ({tag:NN}=objectdet ?>amod {tag:ADJA}=objectdetadja)) ?>nmod ({}=context ?>/conj:.*/ {}=context2 ?>amod {tag:ADJA}=contextadja) ?>/conj:.*/ {tag:VVINF}=competency2'
 
 class SemgrexAnnotator:
-    """
-    An annotator that annotates compentencies, their objects and contexts.
-    Uses CoreNLPs dependency parser and appplies a semgrex-query after that.
+    """An annotator that annotates competencies, their objects and contexts with CoreNLP and Semgrex.
+
+    Uses CoreNLPs dependency parser and appplies a semgrex-query on the dependency graph to extract competency triples.
     """
 
     annotators = ['tokenize','ssplit','depparse']
@@ -30,9 +30,28 @@ class SemgrexAnnotator:
     semgrex_properties = {"annotators": "tokenize,ssplit,depparse"}
 
     def annotate(self, sentences: List[str], taxonomy_verbs: Dict[str, BloomsTaxonomyDimensionEnum] = None) -> Dict[str, List[Competency]]:
-        """Annotates multiple sentences."""
+        """Annotates multiple sentences with a dependency parser and a Semgrex query.
+
+        Uses the Semgrex query defined in self.pattern.
+
+        Parameters
+        ----------
+        sentences : List[str]
+            A list of sentences to extract competency triples from.
+        taxonomy_verbs : Dict[str, BloomsTaxonomyDimensionEnum], optional
+            An optional taxonomy dict. If set, only accept comptency verbs that are defined in this dict.
+            Adds taxonomy dimenson to the Competency object. By default None.
+
+        Returns
+        -------
+        Dict[str, List[Competency]]
+            A dictionary with the sentences as keys and a list of extracted competency triples as values.
+        """
+
         sentences = [sentence.strip() for sentence in sentences]
         matches = {}
+        # Temporarely fix: Send each sentence seperately to CoreNLP, as CoreNLPs sentence splitter splits sentences differently than input testdata.
+        # This generates a higher performance penalty to CoreNLP, as it loads the needed annotators for each sentence.
         with CoreNLPClient(annotators=self.annotators, properties=self.properties, timeout=self.timeout, memory=self.memory) as client:
             for sentence in sentences:
                 match = self.__run_corenlp_server_semgrex(client, sentence)
@@ -42,11 +61,41 @@ class SemgrexAnnotator:
         return competencies
 
     def __run_corenlp_server_semgrex(self, client, text: str) -> Dict:
+        """Runs executes the Semgrex query on text.
+
+        Parameters
+        ----------
+        client : [type]
+            The CoreNLP client to use.
+        text : str
+            The text to execute the semgrex query on.
+
+        Returns
+        -------
+        Dict
+            The response of the CoreNLP semgrex resource.
+        """
+
         matches = client.semgrex(text, self.pattern, properties=self.semgrex_properties)
         return matches
 
     def __convert_to_competencies(self, input: Dict[str, Dict], taxonomy_verbs: Dict[str, BloomsTaxonomyDimensionEnum] = None) -> Dict[str, List[Competency]]:
-        # competencies: List[List[Competency]] = []
+        """Converts the response from CoreNLPs semgrex resource to competency triples.
+
+        Parameters
+        ----------
+        input : Dict[str, Dict]
+            A dictionary with sentences as keys and CoreNLP semgrex responses as values.
+        taxonomy_verbs : Dict[str, BloomsTaxonomyDimensionEnum], optional
+            An optional taxonomy dict. If set, only accept comptency verbs that are defined in this dict.
+            Adds taxonomy dimenson to the Competency object. By default None.
+
+        Returns
+        -------
+        Dict[str, List[Competency]]
+            A dictionary with the sentences as keys and a list of extracted competency triples as values.
+        """
+
         competencies: Dict[str, List[Competency]] = {}
 
         for sentenceSem, dicto in input.items():

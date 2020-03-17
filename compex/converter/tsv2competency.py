@@ -9,6 +9,19 @@ TSV_OBJECT_VALUE = "object"
 TSV_CONTEXT_VALUE = "context"
 
 def convert_tsv_to_competencies(tsv: TsvDocument) -> Dict[str, List[Competency]]:
+    """Coverts an annotated tsv file to competency triples. Correct annotation format is needed! (see README.md)
+
+    Parameters
+    ----------
+    tsv : TsvDocument
+        The TSVDocument to convert
+
+    Returns
+    -------
+    Dict[str, List[Competency]]
+        A Dict with sentences as keys and a List of competency triples as values.
+    """
+
     sentences = {}
     for sentence in tsv.sentences:
         current_comps: List[Competency] = []
@@ -52,4 +65,17 @@ def convert_tsv_to_competencies(tsv: TsvDocument) -> Dict[str, List[Competency]]
     return sentences
 
 def convert_token_number(token_number: str) -> int:
+    """Helper function to convert the token index from 1 and string based to 0 and int based index.
+
+    Parameters
+    ----------
+    token_number : str
+        The token number as it appears in the tsv.
+
+    Returns
+    -------
+    int
+        The word index as it's needed for the competency triple.
+    """
+
     return int(token_number) - 1

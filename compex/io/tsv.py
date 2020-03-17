@@ -17,33 +17,37 @@ LINE_BREAK      = '\n'
 NULL_COLUMN     = "_"
 
 class LayerType(Enum):
+    """Enum for TSV layer types."""
+
     SPAN_LAYER = 1
     CHAIN_LAYER = 2
     RELATION_LAYER = 3
 
-# FORMAT=WebAnno TSV 3.2
-# T_SP=webanno.custom.TestLayer|CompType
-# T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
-#
-#Text=Die Studierenden beherrschen die grundlegenden Techniken zum wissenschaftlichen Arbeiten.
-# 6-1	703-706	Die	_	_
-# 6-2	707-719	Studierenden	_	_
-# 6-3	720-731	beherrschen	competency	_
-# 6-4	732-735	die	_	_
-# 6-5	736-749	grundlegenden	object[4]	6-3[0_4]
-# 6-6	750-759	Techniken	object[4]	_
-# 6-7	760-763	zum	object[4]	_
-# 6-8	764-782	wissenschaftlichen	object[4]	_
-# 6-9	783-791	Arbeiten	object[4]	_
-# 6-10	791-792	.	_	_
-
 class LayerDefinition:
+    """Definition of a tsv layer."""
+
     def __init__(self, layer_type: LayerType, id: str):
+        """Create a new intance.
+
+        Parameters
+        ----------
+        layer_type : LayerType
+            The type of the layer.
+        id : str
+            The id of the layer.
+        """
         self.layer_type: LayerType = layer_type
         self.id: str = id
         self.features_definitions: List[FeatureDefinition] = []
 
     def add_feature_definition(self, name: str):
+        """Adds a feature definition to the layer.
+
+        Parameters
+        ----------
+        name : str
+            name of the layer.
+        """
         self.features_definitions.append(FeatureDefinition(name, self))
 
     def __hash__(self):
@@ -56,7 +60,19 @@ class LayerDefinition:
         )
 
 class FeatureDefinition:
+    """Definition of a feature of a layer definition."""
+
     def __init__(self, name: str, layer_definition: LayerDefinition):
+        """Create a new instance.
+
+        Parameters
+        ----------
+        name : str
+            Name of the feature.
+        layer_definition : LayerDefinition
+            The LayerDefinition, the feature belongs to.
+        """
+
         self.name: str = name
         self.layer_definition: LayerDefinition = layer_definition
 
@@ -70,20 +86,39 @@ class FeatureDefinition:
         )
 
 class TsvSchema:
+    """Represents the schema of a TSV document."""
+
     def __init__(self):
+        """Creates a new instance.
+
+        Use the members format, span_types, chain_layers and relation_layers to fill the schema.
+        """
+
         self.format: str = None
         self.span_types: List[LayerDefinition] = []
         self.chain_layers: List[LayerDefinition] = []
         self.relation_layers: List[LayerDefinition] = []
 
     def get_layer_definitions(self) -> List[LayerDefinition]:
-        # Layer
-        # spans = {self.span_types[i]: LayerType.SPAN_LAYER for i in range(0, len(self.span_types))}
-        # chains = {self.chain_layers[i]: LayerType.CHAIN_LAYER for i in range(0, len(self.chain_layers))}
-        # relas = {self.relation_layers[i]: LayerType.RELATION_LAYER for i in range(0, len(self.relation_layers))}
+        """Get a combined List of all LayerDefinitions of the TSV document.
+
+        Returns
+        -------
+        List[LayerDefinition]
+            A combined List of all LayerDefinitions of the TSV document
+        """
+
         return self.span_types + self.chain_layers + self.relation_layers
 
     def get_feature_definitions(self) -> List[FeatureDefinition]:
+        """Get a combined List of all FeatureDefinitions of the TSV document.
+
+        Returns
+        -------
+        List[FeatureDefinition]
+            A combined List of all FeatureDefinitions of the TSV document
+        """
+
         feature_definitions: List[FeatureDefinition] = []
         for span in self.span_types:
             feature_definitions = feature_definitions + span.features_definitions
@@ -94,13 +129,29 @@ class TsvSchema:
         return feature_definitions
 
 class Feature:
+    """Represents a feature of a TSV document."""
+
     def __init__(self, feature_definition: FeatureDefinition, span_index: str, value: str):
+        """Creates a new instance.
+
+        Parameters
+        ----------
+        feature_definition : FeatureDefinition
+            The FeatureDefinition of the feature
+        span_index : str
+            The span index of the feature
+        value : str
+            The value of the feature
+        """
+
         self.feature_definition: FeatureDefinition = feature_definition
         self.span_index: str = span_index
         self.value: str = value
         # self.value: Dict[str, str] = values
+
     def __hash__(self):
         return hash((self.feature_definition, self.span_index, self.value))
+
     def __eq__(self, other):
         return (
             self.__class__ == other.__class__ and
@@ -108,7 +159,27 @@ class Feature:
         )
 
 class TsvToken:
+    """Represents a token of a TSV document."""
+
     def __init__(self, sentence_number: int, token_number: int, offset_begin: int, offset_end: int, token: str, features: Dict):
+        """Create a new instance.
+
+        Parameters
+        ----------
+        sentence_number : int
+            The number of the sentence in the TSV file
+        token_number : int
+            The number of the token in the sentence
+        offset_begin : int
+            The offset begin in the sentence of the token
+        offset_end : int
+            The offset end in the sentence of the token
+        token : str
+            The token string itself
+        features : Dict
+            A Dict of features belonging to the token
+        """
+
         self.sentence_number: int = sentence_number
         self.token_number: int = token_number
         self.offset_begin: int = offset_begin
@@ -117,35 +188,60 @@ class TsvToken:
         self.features: Dict = features
 
 class TokenChunk:
+    """Represents a chunk of tokens."""
+
     def __init__(self, feature: Feature, tokens: List[TsvToken]):
+        """Creates a new instance.
+
+        Parameters
+        ----------
+        feature : Feature
+            The feature the tokens belong to.
+        tokens : List[TsvToken]
+            The tokens in the chunk.
+        """
+
         self.feature: Feature = feature
         self.tokens: List[TsvToken] = tokens
         self.relations: List[TokenChunk] = []
 
     def add_relation(self, token_chunk):
+        """Add a relation to the token chunk.
+
+        Parameters
+        ----------
+        token_chunk : [type]
+            Another TokenChunk this TokenChunk should be related to
+        """
         self.relations.append(token_chunk)
 
 class TsvSentence:
+    """Represents a sentence of a TSV document."""
+
     def __init__(self, text: str, tokens: List[TsvToken]):
+        """Creates a new instance.
+
+        Parameters
+        ----------
+        text : str
+            The sentence string
+        tokens : List[TsvToken]
+            A List of all tokens
+        """
+
         self.text: str = text
         self.tokens: List[TsvToken] = tokens
-        # self.features: Dict[FeatureDefinition, List[Feature]] = {}
         self.features: Dict[Feature, List[TsvToken]] = {}
         self.token_chunks: Dict[Feature, TokenChunk] = {}
         for token in self.tokens:
             for feature in token.features:
-                # if not feature.feature_definition in self.features:
-                #     self.features[feature.feature_definition] = []
-                # self.features[feature.feature_definition].append([feature, token])
                 if not feature in self.features:
                     self.features[feature]: List[TsvToken] = []
                 self.features[feature].append(token)
         for feature, tokens in self.features.items():
-            # TODO Add relations!!!
             self.token_chunks[feature] = TokenChunk(feature, tokens)
         for feature, token_chunk in self.token_chunks.items():
             if token_chunk.feature.feature_definition.layer_definition.layer_type == LayerType.RELATION_LAYER:
-                # print("is related to " + token_chunk.feature.value)
                 partos = token_chunk.feature.value.split("-")
                 sentence_no = partos[0]
                 token_no = partos[1]
@@ -153,8 +249,6 @@ class TsvSentence:
                 parent: TokenChunk = None
                 for f, tc in self.token_chunks.items():
                     if tc.tokens[0].sentence_number == sentence_no and tc.tokens[0].token_number == token_no and tc.feature.feature_definition.layer_definition.layer_type != LayerType.RELATION_LAYER:
-                        # print("WE HAVE A RELATION!")
-                        # token_chunk.add_relation(t)
                         child = tc
                     elif tc.tokens[0].sentence_number == token_chunk.tokens[0].sentence_number and tc.tokens[0].token_number == token_chunk.tokens[0].token_number and tc.feature.feature_definition.layer_definition.layer_type != LayerType.RELATION_LAYER:
                         parent = tc
@@ -168,12 +262,39 @@ class TsvSentence:
             del self.token_chunks[feature_to_del]
 
 class TsvDocument:
+    """Represents a TSV document."""
+
     def __init__(self, schema: TsvSchema, sentences: List[TsvSentence]):
+        """Creates a new instance.
+
+        Parameters
+        ----------
+        schema : TsvSchema
+            The schema of the document
+        sentences : List[TsvSentence]
+            A List of sentences of the TSV document
+        """
+
         self.schema: TsvSchema = schema
         self.sentences: List[TsvSentence] = sentences
 
 class TsvReader:
+    """A class to read/parse TSV documents."""
+
     def read_tsv(self, tsvFile: TextIO) -> TsvDocument:
+        """Reads a TSV document.
+
+        Parameters
+        ----------
+        tsvFile : TextIO
+            The TSV file
+
+        Returns
+        -------
+        TsvDocument
+            The parsed tsv document
+        """
+
         lines = tsvFile.readlines()
         lines = [x.rstrip('\n') for x in lines]
         iterator = iter(lines)
@@ -185,6 +306,19 @@ class TsvReader:
         return document
 
     def read_schema(self, iterator: Iterator[str]) -> TsvSchema:
+        """Reads the schema of a TSV document.
+
+        Parameters
+        ----------
+        iterator : Iterator[str]
+            The line by line iterator of the tsv file
+
+        Returns
+        -------
+        TsvSchema
+            The parsed schema of the TSV document
+        """
+
         schema: TsvSchema = TsvSchema()
         for line in iterator:
             if line.startswith(HEADER_PREFIX_FORMAT):
@@ -218,6 +352,22 @@ class TsvReader:
         return schema
 
     def read_sentences(self, iterator: Iterator[str], schema: TsvSchema) -> List[TsvSentence]:
+        """Reads/parses all sentences of a TSV document.
+
+        Parameters
+        ----------
+        iterator : Iterator[str]
+            The line by line iterator of the tsv file.
+            The iterator should be at the position of the first line of the first sentence.
+        schema : TsvSchema
+            The schema of the TSV document
+
+        Returns
+        -------
+        List[TsvSentence]
+            A list of parsed sentences
+        """
+
         sentences: List[TsvSentence] = []
         tokens: List[TsvToken] = []
         current_text = None
@@ -256,10 +406,30 @@ class TsvReader:
         return sentences
 
     def parse_features(self, features: List[str], feature_definitions: List[FeatureDefinition]) -> List[Feature]:
+        """Parses features of a token in a TSV document.
+
+        Parameters
+        ----------
+        features : List[str]
+            A List of features of a token
+        feature_definitions : List[FeatureDefinition]
+            A list of feature definitions
+
+        Returns
+        -------
+        List[Feature]
+            A List of parsed features
+
+        Raises
+        ------
+        Exception
+            If the number of features does not match the number of feature definitions in the schema
+        """
+
         if not features[-1]:
             del features[-1]
         if len(features) != len(feature_definitions):
-            raise Exception("The number of features does not match the number of features definitions in the schema.")
+            raise Exception("The number of features does not match the number of feature definitions in the schema.")
         parsed_features: List[Feature] = []
 
         for i, layer in enumerate(features, start=0):

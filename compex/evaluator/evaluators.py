@@ -5,13 +5,29 @@ from compex.model.competency import Competency
 from compex.extractor.corenlp_semgrex_extractor import SemgrexAnnotator
 
 class EvaluationSet:
+    """Helper class to manage testdata and data annotated by an algorithm."""
+
     def __init__(self, test_data: Dict[str, List[Competency]], annotated_data: Dict[str, List[Competency]]):
         self.test_data: List[Competency] = test_data
         self.annotated_data: List[Competency] = annotated_data
         self.merged_data: Dict[str, Dict[str, Competency]] = self.__merge_data(test_data, annotated_data)
 
-    def __merge_data(self, test_data, annotated_data):
-        ''' Merge dictionaries and keep values of common keys in list'''
+    def __merge_data(self, test_data: Dict[str, List[Competency]], annotated_data: Dict[str, List[Competency]]) -> Dict[str, Dict[str, Competency]]:
+        """Merge dictionaries and keep values of common keys in list.
+
+        Parameters
+        ----------
+        test_data : Dict[str, List[Competency]]
+            The testdata.
+        annotated_data : Dict[str, List[Competency]]
+            Data annotated by an algorithm.
+
+        Returns
+        -------
+        Dict[str, Dict[str, Competency]]
+            A dict containing merged data, so that both dicts have same keys.
+        """
+
         merged_data = {}
         for key, item in test_data.items():
             if not key in merged_data:
@@ -33,13 +49,26 @@ class FMeasureEvaluator:
     """Evaluator precision, recall and f1-score"""
 
     def evaluate_with_annotated_sentences(self, evaluation_set: EvaluationSet, consider_objects: bool = False, consider_contexts = False):
-        """
-        Evaluates the parser against pre-annotated sentences.
+        """Evaluates the parser against pre-annotated sentences.
+
         By default, only bare competencies are used in the calculation.
         Use the appropriate parameters to also consider objects and contexts of competencies.
+
+        Parameters
+        ----------
+        evaluation_set : EvaluationSet
+            The EvaluationSet to use for evaluation.
+        consider_objects : bool, optional
+            Consider competency triple's objects in the calculation, by default False
+        consider_contexts : bool, optional
+            Consider competency triple's contexts in the calculation, by default False
+
+        Returns
+        -------
+        Dict
+            Dictionary with evaluation results such as precision, recall and f1.
         """
 
-        # TODO Take objects and contexts into account!
         # Calculate true positives and false positives
         true_positives, false_positives = self.__count_positive_negative(evaluation_set, CalculationType.POSITIVE, consider_objects, consider_contexts)
 
@@ -64,15 +93,32 @@ class FMeasureEvaluator:
             }
         }
 
-    def __count_positive_negative(self, evaluation_set: EvaluationSet, mode: CalculationType = CalculationType.POSITIVE, consider_objects: bool = False, consider_contexts: bool = False):
-        """
-        Counts either positive or negative based objects in evaluationset.
+    def __count_positive_negative(self, evaluation_set: EvaluationSet, mode: CalculationType = CalculationType.POSITIVE, consider_objects: bool = False, consider_contexts: bool = False) -> List[float]:
+        """Counts either positive or negative based objects in evaluationset.
+
         A completely correct competency gets a score of 1.0. If considered, every object and context
         is treated equally in the calculation, so that a correct competency which has a two worded object,
         but only one of them is found, it's 2/3 correct (competency + one object word) and 1/3 incorrect
         (the other object word). If the competency is not found, it's score is 0.0.
         Default mode is positive.
+
+        Parameters
+        ----------
+        evaluation_set : EvaluationSet
+            The EvaluationSet to use for evaluation.
+        mode : CalculationType, optional
+            Positive or negative based calculation, by default CalculationType.POSITIVE
+        consider_objects : bool, optional
+            Consider competency triple's objects in the calculation, by default False
+        consider_contexts : bool, optional
+            Consider competency triple's contexts in the calculation, by default False
+
+        Returns
+        -------
+        List[float]
+            A list with two values, true and false postives/negatives.
         """
+
         trues = 0
         falses = 0
 
@@ -151,11 +197,56 @@ class FMeasureEvaluator:
 
         return [trues, falses]
 
-    def __calculate_precision(self, true_positives, false_positives):
+    def __calculate_precision(self, true_positives: float, false_positives: float) -> float:
+        """Calculates precision.
+
+        Parameters
+        ----------
+        true_positives : float
+            true_positives
+        false_positives : float
+            true_positives
+
+        Returns
+        -------
+        float
+            precision based from 0.0 to 1.0
+        """
+
         return true_positives / (true_positives + false_positives) if true_positives or false_positives else 0.0
 
-    def __calculate_recall(self, true_positives, false_negatives):
+    def __calculate_recall(self, true_positives: float, false_negatives: float) -> float:
+        """Calculates recall.
+
+        Parameters
+        ----------
+        true_positives : float
+            true_positives
+        false_negatives : float
+            false_negatives
+
+        Returns
+        -------
+        float
+            recall based from 0.0 to 1.0
+        """
+
         return true_positives / (true_positives + false_negatives) if true_positives or false_negatives else 0.0
 
-    def __calculate_f1_score(self, precision, recall):
+    def __calculate_f1_score(self, precision: float, recall: float) -> float:
+        """Calculates f1 score.
+
+        Parameters
+        ----------
+        precision : float
+            precision based from 0.0 to 1.0
+        recall : float
+            recall based from 0.0 to 1.0
+
+        Returns
+        -------
+        float
+            f1 score based from 0.0 to 1.0
+        """
+
         return 2 * ((precision * recall) / (precision + recall)) if precision or recall else 0.0
