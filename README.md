@@ -1,4 +1,8 @@
 # CompEx
+![coverage](coverage.svg)
+![release](https://img.shields.io/github/v/release/traschke/bht-compex)
+![license](https://img.shields.io/github/license/traschke/bht-compex)
+![pythonversion](https://img.shields.io/github/pipenv/locked/python-version/traschke/bht-compex)
 
 Extract competencies from written text
 
@@ -141,6 +145,21 @@ Run unit tests. CoreNLP server in `./.corenlp` is required!
 $ pytest
 ```
 
+### Get test coverage
+Run coverage
+```console
+$ coverage run --source=./compex/ -m pytest
+```
+
+Export coverage report as html
+```console
+$ coverage html
+```
+
+Generate coverage badge
+```console
+$ coverage-badge -o coverage.svg
+```
 ## Built With
 
 * [Python 3.7](https://docs.python.org/3.7/)

@@ -8,6 +8,7 @@ pylint = "*"
 pytest = "*"
 coverage = "*"
 autopep8 = "*"
+coverage-badge = "*"
 
 [packages]
 stanfordnlp = "*"
