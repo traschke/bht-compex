@@ -1,0 +1,24 @@
+#FORMAT=WebAnno TSV 3.2
+
+
+#Text=Die fachübergreifenden Lehrinhalte dienen der interdisziplinären Erweiterung des Fachstudiums und dem Erkennen von Zusammenhängen zwischen Gesellschaft und ihren Teilsystemen.
+1-1	0-3	Die	
+1-2	4-22	fachübergreifenden	
+1-3	23-34	Lehrinhalte	
+1-4	35-41	dienen	
+1-5	42-45	der	
+1-6	46-64	interdisziplinären	
+1-7	65-76	Erweiterung	
+1-8	77-80	des	
+1-9	81-93	Fachstudiums	
+1-10	94-97	und	
+1-11	98-101	dem	
+1-12	102-110	Erkennen	
+1-13	111-114	von	
+1-14	115-129	Zusammenhängen	
+1-15	130-138	zwischen	
+1-16	139-151	Gesellschaft	
+1-17	152-155	und	
+1-18	156-161	ihren	
+1-19	162-174	Teilsystemen	
+1-20	174-175	.	

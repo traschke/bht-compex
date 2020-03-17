@@ -1,0 +1,15 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Empfehlung: Kenntnisse in HTML5, CSS sowie Javascript-Grundkenntnisse
+1-1	0-10	Empfehlung	_	_	
+1-2	10-11	:	_	_	
+1-3	12-22	Kenntnisse	competency	_	
+1-4	23-25	in	_	_	
+1-5	26-31	HTML5	object	1-3	
+1-6	31-32	,	_	_	
+1-7	33-36	CSS	object	1-3	
+1-8	37-42	sowie	_	_	
+1-9	43-69	Javascript-Grundkenntnisse	object	1-3	

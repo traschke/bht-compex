@@ -1,0 +1,11 @@
+#FORMAT=WebAnno TSV 3.2
+
+
+#Text=siehe jeweils gültige Ordnung für die Praxisphase
+1-1	0-5	siehe	
+1-2	6-13	jeweils	
+1-3	14-21	gültige	
+1-4	22-29	Ordnung	
+1-5	30-33	für	
+1-6	34-37	die	
+1-7	38-49	Praxisphase	

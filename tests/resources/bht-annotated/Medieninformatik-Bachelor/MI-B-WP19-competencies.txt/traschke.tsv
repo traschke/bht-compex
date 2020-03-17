@@ -1,0 +1,84 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden erlernen aktuelle Technologien der kreativen Konzeption, multimedialer Gestaltung und vor allem Programmierung von sog. audiovisuellen Objekten (Video oder Audio 'Chunks', 3D-Objekte bei Sound, Multi-Layer & Multi-Channel bei Video/Bild/Animation-Objekten usw.) für interaktive Web-Media Anwendungen.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-25	erlernen	competency	_	
+1-4	26-34	aktuelle	_	_	
+1-5	35-47	Technologien	_	_	
+1-6	48-51	der	_	_	
+1-7	52-61	kreativen	object[1]	1-3[0_1]	
+1-8	62-72	Konzeption	object[1]	_	
+1-9	72-73	,	_	_	
+1-10	74-87	multimedialer	object[2]	1-3[0_2]	
+1-11	88-98	Gestaltung	object[2]	_	
+1-12	99-102	und	_	_	
+1-13	103-106	vor	_	_	
+1-14	107-112	allem	_	_	
+1-15	113-127	Programmierung	object	1-3	
+1-16	128-131	von	_	_	
+1-17	132-135	sog	_	_	
+1-18	135-136	.	_	_	
+1-19	137-151	audiovisuellen	_	_	
+1-20	152-160	Objekten	_	_	
+1-21	161-162	(	_	_	
+1-22	162-167	Video	_	_	
+1-23	168-172	oder	_	_	
+1-24	173-178	Audio	_	_	
+1-25	179-180	'	_	_	
+1-26	180-186	Chunks	_	_	
+1-27	186-187	'	_	_	
+1-28	187-188	,	_	_	
+1-29	189-199	3D-Objekte	_	_	
+1-30	200-203	bei	_	_	
+1-31	204-209	Sound	_	_	
+1-32	209-210	,	_	_	
+1-33	211-222	Multi-Layer	_	_	
+1-34	223-224	&	_	_	
+1-35	225-238	Multi-Channel	_	_	
+1-36	239-242	bei	_	_	
+1-37	243-248	Video	_	_	
+1-38	248-249	/	_	_	
+1-39	249-253	Bild	_	_	
+1-40	253-254	/	_	_	
+1-41	254-272	Animation-Objekten	_	_	
+1-42	273-276	usw	_	_	
+1-43	276-277	.	_	_	
+1-44	277-278	)	_	_	
+1-45	279-282	für	_	_	
+1-46	283-294	interaktive	context[3]	1-7[1_3]|1-10[2_3]|1-15[0_3]	
+1-47	295-304	Web-Media	context[3]	_	
+1-48	305-316	Anwendungen	context[3]	_	
+1-49	316-317	.	_	_	
+
+#Text=Sie lernen die Umsetzbarkeit von web-basierten Verfahren kennen, um audiovisuelle Medien als Streams und Medienobjekte mit vielfältigen Interaktionstechniken zu nutzen und dynamisch audiovisuell zu manipulieren.
+2-1	318-321	Sie	_	_	
+2-2	322-328	lernen	_	_	
+2-3	329-332	die	_	_	
+2-4	333-346	Umsetzbarkeit	object	2-8	
+2-5	347-350	von	_	_	
+2-6	351-364	web-basierten	context[4]	2-4[0_4]	
+2-7	365-374	Verfahren	context[4]	_	
+2-8	375-381	kennen	competency	_	
+2-9	381-382	,	_	_	
+2-10	383-385	um	_	_	
+2-11	386-399	audiovisuelle	_	_	
+2-12	400-406	Medien	_	_	
+2-13	407-410	als	_	_	
+2-14	411-418	Streams	_	_	
+2-15	419-422	und	_	_	
+2-16	423-436	Medienobjekte	_	_	
+2-17	437-440	mit	_	_	
+2-18	441-453	vielfältigen	_	_	
+2-19	454-475	Interaktionstechniken	_	_	
+2-20	476-478	zu	_	_	
+2-21	479-485	nutzen	_	_	
+2-22	486-489	und	_	_	
+2-23	490-499	dynamisch	_	_	
+2-24	500-512	audiovisuell	_	_	
+2-25	513-515	zu	_	_	
+2-26	516-528	manipulieren	_	_	
+2-27	528-529	.	_	_	

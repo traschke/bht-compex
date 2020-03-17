@@ -1,0 +1,34 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden kennen die Programmierung der Digitalen Signale.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-23	kennen	competency	_	
+1-4	24-27	die	_	_	
+1-5	28-42	Programmierung	object[1]	1-3[0_1]	
+1-6	43-46	der	object[1]	_	
+1-7	47-56	Digitalen	object[1]	_	
+1-8	57-64	Signale	object[1]	_	
+1-9	64-65	.	_	_	
+
+#Text=Die Studierenden kennen Programmierung der digitalen Signalverarbeitung.
+2-1	66-69	Die	_	_	
+2-2	70-82	Studierenden	_	_	
+2-3	83-89	kennen	competency	_	
+2-4	90-104	Programmierung	object[2]	2-3[0_2]	
+2-5	105-108	der	object[2]	_	
+2-6	109-118	digitalen	object[2]	_	
+2-7	119-137	Signalverarbeitung	object[2]	_	
+2-8	137-138	.	_	_	
+
+#Text=Die Studierenden kennen Programmierung der Kompression.
+3-1	139-142	Die	_	_	
+3-2	143-155	Studierenden	_	_	
+3-3	156-162	kennen	competency	_	
+3-4	163-177	Programmierung	object[3]	3-3[0_3]	
+3-5	178-181	der	object[3]	_	
+3-6	182-193	Kompression	object[3]	_	
+3-7	193-194	.	_	_	

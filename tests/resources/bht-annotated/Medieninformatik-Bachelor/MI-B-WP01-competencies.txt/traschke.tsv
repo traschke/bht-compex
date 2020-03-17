@@ -1,0 +1,155 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden können komplexe Probleme des Interface Designs lösen und Informationen verständlich, rasch erfassbar und gut auffindbar in visuellen Systemen zusammenzufassen.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-23	können	_	_	
+1-4	24-32	komplexe	object[1]	1-9[0_1]	
+1-5	33-41	Probleme	object[1]	_	
+1-6	42-45	des	_	_	
+1-7	46-55	Interface	context[2]	1-4[1_2]	
+1-8	56-63	Designs	context[2]	_	
+1-9	64-69	lösen	competency	_	
+1-10	70-73	und	_	_	
+1-11	74-87	Informationen	object	1-22	
+1-12	88-100	verständlich	_	_	
+1-13	100-101	,	_	_	
+1-14	102-107	rasch	_	_	
+1-15	108-117	erfassbar	_	_	
+1-16	118-121	und	_	_	
+1-17	122-125	gut	_	_	
+1-18	126-136	auffindbar	_	_	
+1-19	137-139	in	_	_	
+1-20	140-149	visuellen	context[3]	1-11[0_3]	
+1-21	150-158	Systemen	context[3]	_	
+1-22	159-175	zusammenzufassen	competency	_	
+1-23	175-176	.	_	_	
+
+#Text=Sie entwickeln bereits erworbene, tiefgreifende Kenntnisse zur plattformübergreifenden Konzeption und Gestaltung von Interface Design für interaktive Anwendungen weiter.
+2-1	177-180	Sie	_	_	
+2-2	181-191	entwickeln	competency	_	
+2-3	192-199	bereits	_	_	
+2-4	200-209	erworbene	_	_	
+2-5	209-210	,	_	_	
+2-6	211-224	tiefgreifende	object[4]	_	
+2-7	225-235	Kenntnisse	object[4]	_	
+2-8	236-239	zur	_	_	
+2-9	240-263	plattformübergreifenden	context[5]	_	
+2-10	264-274	Konzeption	context[5]	_	
+2-11	275-278	und	_	_	
+2-12	279-289	Gestaltung	context[6]	_	
+2-13	290-293	von	context[6]	_	
+2-14	294-303	Interface	context[6]	_	
+2-15	304-310	Design	context[6]	_	
+2-16	311-314	für	_	_	
+2-17	315-326	interaktive	context[7]	_	
+2-18	327-338	Anwendungen	context[7]	_	
+2-19	339-345	weiter	_	_	
+2-20	345-346	.	_	_	
+
+#Text=Sie sind in der Lage selbständig Interaction Design Techniken und Methoden anzuwenden sowie Designkonzepte für verschiedene Arten interaktiver Medien zu entwickeln.
+3-1	347-350	Sie	_	_	
+3-2	351-355	sind	_	_	
+3-3	356-358	in	_	_	
+3-4	359-362	der	_	_	
+3-5	363-367	Lage	_	_	
+3-6	368-379	selbständig	_	_	
+3-7	380-391	Interaction	context[8]	3-11[0_8]|3-9[0_8]	
+3-8	392-398	Design	context[8]	_	
+3-9	399-408	Techniken	object	3-12	
+3-10	409-412	und	_	_	
+3-11	413-421	Methoden	object	3-12	
+3-12	422-432	anzuwenden	competency	_	
+3-13	433-438	sowie	_	_	
+3-14	439-453	Designkonzepte	object	3-21	
+3-15	454-457	für	_	_	
+3-16	458-470	verschiedene	_	_	
+3-17	471-476	Arten	_	_	
+3-18	477-489	interaktiver	context[9]	3-14[0_9]	
+3-19	490-496	Medien	context[9]	_	
+3-20	497-499	zu	_	_	
+3-21	500-510	entwickeln	competency	_	
+3-22	510-511	.	_	_	
+
+#Text=Diese werden den unterschiedlichen, medienspezifischen Anforderungen gerecht und in interaktiven Prototypen umgesetzt.
+4-1	512-517	Diese	object	4-13	
+4-2	518-524	werden	_	_	
+4-3	525-528	den	_	_	
+4-4	529-546	unterschiedlichen	_	_	
+4-5	546-547	,	_	_	
+4-6	548-566	medienspezifischen	context[10]	4-1[0_10]	
+4-7	567-580	Anforderungen	context[10]	_	
+4-8	581-588	gerecht	_	_	
+4-9	589-592	und	_	_	
+4-10	593-595	in	_	_	
+4-11	596-608	interaktiven	context[11]	4-1[0_11]	
+4-12	609-619	Prototypen	context[11]	_	
+4-13	620-629	umgesetzt	competency	_	
+4-14	629-630	.	_	_	
+
+#Text=Es werden Kompetenzen zu den Themen Interaction Design, Informationsarchitektur, Usability, User Experience, Interaktivität und Prototyping erworben und die elementaren Faktoren medialer Gestaltung – Objekt, Raum, Zeit und Interaktion – erarbeitet.
+5-1	631-633	Es	_	_	
+5-2	634-640	werden	_	_	
+5-3	641-652	Kompetenzen	_	_	
+5-4	653-655	zu	_	_	
+5-5	656-659	den	_	_	
+5-6	660-666	Themen	_	_	
+5-7	667-678	Interaction	_	_	
+5-8	679-685	Design	_	_	
+5-9	685-686	,	_	_	
+5-10	687-710	Informationsarchitektur	_	_	
+5-11	710-711	,	_	_	
+5-12	712-721	Usability	_	_	
+5-13	721-722	,	_	_	
+5-14	723-727	User	_	_	
+5-15	728-738	Experience	_	_	
+5-16	738-739	,	_	_	
+5-17	740-754	Interaktivität	_	_	
+5-18	755-758	und	_	_	
+5-19	759-770	Prototyping	_	_	
+5-20	771-779	erworben	_	_	
+5-21	780-783	und	_	_	
+5-22	784-787	die	_	_	
+5-23	788-799	elementaren	_	_	
+5-24	800-808	Faktoren	_	_	
+5-25	809-817	medialer	_	_	
+5-26	818-828	Gestaltung	_	_	
+5-27	829-830	–	_	_	
+5-28	831-837	Objekt	_	_	
+5-29	837-838	,	_	_	
+5-30	839-843	Raum	_	_	
+5-31	843-844	,	_	_	
+5-32	845-849	Zeit	_	_	
+5-33	850-853	und	_	_	
+5-34	854-865	Interaktion	_	_	
+5-35	866-867	–	_	_	
+5-36	868-878	erarbeitet	_	_	
+5-37	878-879	.	_	_	
+
+#Text=In einem themenorientierten Projekt werden wichtige Methoden, Aspekte und Phasen zur Gestaltung digitaler Medienanwendungen erlernt und ein interaktiver Prototyp wird erstellt.
+6-1	880-882	In	_	_	
+6-2	883-888	einem	_	_	
+6-3	889-907	themenorientierten	_	_	
+6-4	908-915	Projekt	_	_	
+6-5	916-922	werden	_	_	
+6-6	923-931	wichtige	_	_	
+6-7	932-940	Methoden	_	_	
+6-8	940-941	,	_	_	
+6-9	942-949	Aspekte	_	_	
+6-10	950-953	und	_	_	
+6-11	954-960	Phasen	_	_	
+6-12	961-964	zur	_	_	
+6-13	965-975	Gestaltung	_	_	
+6-14	976-985	digitaler	_	_	
+6-15	986-1003	Medienanwendungen	_	_	
+6-16	1004-1011	erlernt	_	_	
+6-17	1012-1015	und	_	_	
+6-18	1016-1019	ein	_	_	
+6-19	1020-1032	interaktiver	object[12]	6-22[0_12]	
+6-20	1033-1041	Prototyp	object[12]	_	
+6-21	1042-1046	wird	_	_	
+6-22	1047-1055	erstellt	competency	_	
+6-23	1055-1056	.	_	_	

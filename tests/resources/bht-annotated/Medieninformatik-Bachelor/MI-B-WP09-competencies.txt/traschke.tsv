@@ -1,0 +1,60 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden sollen in der Lage sein, iPhoneund iPad-Applikationen aufzusetzen und datenbank-, ortungs-, und kartebasierte Apps ohne Einarbeitungsaufwand zu entwickeln.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-23	sollen	_	_	
+1-4	24-26	in	_	_	
+1-5	27-30	der	_	_	
+1-6	31-35	Lage	_	_	
+1-7	36-40	sein	_	_	
+1-8	40-41	,	_	_	
+1-9	42-51	iPhoneund	object[1]	1-11[0_1]	
+1-10	52-70	iPad-Applikationen	object[1]	_	
+1-11	71-82	aufzusetzen	competency	_	
+1-12	83-86	und	_	_	
+1-13	87-96	datenbank	object[2]	1-25[0_2]	
+1-14	96-97	-	object[2]	_	
+1-15	97-98	,	object[2]	_	
+1-16	99-106	ortungs	object[2]	_	
+1-17	106-107	-	object[2]	_	
+1-18	107-108	,	object[2]	_	
+1-19	109-112	und	object[2]	_	
+1-20	113-126	kartebasierte	object[2]	_	
+1-21	127-131	Apps	object[2]	_	
+1-22	132-136	ohne	_	_	
+1-23	137-157	Einarbeitungsaufwand	_	_	
+1-24	158-160	zu	_	_	
+1-25	161-171	entwickeln	competency	_	
+1-26	171-172	.	_	_	
+
+#Text=Sie sind in der Lage, unbekannte iOS-Programmbibliotheken (wie z.B. Bibliotheken für die Erstellung von WEB-Applikationen) innerhalb einer Woche produktiv zu verwenden.
+2-1	173-176	Sie	_	_	
+2-2	177-181	sind	_	_	
+2-3	182-184	in	_	_	
+2-4	185-188	der	_	_	
+2-5	189-193	Lage	_	_	
+2-6	193-194	,	_	_	
+2-7	195-205	unbekannte	object[3]	2-25[0_3]	
+2-8	206-230	iOS-Programmbibliotheken	object[3]	_	
+2-9	231-232	(	_	_	
+2-10	232-235	wie	_	_	
+2-11	236-239	z.B	_	_	
+2-12	239-240	.	_	_	
+2-13	241-253	Bibliotheken	_	_	
+2-14	254-257	für	_	_	
+2-15	258-261	die	_	_	
+2-16	262-272	Erstellung	_	_	
+2-17	273-276	von	_	_	
+2-18	277-294	WEB-Applikationen	_	_	
+2-19	294-295	)	_	_	
+2-20	296-305	innerhalb	_	_	
+2-21	306-311	einer	_	_	
+2-22	312-317	Woche	_	_	
+2-23	318-327	produktiv	_	_	
+2-24	328-330	zu	_	_	
+2-25	331-340	verwenden	competency	_	
+2-26	340-341	.	_	_	

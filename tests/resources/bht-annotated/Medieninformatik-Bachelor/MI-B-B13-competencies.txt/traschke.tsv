@@ -1,0 +1,86 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden sollen in der Lage sein, Software-Anwendungen eigenständig zu konzipieren.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-23	sollen	_	_	
+1-4	24-26	in	_	_	
+1-5	27-30	der	_	_	
+1-6	31-35	Lage	_	_	
+1-7	36-40	sein	_	_	
+1-8	40-41	,	_	_	
+1-9	42-62	Software-Anwendungen	object	1-12	
+1-10	63-75	eigenständig	context	1-9	
+1-11	76-78	zu	_	_	
+1-12	79-90	konzipieren	competency	_	
+1-13	90-91	.	_	_	
+
+#Text=Die zur Anwendung kommende Modellierungssprache (z.B. UML) soll von den Studierenden beherrscht werden.
+2-1	92-95	Die	_	_	
+2-2	96-99	zur	_	_	
+2-3	100-109	Anwendung	_	_	
+2-4	110-118	kommende	_	_	
+2-5	119-139	Modellierungssprache	object	2-15	
+2-6	140-141	(	_	_	
+2-7	141-144	z.B	_	_	
+2-8	144-145	.	_	_	
+2-9	146-149	UML	_	_	
+2-10	149-150	)	_	_	
+2-11	151-155	soll	_	_	
+2-12	156-159	von	_	_	
+2-13	160-163	den	_	_	
+2-14	164-176	Studierenden	_	_	
+2-15	177-187	beherrscht	competency	_	
+2-16	188-194	werden	_	_	
+2-17	194-195	.	_	_	
+
+#Text=Die Kompetenz besteht in der ingenieurmäßigen Konzeption von SW-Produkten (Schwerpunkt OOA).
+3-1	196-199	Die	_	_	
+3-2	200-209	Kompetenz	_	_	
+3-3	210-217	besteht	_	_	
+3-4	218-220	in	_	_	
+3-5	221-224	der	_	_	
+3-6	225-241	ingenieurmäßigen	_	_	
+3-7	242-252	Konzeption	competency	_	
+3-8	253-256	von	_	_	
+3-9	257-269	SW-Produkten	object	3-7	
+3-10	270-271	(	_	_	
+3-11	271-282	Schwerpunkt	context[1]	3-9[0_1]	
+3-12	283-286	OOA	context[1]	_	
+3-13	286-287	)	_	_	
+3-14	287-288	.	_	_	
+
+#Text=Die Studierenden erkennen die Relevanz der Systemanalyse.
+4-1	289-292	Die	_	_	
+4-2	293-305	Studierenden	_	_	
+4-3	306-314	erkennen	competency	_	
+4-4	315-318	die	_	_	
+4-5	319-327	Relevanz	object	4-3	
+4-6	328-331	der	_	_	
+4-7	332-345	Systemanalyse	context	4-5	
+4-8	345-346	.	_	_	
+
+#Text=Weiterhin erwerben sie Kenntnisse und Fertigkeiten im Bereich Soft-Skills, die bei der konzeptionellen Arbeit für Software-Systeme wichtig sind.
+5-1	347-356	Weiterhin	_	_	
+5-2	357-365	erwerben	_	_	
+5-3	366-369	sie	_	_	
+5-4	370-380	Kenntnisse	competency	_	
+5-5	381-384	und	_	_	
+5-6	385-397	Fertigkeiten	competency	_	
+5-7	398-400	im	_	_	
+5-8	401-408	Bereich	_	_	
+5-9	409-420	Soft-Skills	object	5-4|5-6	
+5-10	420-421	,	_	_	
+5-11	422-425	die	_	_	
+5-12	426-429	bei	_	_	
+5-13	430-433	der	_	_	
+5-14	434-449	konzeptionellen	context[2]	5-9[0_2]	
+5-15	450-456	Arbeit	context[2]	_	
+5-16	457-460	für	context[2]	_	
+5-17	461-477	Software-Systeme	context[2]	_	
+5-18	478-485	wichtig	_	_	
+5-19	486-490	sind	_	_	
+5-20	490-491	.	_	_	

@@ -1,0 +1,13 @@
+#FORMAT=WebAnno TSV 3.2
+
+
+#Text=Gute Programmierkenntnisse, algorithmische Vorbildung, mathematische Grundkenntnisse.
+1-1	0-4	Gute	
+1-2	5-26	Programmierkenntnisse	
+1-3	26-27	,	
+1-4	28-42	algorithmische	
+1-5	43-53	Vorbildung	
+1-6	53-54	,	
+1-7	55-68	mathematische	
+1-8	69-84	Grundkenntnisse	
+1-9	84-85	.	

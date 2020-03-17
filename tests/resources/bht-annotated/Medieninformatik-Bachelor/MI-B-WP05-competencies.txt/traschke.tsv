@@ -1,0 +1,81 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden kennen den Ablauf einer Unternehmensgründung und die wesentlichen Finanzierungsmöglichkeiten.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-23	kennen	competency	_	
+1-4	24-27	den	_	_	
+1-5	28-34	Ablauf	object[1]	1-3[0_1]	
+1-6	35-40	einer	object[1]	_	
+1-7	41-61	Unternehmensgründung	object[1]	_	
+1-8	62-65	und	_	_	
+1-9	66-69	die	_	_	
+1-10	70-82	wesentlichen	object[2]	1-3[0_2]	
+1-11	83-109	Finanzierungsmöglichkeiten	object[2]	_	
+1-12	109-110	.	_	_	
+
+#Text=Sie können situationsgerecht geeignete Rechtsformen auswählen.
+2-1	111-114	Sie	_	_	
+2-2	115-121	können	_	_	
+2-3	122-139	situationsgerecht	context	2-4[3_0]	
+2-4	140-149	geeignete	object[3]	2-6[0_3]	
+2-5	150-162	Rechtsformen	object[3]	_	
+2-6	163-172	auswählen	competency	_	
+2-7	172-173	.	_	_	
+
+#Text=Sie kennen die Anforderungen an die Organisation und Führung eines Betriebes und können diese auf ihre betrieblichen Praxiserfahrungen übertragen.
+3-1	174-177	Sie	_	_	
+3-2	178-184	kennen	competency	_	
+3-3	185-188	die	_	_	
+3-4	189-202	Anforderungen	object	3-2|3-19	
+3-5	203-205	an	_	_	
+3-6	206-209	die	_	_	
+3-7	210-222	Organisation	context[4]	3-4[0_4]	
+3-8	223-226	und	context[4]	_	
+3-9	227-234	Führung	context[4]	_	
+3-10	235-240	eines	context[4]	_	
+3-11	241-250	Betriebes	context[4]	_	
+3-12	251-254	und	_	_	
+3-13	255-261	können	_	_	
+3-14	262-267	diese	_	_	
+3-15	268-271	auf	_	_	
+3-16	272-276	ihre	_	_	
+3-17	277-290	betrieblichen	_	_	
+3-18	291-308	Praxiserfahrungen	_	_	
+3-19	309-319	übertragen	competency	_	
+3-20	319-320	.	_	_	
+
+#Text=Die Studierenden kennen die Teilbereiche des betrieblichen Rechnungswesens und deren Aufgaben.
+4-1	321-324	Die	_	_	
+4-2	325-337	Studierenden	_	_	
+4-3	338-344	kennen	competency	_	
+4-4	345-348	die	_	_	
+4-5	349-361	Teilbereiche	object	4-3	
+4-6	362-365	des	_	_	
+4-7	366-379	betrieblichen	context[5]	4-11[0_5]|4-5[0_5]	
+4-8	380-395	Rechnungswesens	context[5]	_	
+4-9	396-399	und	_	_	
+4-10	400-405	deren	_	_	
+4-11	406-414	Aufgaben	object	4-3	
+4-12	414-415	.	_	_	
+
+#Text=Sie sind in der Lage einen (einfachen) Jahresabschluss anhand geeigneter Kennzahlen zu analysieren.
+5-1	416-419	Sie	_	_	
+5-2	420-424	sind	_	_	
+5-3	425-427	in	_	_	
+5-4	428-431	der	_	_	
+5-5	432-436	Lage	_	_	
+5-6	437-442	einen	_	_	
+5-7	443-444	(	_	_	
+5-8	444-453	einfachen	_	_	
+5-9	453-454	)	_	_	
+5-10	455-470	Jahresabschluss	object	5-15	
+5-11	471-477	anhand	_	_	
+5-12	478-488	geeigneter	context[6]	5-10[0_6]	
+5-13	489-499	Kennzahlen	context[6]	_	
+5-14	500-502	zu	_	_	
+5-15	503-514	analysieren	competency	_	
+5-16	514-515	.	_	_	

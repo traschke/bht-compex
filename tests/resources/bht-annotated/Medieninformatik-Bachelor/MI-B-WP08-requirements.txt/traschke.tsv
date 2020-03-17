@@ -1,0 +1,10 @@
+#FORMAT=WebAnno TSV 3.2
+
+
+#Text=Empfehlung: Programmieren I/II
+1-1	0-10	Empfehlung	
+1-2	10-11	:	
+1-3	12-25	Programmieren	
+1-4	26-27	I	
+1-5	27-28	/	
+1-6	28-30	II	

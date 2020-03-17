@@ -1,0 +1,22 @@
+#FORMAT=WebAnno TSV 3.2
+
+
+#Text=Empfehlung: Programmierung I+II, Mathematik I+II, Computergrafik Grundlagen, Multimedia Engineering I
+1-1	0-10	Empfehlung	
+1-2	10-11	:	
+1-3	12-26	Programmierung	
+1-4	27-28	I	
+1-5	28-29	+	
+1-6	29-31	II	
+1-7	31-32	,	
+1-8	33-43	Mathematik	
+1-9	44-45	I	
+1-10	45-46	+	
+1-11	46-48	II	
+1-12	48-49	,	
+1-13	50-64	Computergrafik	
+1-14	65-75	Grundlagen	
+1-15	75-76	,	
+1-16	77-87	Multimedia	
+1-17	88-99	Engineering	
+1-18	100-101	I	

@@ -1,0 +1,12 @@
+#FORMAT=WebAnno TSV 3.2
+
+
+#Text=Programmier-Erfahrung mit Java, JavaScript, o.ä.
+1-1	0-21	Programmier-Erfahrung	
+1-2	22-25	mit	
+1-3	26-30	Java	
+1-4	30-31	,	
+1-5	32-42	JavaScript	
+1-6	42-43	,	
+1-7	44-47	o.ä	
+1-8	47-48	.	

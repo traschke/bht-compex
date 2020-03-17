@@ -1,0 +1,63 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden können Ihre Erfahrungen aus der Konzeption und Realisation von Webanwendungen mit einer nicht trivialen Serverund Datenbankanbindung wiedergeben.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-23	können	_	_	
+1-4	24-28	Ihre	_	_	
+1-5	29-40	Erfahrungen	object	1-19	
+1-6	41-44	aus	_	_	
+1-7	45-48	der	_	_	
+1-8	49-59	Konzeption	context[1]	1-5[0_1]	
+1-9	60-63	und	context[1]	_	
+1-10	64-75	Realisation	context[1]	_	
+1-11	76-79	von	context[1]	_	
+1-12	80-94	Webanwendungen	context[1]	_	
+1-13	95-98	mit	context[1]	_	
+1-14	99-104	einer	context[1]	_	
+1-15	105-110	nicht	context[1]	_	
+1-16	111-120	trivialen	context[1]	_	
+1-17	121-130	Serverund	context[1]	_	
+1-18	131-149	Datenbankanbindung	context[1]	_	
+1-19	150-161	wiedergeben	competency	_	
+1-20	161-162	.	_	_	
+
+#Text=Die Studierenden können eine serverseitige Schnittstelle für moderne Webanwendungen konzipieren und implementieren.
+2-1	163-166	Die	_	_	
+2-2	167-179	Studierenden	_	_	
+2-3	180-186	können	_	_	
+2-4	187-191	eine	_	_	
+2-5	192-205	serverseitige	object[2]	2-10[0_2]|2-12[0_2]	
+2-6	206-219	Schnittstelle	object[2]	_	
+2-7	220-223	für	_	_	
+2-8	224-231	moderne	context[3]	2-5[2_3]	
+2-9	232-246	Webanwendungen	context[3]	_	
+2-10	247-258	konzipieren	competency	_	
+2-11	259-262	und	_	_	
+2-12	263-277	implementieren	competency	_	
+2-13	277-278	.	_	_	
+
+#Text=Sie haben in Teamarbeit typische Komplexitätsprobleme erfahren und können diese durch den Einsatz von Entwicklungsmethoden, Architekturund Entwurfsmustern bewältigen.
+3-1	279-282	Sie	_	_	
+3-2	283-288	haben	_	_	
+3-3	289-291	in	_	_	
+3-4	292-302	Teamarbeit	_	_	
+3-5	303-311	typische	_	_	
+3-6	312-332	Komplexitätsprobleme	object	3-19	
+3-7	333-341	erfahren	_	_	
+3-8	342-345	und	_	_	
+3-9	346-352	können	_	_	
+3-10	353-358	diese	_	_	
+3-11	359-364	durch	_	_	
+3-12	365-368	den	_	_	
+3-13	369-376	Einsatz	_	_	
+3-14	377-380	von	_	_	
+3-15	381-401	Entwicklungsmethoden	context	3-6	
+3-16	401-402	,	_	_	
+3-17	403-417	Architekturund	context	3-6	
+3-18	418-433	Entwurfsmustern	context	3-6	
+3-19	434-444	bewältigen	competency	_	
+3-20	444-445	.	_	_	

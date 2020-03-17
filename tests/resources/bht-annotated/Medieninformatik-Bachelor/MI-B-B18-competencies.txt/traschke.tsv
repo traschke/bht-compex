@@ -1,0 +1,91 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden lernen interaktive Software-Anwendungen auf der Grundlage einer Systemanalyse eigenständig zu entwerfen und zu implementieren.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-23	lernen	_	_	
+1-4	24-35	interaktive	object[1]	1-13[0_1]|1-16[0_1]	
+1-5	36-56	Software-Anwendungen	object[1]	_	
+1-6	57-60	auf	_	_	
+1-7	61-64	der	_	_	
+1-8	65-74	Grundlage	context[2]	1-4[1_2]	
+1-9	75-80	einer	context[2]	_	
+1-10	81-94	Systemanalyse	context[2]	_	
+1-11	95-107	eigenständig	_	_	
+1-12	108-110	zu	_	_	
+1-13	111-120	entwerfen	competency	_	
+1-14	121-124	und	_	_	
+1-15	125-127	zu	_	_	
+1-16	128-142	implementieren	competency	_	
+1-17	142-143	.	_	_	
+
+#Text=Dabei wenden Sie ausgewählte Architekturmuster und Entwurfskonzepte auf ein konkretes Beispiel an und vertiefen ihr Verständnis für das Zusammenspiel bereits bekannter und neuer Konzepte der objektorientierten Programmierung.
+2-1	144-149	Dabei	_	_	
+2-2	150-156	wenden	competency	_	
+2-3	157-160	Sie	_	_	
+2-4	161-172	ausgewählte	object[3]	2-2[0_3]	
+2-5	173-190	Architekturmuster	object[3]	_	
+2-6	191-194	und	_	_	
+2-7	195-211	Entwurfskonzepte	object	2-2	
+2-8	212-215	auf	_	_	
+2-9	216-219	ein	_	_	
+2-10	220-229	konkretes	context[4]	2-4[3_4]|2-7[0_4]	
+2-11	230-238	Beispiel	context[4]	_	
+2-12	239-241	an	_	_	
+2-13	242-245	und	_	_	
+2-14	246-255	vertiefen	_	_	
+2-15	256-259	ihr	_	_	
+2-16	260-271	Verständnis	competency	_	
+2-17	272-275	für	_	_	
+2-18	276-279	das	_	_	
+2-19	280-293	Zusammenspiel	_	_	
+2-20	294-301	bereits	_	_	
+2-21	302-311	bekannter	_	_	
+2-22	312-315	und	_	_	
+2-23	316-321	neuer	_	_	
+2-24	322-330	Konzepte	object	2-16	
+2-25	331-334	der	_	_	
+2-26	335-353	objektorientierten	context[5]	2-24[0_5]	
+2-27	354-368	Programmierung	context[5]	_	
+2-28	368-369	.	_	_	
+
+#Text=Sie bauen wichtige Kompetenzen im Bereich Softwareentwurf und Software-Architektur (OOD) auf.
+3-1	370-373	Sie	_	_	
+3-2	374-379	bauen	competency	_	
+3-3	380-388	wichtige	_	_	
+3-4	389-400	Kompetenzen	object	3-2	
+3-5	401-403	im	_	_	
+3-6	404-411	Bereich	_	_	
+3-7	412-427	Softwareentwurf	context	3-4	
+3-8	428-431	und	_	_	
+3-9	432-452	Software-Architektur	context	3-4	
+3-10	453-454	(	_	_	
+3-11	454-457	OOD	_	_	
+3-12	457-458	)	_	_	
+3-13	459-462	auf	_	_	
+3-14	462-463	.	_	_	
+
+#Text=Für die Umsetzung ihrer Entwürfe lernen die Studierenden aktuelle Modellierungsund Programmiersprachen sowie relevante Entwicklungs-Werkzeuge und -Bibliotheken gezielt einzusetzen.
+4-1	464-467	Für	_	_	
+4-2	468-471	die	_	_	
+4-3	472-481	Umsetzung	_	_	
+4-4	482-487	ihrer	_	_	
+4-5	488-496	Entwürfe	_	_	
+4-6	497-503	lernen	_	_	
+4-7	504-507	die	_	_	
+4-8	508-520	Studierenden	_	_	
+4-9	521-529	aktuelle	object[6]	4-19[0_6]	
+4-10	530-546	Modellierungsund	object[6]	_	
+4-11	547-566	Programmiersprachen	object	4-19	
+4-12	567-572	sowie	_	_	
+4-13	573-582	relevante	object[7]	4-19[0_7]	
+4-14	583-605	Entwicklungs-Werkzeuge	object[7]	_	
+4-15	606-609	und	_	_	
+4-16	610-611	-	_	_	
+4-17	611-623	Bibliotheken	object	4-19	
+4-18	624-631	gezielt	_	_	
+4-19	632-643	einzusetzen	competency	_	
+4-20	643-644	.	_	_	

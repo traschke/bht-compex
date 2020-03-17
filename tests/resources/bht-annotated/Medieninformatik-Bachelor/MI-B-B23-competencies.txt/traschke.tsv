@@ -1,0 +1,77 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden sollen in der Lage sein, eine komplexe Anwendung mit projektspezifischen Basistechniken in Teamarbeit zu konzipieren und umzusetzen.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-23	sollen	_	_	
+1-4	24-26	in	_	_	
+1-5	27-30	der	_	_	
+1-6	31-35	Lage	_	_	
+1-7	36-40	sein	_	_	
+1-8	40-41	,	_	_	
+1-9	42-46	eine	_	_	
+1-10	47-55	komplexe	_	_	
+1-11	56-65	Anwendung	_	_	
+1-12	66-69	mit	_	_	
+1-13	70-89	projektspezifischen	_	_	
+1-14	90-104	Basistechniken	_	_	
+1-15	105-107	in	_	_	
+1-16	108-118	Teamarbeit	_	_	
+1-17	119-121	zu	_	_	
+1-18	122-133	konzipieren	competency	_	
+1-19	134-137	und	_	_	
+1-20	138-148	umzusetzen	competency	_	
+1-21	148-149	.	_	_	
+
+#Text=Kenntnisse der verwendeten Analyseund Modellierungsmethoden, Programmiertechniken und Frameworks sowie der relevanten Lehrinhalte der Semester 1 - 4 werden vertieft und mit anderen Themen verknüpft.
+2-1	150-160	Kenntnisse	competency	_	
+2-2	161-164	der	_	_	
+2-3	165-176	verwendeten	_	_	
+2-4	177-187	Analyseund	object	2-1	
+2-5	188-209	Modellierungsmethoden	object	2-1	
+2-6	209-210	,	_	_	
+2-7	211-231	Programmiertechniken	object	2-1	
+2-8	232-235	und	_	_	
+2-9	236-246	Frameworks	object	2-1	
+2-10	247-252	sowie	_	_	
+2-11	253-256	der	_	_	
+2-12	257-267	relevanten	_	_	
+2-13	268-279	Lehrinhalte	_	_	
+2-14	280-283	der	_	_	
+2-15	284-292	Semester	_	_	
+2-16	293-294	1	_	_	
+2-17	295-296	-	_	_	
+2-18	297-298	4	_	_	
+2-19	299-305	werden	_	_	
+2-20	306-314	vertieft	_	_	
+2-21	315-318	und	_	_	
+2-22	319-322	mit	_	_	
+2-23	323-330	anderen	_	_	
+2-24	331-337	Themen	_	_	
+2-25	338-347	verknüpft	_	_	
+2-26	347-348	.	_	_	
+
+#Text=Teamfähigkeit, Kommunikationsund Präsentationstechniken sowie die Kompetenz zu Konfliktlösung und zu Aufwandsund Risikoabschätzung sollen durch die Projektarbeit gefördert werden.
+3-1	349-362	Teamfähigkeit	_	_	
+3-2	362-363	,	_	_	
+3-3	364-381	Kommunikationsund	_	_	
+3-4	382-404	Präsentationstechniken	_	_	
+3-5	405-410	sowie	_	_	
+3-6	411-414	die	_	_	
+3-7	415-424	Kompetenz	_	_	
+3-8	425-427	zu	_	_	
+3-9	428-442	Konfliktlösung	_	_	
+3-10	443-446	und	_	_	
+3-11	447-449	zu	_	_	
+3-12	450-461	Aufwandsund	_	_	
+3-13	462-479	Risikoabschätzung	_	_	
+3-14	480-486	sollen	_	_	
+3-15	487-492	durch	_	_	
+3-16	493-496	die	_	_	
+3-17	497-510	Projektarbeit	_	_	
+3-18	511-520	gefördert	_	_	
+3-19	521-527	werden	_	_	
+3-20	527-528	.	_	_	

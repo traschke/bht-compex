@@ -1,0 +1,56 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden lernen die grundlegenden Architekturund Entwurfsmuster von aktuellen Rahmenwerken und Bibliotheken aus den Bereichen Creative Coding, Spieleentwicklung und Simulation kennen.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-23	lernen	_	_	
+1-4	24-27	die	_	_	
+1-5	28-41	grundlegenden	object[1]	1-22[0_1]	
+1-6	42-56	Architekturund	object[1]	_	
+1-7	57-71	Entwurfsmuster	object[1]	_	
+1-8	72-75	von	_	_	
+1-9	76-85	aktuellen	_	_	
+1-10	86-98	Rahmenwerken	_	_	
+1-11	99-102	und	_	_	
+1-12	103-115	Bibliotheken	_	_	
+1-13	116-119	aus	_	_	
+1-14	120-123	den	_	_	
+1-15	124-133	Bereichen	_	_	
+1-16	134-142	Creative	_	_	
+1-17	143-149	Coding	_	_	
+1-18	149-150	,	_	_	
+1-19	151-168	Spieleentwicklung	_	_	
+1-20	169-172	und	_	_	
+1-21	173-183	Simulation	_	_	
+1-22	184-190	kennen	competency	_	
+1-23	190-191	.	_	_	
+
+#Text=Damit sind Sie in der Lage, existierende Systeme zu verwenden und zu erweitern, sowie eigene Projekte unter Verwendung relevanter Best Practices umzusetzen.
+2-1	192-197	Damit	_	_	
+2-2	198-202	sind	_	_	
+2-3	203-206	Sie	_	_	
+2-4	207-209	in	_	_	
+2-5	210-213	der	_	_	
+2-6	214-218	Lage	_	_	
+2-7	218-219	,	_	_	
+2-8	220-232	existierende	object[2]	2-11[0_2]|2-14[0_2]	
+2-9	233-240	Systeme	object[2]	_	
+2-10	241-243	zu	_	_	
+2-11	244-253	verwenden	competency	_	
+2-12	254-257	und	_	_	
+2-13	258-260	zu	_	_	
+2-14	261-270	erweitern	competency	_	
+2-15	270-271	,	_	_	
+2-16	272-277	sowie	_	_	
+2-17	278-284	eigene	object[3]	2-24[0_3]	
+2-18	285-293	Projekte	object[3]	_	
+2-19	294-299	unter	_	_	
+2-20	300-310	Verwendung	_	_	
+2-21	311-321	relevanter	_	_	
+2-22	322-326	Best	context[4]	2-17[3_4]	
+2-23	327-336	Practices	context[4]	_	
+2-24	337-347	umzusetzen	competency	_	
+2-25	347-348	.	_	_	

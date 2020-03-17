@@ -1,0 +1,21 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden erlernen anhand ausgewählter Fragestellungen Grundlagen des Visual Computing und des wissenschaftlichen Rechnens.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-25	erlernen	competency	_	
+1-4	26-32	anhand	_	_	
+1-5	33-45	ausgewählter	_	_	
+1-6	46-61	Fragestellungen	_	_	
+1-7	62-72	Grundlagen	object[1]	1-3[0_1]	
+1-8	73-76	des	object[1]	_	
+1-9	77-83	Visual	object[1]	_	
+1-10	84-93	Computing	object[1]	_	
+1-11	94-97	und	_	_	
+1-12	98-101	des	_	_	
+1-13	102-120	wissenschaftlichen	object[2]	1-3[0_2]	
+1-14	121-129	Rechnens	object[2]	_	
+1-15	129-130	.	_	_	

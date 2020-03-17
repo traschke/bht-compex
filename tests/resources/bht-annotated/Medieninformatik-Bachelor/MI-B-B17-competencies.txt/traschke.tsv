@@ -1,0 +1,87 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden kennen grundlegende Technologien für multimediale WebApplikationen.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-23	kennen	competency	_	
+1-4	24-36	grundlegende	object[1]	1-3[0_1]	
+1-5	37-49	Technologien	object[1]	_	
+1-6	50-53	für	_	_	
+1-7	54-66	multimediale	context[2]	1-4[1_2]	
+1-8	67-83	WebApplikationen	context[2]	_	
+1-9	83-84	.	_	_	
+
+#Text=Sie sind in der Lage sowohl eine klassische Website als auch eine Single Page Application in Teamarbeit systematisch zu planen und umzusetzen.
+2-1	85-88	Sie	_	_	
+2-2	89-93	sind	_	_	
+2-3	94-96	in	_	_	
+2-4	97-100	der	_	_	
+2-5	101-105	Lage	_	_	
+2-6	106-112	sowohl	_	_	
+2-7	113-117	eine	_	_	
+2-8	118-128	klassische	object[3]	2-20[0_3]|2-22[0_3]	
+2-9	129-136	Website	object[3]	_	
+2-10	137-140	als	_	_	
+2-11	141-145	auch	_	_	
+2-12	146-150	eine	_	_	
+2-13	151-157	Single	object[4]	2-20[0_4]|2-22[0_4]	
+2-14	158-162	Page	object[4]	_	
+2-15	163-174	Application	object[4]	_	
+2-16	175-177	in	_	_	
+2-17	178-188	Teamarbeit	context	2-8[3_0]|2-13[4_0]	
+2-18	189-201	systematisch	context	2-8[3_0]|2-13[4_0]	
+2-19	202-204	zu	_	_	
+2-20	205-211	planen	competency	_	
+2-21	212-215	und	_	_	
+2-22	216-226	umzusetzen	competency	_	
+2-23	226-227	.	_	_	
+
+#Text=Sie kennen die wichtigsten Qualitätskriterien, die bei der Beurteilung von Webapplikationen zu beachten sind.
+3-1	228-231	Sie	_	_	
+3-2	232-238	kennen	competency	_	
+3-3	239-242	die	_	_	
+3-4	243-254	wichtigsten	object[5]	3-2[0_5]	
+3-5	255-273	Qualitätskriterien	object[5]	_	
+3-6	273-274	,	_	_	
+3-7	275-278	die	_	_	
+3-8	279-282	bei	_	_	
+3-9	283-286	der	_	_	
+3-10	287-298	Beurteilung	context[6]	3-4[5_6]	
+3-11	299-302	von	context[6]	_	
+3-12	303-319	Webapplikationen	context[6]	_	
+3-13	320-322	zu	_	_	
+3-14	323-331	beachten	_	_	
+3-15	332-336	sind	_	_	
+3-16	336-337	.	_	_	
+
+#Text=Sie können ausgewählte Auszeichnungsund Scriptsprachen praktisch einsetzen.
+4-1	338-341	Sie	_	_	
+4-2	342-348	können	_	_	
+4-3	349-360	ausgewählte	_	_	
+4-4	361-377	Auszeichnungsund	object[7]	4-7[0_7]	
+4-5	378-392	Scriptsprachen	object[7]	_	
+4-6	393-402	praktisch	context	4-4[7_0]	
+4-7	403-412	einsetzen	competency	_	
+4-8	412-413	.	_	_	
+
+#Text=Sie haben Erfahrung mit der Konzeption und Realisation von zeitgemäßen WebApplikationen mit einer geringen serverseitigen Komplexität.
+5-1	414-417	Sie	_	_	
+5-2	418-423	haben	_	_	
+5-3	424-433	Erfahrung	_	_	
+5-4	434-437	mit	_	_	
+5-5	438-441	der	_	_	
+5-6	442-452	Konzeption	competency	_	
+5-7	453-456	und	_	_	
+5-8	457-468	Realisation	competency	_	
+5-9	469-472	von	_	_	
+5-10	473-484	zeitgemäßen	object[8]	5-6[0_8]|5-8[0_8]	
+5-11	485-501	WebApplikationen	object[8]	_	
+5-12	502-505	mit	_	_	
+5-13	506-511	einer	_	_	
+5-14	512-520	geringen	context[9]	5-10[8_9]	
+5-15	521-535	serverseitigen	context[9]	_	
+5-16	536-547	Komplexität	context[9]	_	
+5-17	547-548	.	_	_	

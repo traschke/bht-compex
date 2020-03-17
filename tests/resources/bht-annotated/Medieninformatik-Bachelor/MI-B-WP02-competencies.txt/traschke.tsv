@@ -1,0 +1,72 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden sollen in der Lage sein, auf Grund von Anforderungen an die zukünftigen Softwaresysteme, komplexe Software-Architekturen zu entwerfen und die Lösungskonzepte für deren statischen und dynamischen Aspekte aufzuzeigen.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-23	sollen	_	_	
+1-4	24-26	in	_	_	
+1-5	27-30	der	_	_	
+1-6	31-35	Lage	_	_	
+1-7	36-40	sein	_	_	
+1-8	40-41	,	_	_	
+1-9	42-45	auf	_	_	
+1-10	46-51	Grund	_	_	
+1-11	52-55	von	_	_	
+1-12	56-69	Anforderungen	_	_	
+1-13	70-72	an	_	_	
+1-14	73-76	die	_	_	
+1-15	77-88	zukünftigen	_	_	
+1-16	89-104	Softwaresysteme	_	_	
+1-17	104-105	,	_	_	
+1-18	106-114	komplexe	object[1]	1-21[0_1]	
+1-19	115-137	Software-Architekturen	object[1]	_	
+1-20	138-140	zu	_	_	
+1-21	141-150	entwerfen	competency	_	
+1-22	151-154	und	_	_	
+1-23	155-158	die	_	_	
+1-24	159-174	Lösungskonzepte	object	1-31	
+1-25	175-178	für	_	_	
+1-26	179-184	deren	_	_	
+1-27	185-195	statischen	context[2]	1-24[0_2]	
+1-28	196-199	und	context[2]	_	
+1-29	200-211	dynamischen	context[2]	_	
+1-30	212-219	Aspekte	context[2]	_	
+1-31	220-231	aufzuzeigen	competency	_	
+1-32	231-232	.	_	_	
+
+#Text=Dabei beherrschen sie eine Toollandschaft, die für das Aufsetzen von mittelgroßen bzw. großen Projekten notwendig ist und kennen die Abhängigkeiten und die Erstellungsprozesse der im Projekt zu realisierenden Artefakte.
+2-1	233-238	Dabei	_	_	
+2-2	239-250	beherrschen	competency	_	
+2-3	251-254	sie	_	_	
+2-4	255-259	eine	_	_	
+2-5	260-274	Toollandschaft	object	2-2	
+2-6	274-275	,	_	_	
+2-7	276-279	die	_	_	
+2-8	280-283	für	_	_	
+2-9	284-287	das	_	_	
+2-10	288-297	Aufsetzen	context[3]	2-5[0_3]	
+2-11	298-301	von	context[3]	_	
+2-12	302-314	mittelgroßen	context[3]	_	
+2-13	315-318	bzw	context[3]	_	
+2-14	318-319	.	context[3]	_	
+2-15	320-326	großen	context[3]	_	
+2-16	327-336	Projekten	context[3]	_	
+2-17	337-346	notwendig	_	_	
+2-18	347-350	ist	_	_	
+2-19	351-354	und	_	_	
+2-20	355-361	kennen	competency	_	
+2-21	362-365	die	_	_	
+2-22	366-380	Abhängigkeiten	object	2-20	
+2-23	381-384	und	_	_	
+2-24	385-388	die	_	_	
+2-25	389-408	Erstellungsprozesse	object	2-20	
+2-26	409-412	der	_	_	
+2-27	413-415	im	_	_	
+2-28	416-423	Projekt	_	_	
+2-29	424-426	zu	context[4]	2-22[0_4]|2-25[0_4]	
+2-30	427-441	realisierenden	context[4]	_	
+2-31	442-451	Artefakte	context[4]	_	
+2-32	451-452	.	_	_	

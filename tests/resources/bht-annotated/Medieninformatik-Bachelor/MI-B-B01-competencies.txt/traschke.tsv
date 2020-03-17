@@ -1,0 +1,21 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Kenntnisse in den mathematischen Grundlagen der Informatik, Sicherheit im abstrakten und strukturellen Denken.
+1-1	0-10	Kenntnisse	competency	_	
+1-2	11-13	in	_	_	
+1-3	14-17	den	_	_	
+1-4	18-32	mathematischen	object[1]	1-1[0_1]	
+1-5	33-43	Grundlagen	object[1]	_	
+1-6	44-47	der	_	_	
+1-7	48-58	Informatik	context	1-4[1_0]	
+1-8	58-59	,	_	_	
+1-9	60-70	Sicherheit	context	1-4[1_0]	
+1-10	71-73	im	_	_	
+1-11	74-84	abstrakten	context[2]	1-4[1_2]	
+1-12	85-88	und	context[2]	_	
+1-13	89-102	strukturellen	context[2]	_	
+1-14	103-109	Denken	context[2]	_	
+1-15	109-110	.	_	_	

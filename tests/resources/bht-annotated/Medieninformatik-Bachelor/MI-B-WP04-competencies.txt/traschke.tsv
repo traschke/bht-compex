@@ -1,0 +1,71 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Heutzutage muss immer mehr Software in immer kürzerer Zeit entwickelt werden.
+1-1	0-10	Heutzutage	_	_	
+1-2	11-15	muss	_	_	
+1-3	16-21	immer	_	_	
+1-4	22-26	mehr	_	_	
+1-5	27-35	Software	_	_	
+1-6	36-38	in	_	_	
+1-7	39-44	immer	_	_	
+1-8	45-53	kürzerer	_	_	
+1-9	54-58	Zeit	_	_	
+1-10	59-69	entwickelt	_	_	
+1-11	70-76	werden	_	_	
+1-12	76-77	.	_	_	
+
+#Text=Damit diese Software noch wartbar bleibt, muss von vornherein Augenmerk auf deren Qualität und Testbarkeit gelegt werden.
+2-1	78-83	Damit	_	_	
+2-2	84-89	diese	_	_	
+2-3	90-98	Software	_	_	
+2-4	99-103	noch	_	_	
+2-5	104-111	wartbar	_	_	
+2-6	112-118	bleibt	_	_	
+2-7	118-119	,	_	_	
+2-8	120-124	muss	_	_	
+2-9	125-128	von	_	_	
+2-10	129-139	vornherein	_	_	
+2-11	140-149	Augenmerk	_	_	
+2-12	150-153	auf	_	_	
+2-13	154-159	deren	_	_	
+2-14	160-168	Qualität	_	_	
+2-15	169-172	und	_	_	
+2-16	173-184	Testbarkeit	_	_	
+2-17	185-191	gelegt	_	_	
+2-18	192-198	werden	_	_	
+2-19	198-199	.	_	_	
+
+#Text=Die Studierenden lernen zu diesem Zweck konstruktive und analytische Methoden der Qualitätssicherung und dafür passende Werkzeuge kennen.
+3-1	200-203	Die	_	_	
+3-2	204-216	Studierenden	_	_	
+3-3	217-223	lernen	_	_	
+3-4	224-226	zu	_	_	
+3-5	227-233	diesem	_	_	
+3-6	234-239	Zweck	_	_	
+3-7	240-252	konstruktive	_	_	
+3-8	253-256	und	_	_	
+3-9	257-268	analytische	_	_	
+3-10	269-277	Methoden	object[1]	3-17[0_1]	
+3-11	278-281	der	object[1]	_	
+3-12	282-300	Qualitätssicherung	object[1]	_	
+3-13	301-304	und	_	_	
+3-14	305-310	dafür	_	_	
+3-15	311-319	passende	object[2]	3-17[0_2]	
+3-16	320-329	Werkzeuge	object[2]	_	
+3-17	330-336	kennen	competency	_	
+3-18	336-337	.	_	_	
+
+#Text=Sie können derartige Werkzeuge einordnen, auswählen und anwenden.
+4-1	338-341	Sie	_	_	
+4-2	342-348	können	_	_	
+4-3	349-358	derartige	_	_	
+4-4	359-368	Werkzeuge	object	4-5|4-7|4-9	
+4-5	369-378	einordnen	competency	_	
+4-6	378-379	,	_	_	
+4-7	380-389	auswählen	competency	_	
+4-8	390-393	und	_	_	
+4-9	394-402	anwenden	competency	_	
+4-10	402-403	.	_	_	

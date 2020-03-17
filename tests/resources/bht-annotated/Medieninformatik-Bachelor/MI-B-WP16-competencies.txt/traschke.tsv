@@ -1,0 +1,35 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden kennen Aktuelle Methoden und Technologien aus den Bereichen Webentwicklung, mobile Anwendungen, Computergrafik, Medientechnologien.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-23	kennen	competency	_	
+1-4	24-32	Aktuelle	object[1]	1-3[0_1]	
+1-5	33-41	Methoden	object[1]	_	
+1-6	42-45	und	object[1]	_	
+1-7	46-58	Technologien	object[1]	_	
+1-8	59-62	aus	_	_	
+1-9	63-66	den	_	_	
+1-10	67-76	Bereichen	_	_	
+1-11	77-91	Webentwicklung	context	1-4[1_0]	
+1-12	91-92	,	_	_	
+1-13	93-99	mobile	context[2]	1-4[1_2]	
+1-14	100-111	Anwendungen	context[2]	_	
+1-15	111-112	,	_	_	
+1-16	113-127	Computergrafik	context	1-4[1_0]	
+1-17	127-128	,	_	_	
+1-18	129-147	Medientechnologien	context	1-4[1_0]	
+1-19	147-148	.	_	_	
+
+#Text=Die Studierenden lernen selber Themen zu erarbeiten.
+2-1	149-152	Die	_	_	
+2-2	153-165	Studierenden	_	_	
+2-3	166-172	lernen	_	_	
+2-4	173-179	selber	_	_	
+2-5	180-186	Themen	object	2-7	
+2-6	187-189	zu	_	_	
+2-7	190-200	erarbeiten	competency	_	
+2-8	200-201	.	_	_	

@@ -1,0 +1,85 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Sie erwerben theoretische und praktische Kenntnisse in Bezug auf die Anwendung von modernen Layout-Techniken und den Umgang mit Präprozessoren.
+1-1	0-3	Sie	_	_	
+1-2	4-12	erwerben	_	_	
+1-3	13-25	theoretische	_	_	
+1-4	26-29	und	_	_	
+1-5	30-40	praktische	_	_	
+1-6	41-51	Kenntnisse	competency	_	
+1-7	52-54	in	_	_	
+1-8	55-60	Bezug	_	_	
+1-9	61-64	auf	_	_	
+1-10	65-68	die	_	_	
+1-11	69-78	Anwendung	competency	_	
+1-12	79-82	von	_	_	
+1-13	83-91	modernen	object[1]	1-6[0_1]|1-11[0_1]	
+1-14	92-108	Layout-Techniken	object[1]	_	
+1-15	109-112	und	_	_	
+1-16	113-116	den	_	_	
+1-17	117-123	Umgang	competency	_	
+1-18	124-127	mit	_	_	
+1-19	128-142	Präprozessoren	object	1-17	
+1-20	142-143	.	_	_	
+
+#Text=Der sichere Umgang mit den vermittelten Techniken befähigt die Studierenden dazu, wartbare, wiederverwendbare und performante CSSDateien zu erstellen.
+2-1	144-147	Der	_	_	
+2-2	148-155	sichere	_	_	
+2-3	156-162	Umgang	_	_	
+2-4	163-166	mit	_	_	
+2-5	167-170	den	_	_	
+2-6	171-183	vermittelten	_	_	
+2-7	184-193	Techniken	_	_	
+2-8	194-202	befähigt	_	_	
+2-9	203-206	die	_	_	
+2-10	207-219	Studierenden	_	_	
+2-11	220-224	dazu	_	_	
+2-12	224-225	,	_	_	
+2-13	226-234	wartbare	_	_	
+2-14	234-235	,	_	_	
+2-15	236-253	wiederverwendbare	_	_	
+2-16	254-257	und	_	_	
+2-17	258-269	performante	_	_	
+2-18	270-280	CSSDateien	object	2-20	
+2-19	281-283	zu	_	_	
+2-20	284-293	erstellen	competency	_	
+2-21	293-294	.	_	_	
+
+#Text=Durch die intelligente Auswahl von Frameworks und Libraries oder auch den Verzicht darauf bekommen die Studierenden mehr Spielraum für eigenes Design, das nicht durch gängige Frameworks wie bootstrap oder foundation vorgegeben ist.
+3-1	295-300	Durch	_	_	
+3-2	301-304	die	_	_	
+3-3	305-317	intelligente	_	_	
+3-4	318-325	Auswahl	_	_	
+3-5	326-329	von	_	_	
+3-6	330-340	Frameworks	_	_	
+3-7	341-344	und	_	_	
+3-8	345-354	Libraries	_	_	
+3-9	355-359	oder	_	_	
+3-10	360-364	auch	_	_	
+3-11	365-368	den	_	_	
+3-12	369-377	Verzicht	_	_	
+3-13	378-384	darauf	_	_	
+3-14	385-393	bekommen	_	_	
+3-15	394-397	die	_	_	
+3-16	398-410	Studierenden	_	_	
+3-17	411-415	mehr	_	_	
+3-18	416-425	Spielraum	_	_	
+3-19	426-429	für	_	_	
+3-20	430-437	eigenes	_	_	
+3-21	438-444	Design	_	_	
+3-22	444-445	,	_	_	
+3-23	446-449	das	_	_	
+3-24	450-455	nicht	_	_	
+3-25	456-461	durch	_	_	
+3-26	462-469	gängige	_	_	
+3-27	470-480	Frameworks	_	_	
+3-28	481-484	wie	_	_	
+3-29	485-494	bootstrap	_	_	
+3-30	495-499	oder	_	_	
+3-31	500-510	foundation	_	_	
+3-32	511-521	vorgegeben	_	_	
+3-33	522-525	ist	_	_	
+3-34	525-526	.	_	_	

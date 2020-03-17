@@ -1,0 +1,19 @@
+#FORMAT=WebAnno TSV 3.2
+
+
+#Text=Empfehlung: Programmierung I+II, Verteilte Systeme, Datenbanksysteme, Web Engineering I
+1-1	0-10	Empfehlung	
+1-2	10-11	:	
+1-3	12-26	Programmierung	
+1-4	27-28	I	
+1-5	28-29	+	
+1-6	29-31	II	
+1-7	31-32	,	
+1-8	33-42	Verteilte	
+1-9	43-50	Systeme	
+1-10	50-51	,	
+1-11	52-68	Datenbanksysteme	
+1-12	68-69	,	
+1-13	70-73	Web	
+1-14	74-85	Engineering	
+1-15	86-87	I	

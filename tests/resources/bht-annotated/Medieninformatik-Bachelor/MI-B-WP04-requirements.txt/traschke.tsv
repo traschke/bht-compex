@@ -1,0 +1,14 @@
+#FORMAT=WebAnno TSV 3.2
+
+
+#Text=Empfehlung: Programmierung I und II, Software Engineering II
+1-1	0-10	Empfehlung	
+1-2	10-11	:	
+1-3	12-26	Programmierung	
+1-4	27-28	I	
+1-5	29-32	und	
+1-6	33-35	II	
+1-7	35-36	,	
+1-8	37-45	Software	
+1-9	46-57	Engineering	
+1-10	58-60	II	

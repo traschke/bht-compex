@@ -1,0 +1,43 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden sollen Modellierungstechniken, insbesondere Graphen, grundlegende Datenstrukturen sowie Algorithmen zur Lösung von Problemen kennenlernen.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-23	sollen	_	_	
+1-4	24-46	Modellierungstechniken	object	1-17	
+1-5	46-47	,	_	_	
+1-6	48-60	insbesondere	_	_	
+1-7	61-68	Graphen	object	1-17	
+1-8	68-69	,	_	_	
+1-9	70-82	grundlegende	object[1]	1-17[0_1]	
+1-10	83-98	Datenstrukturen	object[1]	_	
+1-11	99-104	sowie	_	_	
+1-12	105-116	Algorithmen	object	1-17	
+1-13	117-120	zur	_	_	
+1-14	121-127	Lösung	context[2]	1-12[0_2]	
+1-15	128-131	von	context[2]	_	
+1-16	132-141	Problemen	context[2]	_	
+1-17	142-154	kennenlernen	competency	_	
+1-18	154-155	.	_	_	
+
+#Text=Sie können Laufzeiten von Algorithmen abschätzen und effiziente Algorithmen unter Verwendung geeigneter Datenstrukturen entwerfen und programmieren.
+2-1	156-159	Sie	_	_	
+2-2	160-166	können	_	_	
+2-3	167-177	Laufzeiten	object	2-6	
+2-4	178-181	von	_	_	
+2-5	182-193	Algorithmen	context	2-3	
+2-6	194-204	abschätzen	competency	_	
+2-7	205-208	und	_	_	
+2-8	209-219	effiziente	object[3]	2-14[0_3]|2-16[0_3]	
+2-9	220-231	Algorithmen	object[3]	_	
+2-10	232-237	unter	_	_	
+2-11	238-248	Verwendung	context[4]	2-8[3_4]	
+2-12	249-259	geeigneter	context[4]	_	
+2-13	260-275	Datenstrukturen	context[4]	_	
+2-14	276-285	entwerfen	competency	_	
+2-15	286-289	und	_	_	
+2-16	290-303	programmieren	competency	_	
+2-17	303-304	.	_	_	

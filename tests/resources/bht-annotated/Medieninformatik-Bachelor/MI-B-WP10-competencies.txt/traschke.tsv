@@ -1,0 +1,148 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden kennen typische Anwendungsszenarien für mobile Anwendungen und können Mehrwerte mobiler Anwendungen im Hinblick auf diese Szenarien identifizieren.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-23	kennen	competency	_	
+1-4	24-32	typische	_	_	
+1-5	33-52	Anwendungsszenarien	object	1-3	
+1-6	53-56	für	_	_	
+1-7	57-63	mobile	context[1]	1-5[0_1]	
+1-8	64-75	Anwendungen	context[1]	_	
+1-9	76-79	und	_	_	
+1-10	80-86	können	_	_	
+1-11	87-96	Mehrwerte	object	1-19	
+1-12	97-104	mobiler	context[2]	1-11[0_2]	
+1-13	105-116	Anwendungen	context[2]	_	
+1-14	117-119	im	_	_	
+1-15	120-128	Hinblick	_	_	
+1-16	129-132	auf	_	_	
+1-17	133-138	diese	_	_	
+1-18	139-148	Szenarien	_	_	
+1-19	149-163	identifizieren	competency	_	
+1-20	163-164	.	_	_	
+
+#Text=Die Studierenden verfügen über Entwicklungskompetenzen in einer ausgewählten Technologie zur Umsetzung mobiler Applikationen (z.B. Android Java Framework, Webtechnologien und -frameworks) und können Anwendungen mit StandardBedienelementen wie Listen, Formularen, Menüs, Dialogen etc. entwickeln.
+2-1	165-168	Die	_	_	
+2-2	169-181	Studierenden	_	_	
+2-3	182-190	verfügen	_	_	
+2-4	191-195	über	_	_	
+2-5	196-219	Entwicklungskompetenzen	_	_	
+2-6	220-222	in	_	_	
+2-7	223-228	einer	_	_	
+2-8	229-241	ausgewählten	_	_	
+2-9	242-253	Technologie	_	_	
+2-10	254-257	zur	_	_	
+2-11	258-267	Umsetzung	_	_	
+2-12	268-275	mobiler	_	_	
+2-13	276-289	Applikationen	_	_	
+2-14	290-291	(	_	_	
+2-15	291-294	z.B	_	_	
+2-16	294-295	.	_	_	
+2-17	296-303	Android	_	_	
+2-18	304-308	Java	_	_	
+2-19	309-318	Framework	_	_	
+2-20	318-319	,	_	_	
+2-21	320-335	Webtechnologien	_	_	
+2-22	336-339	und	_	_	
+2-23	340-341	-	_	_	
+2-24	341-351	frameworks	_	_	
+2-25	351-352	)	_	_	
+2-26	353-356	und	_	_	
+2-27	357-363	können	_	_	
+2-28	364-375	Anwendungen	object[3]	2-41[0_3]	
+2-29	376-379	mit	object[3]	_	
+2-30	380-403	StandardBedienelementen	object[3]	_	
+2-31	404-407	wie	_	_	
+2-32	408-414	Listen	_	_	
+2-33	414-415	,	_	_	
+2-34	416-426	Formularen	_	_	
+2-35	426-427	,	_	_	
+2-36	428-433	Menüs	_	_	
+2-37	433-434	,	_	_	
+2-38	435-443	Dialogen	_	_	
+2-39	444-447	etc	_	_	
+2-40	447-448	.	_	_	
+2-41	449-459	entwickeln	competency	_	
+2-42	459-460	.	_	_	
+
+#Text=Die Studierenden verstehen die Rolle mobiler Applikationen im Rahmen von ClientServer Architekturen und können Alternativen zur clientund server-seitigen Persistierung der von einer Anwendung verwendeten Daten umsetzen.
+3-1	461-464	Die	_	_	
+3-2	465-477	Studierenden	_	_	
+3-3	478-487	verstehen	competency	_	
+3-4	488-491	die	_	_	
+3-5	492-497	Rolle	object[4]	3-3[0_4]	
+3-6	498-505	mobiler	object[4]	_	
+3-7	506-519	Applikationen	object[4]	_	
+3-8	520-522	im	_	_	
+3-9	523-529	Rahmen	_	_	
+3-10	530-533	von	_	_	
+3-11	534-546	ClientServer	context[5]	3-5[4_5]	
+3-12	547-560	Architekturen	context[5]	_	
+3-13	561-564	und	_	_	
+3-14	565-571	können	_	_	
+3-15	572-584	Alternativen	object[6]	3-26[0_6]	
+3-16	585-588	zur	object[6]	_	
+3-17	589-598	clientund	object[6]	_	
+3-18	599-614	server-seitigen	object[6]	_	
+3-19	615-628	Persistierung	object[6]	_	
+3-20	629-632	der	_	_	
+3-21	633-636	von	_	_	
+3-22	637-642	einer	_	_	
+3-23	643-652	Anwendung	_	_	
+3-24	653-664	verwendeten	_	_	
+3-25	665-670	Daten	_	_	
+3-26	671-679	umsetzen	competency	_	
+3-27	679-680	.	_	_	
+
+#Text=Die Studierenden kennen – ausgehend vom Beispiel der verwendeten Technologie – Einsatzmöglichkeiten und Architekturmuster von Anwendungsframeworks.
+4-1	681-684	Die	_	_	
+4-2	685-697	Studierenden	_	_	
+4-3	698-704	kennen	competency	_	
+4-4	705-706	–	_	_	
+4-5	707-716	ausgehend	_	_	
+4-6	717-720	vom	_	_	
+4-7	721-729	Beispiel	_	_	
+4-8	730-733	der	_	_	
+4-9	734-745	verwendeten	_	_	
+4-10	746-757	Technologie	_	_	
+4-11	758-759	–	_	_	
+4-12	760-780	Einsatzmöglichkeiten	object	4-3	
+4-13	781-784	und	_	_	
+4-14	785-802	Architekturmuster	object	4-3	
+4-15	803-806	von	_	_	
+4-16	807-827	Anwendungsframeworks	context	4-12|4-14	
+4-17	827-828	.	_	_	
+
+#Text=Die Studierenden sind dazu in der Lage, die in der Veranstaltung erworbenen Entwicklungskompetenzen im Bereich der ausgewählten Technologie selbständig anhand von einschlägigem Dokumentationsmaterial weiter zu entwickeln.
+5-1	829-832	Die	_	_	
+5-2	833-845	Studierenden	_	_	
+5-3	846-850	sind	_	_	
+5-4	851-855	dazu	_	_	
+5-5	856-858	in	_	_	
+5-6	859-862	der	_	_	
+5-7	863-867	Lage	_	_	
+5-8	867-868	,	_	_	
+5-9	869-872	die	_	_	
+5-10	873-875	in	_	_	
+5-11	876-879	der	_	_	
+5-12	880-893	Veranstaltung	_	_	
+5-13	894-904	erworbenen	_	_	
+5-14	905-928	Entwicklungskompetenzen	object	5-27	
+5-15	929-931	im	_	_	
+5-16	932-939	Bereich	_	_	
+5-17	940-943	der	_	_	
+5-18	944-956	ausgewählten	context[7]	5-14[0_7]	
+5-19	957-968	Technologie	context[7]	_	
+5-20	969-980	selbständig	_	_	
+5-21	981-987	anhand	_	_	
+5-22	988-991	von	_	_	
+5-23	992-1005	einschlägigem	_	_	
+5-24	1006-1028	Dokumentationsmaterial	_	_	
+5-25	1029-1035	weiter	_	_	
+5-26	1036-1038	zu	_	_	
+5-27	1039-1049	entwickeln	competency	_	
+5-28	1049-1050	.	_	_	

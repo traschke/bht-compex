@@ -1,0 +1,134 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden erwerben grundlegende Kenntnisse zur plattformübergreifenden Gestaltung digitaler und interaktiver Anwendungen und erlernen den praxisorientierten Umgang mit digitalen Medien.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-25	erwerben	_	_	
+1-4	26-38	grundlegende	_	_	
+1-5	39-49	Kenntnisse	competency	_	
+1-6	50-53	zur	_	_	
+1-7	54-77	plattformübergreifenden	object[1]	1-5[0_1]	
+1-8	78-88	Gestaltung	object[1]	_	
+1-9	89-98	digitaler	context[2]	1-7[1_2]	
+1-10	99-102	und	context[2]	_	
+1-11	103-115	interaktiver	context[2]	_	
+1-12	116-127	Anwendungen	context[2]	_	
+1-13	128-131	und	_	_	
+1-14	132-140	erlernen	competency	_	
+1-15	141-144	den	_	_	
+1-16	145-163	praxisorientierten	object[3]	1-14[0_3]|1-14[0_3]	
+1-17	164-170	Umgang	object[3]	_	
+1-18	171-174	mit	_	_	
+1-19	175-184	digitalen	context[4]	1-16[3_4]	
+1-20	185-191	Medien	context[4]	_	
+1-21	191-192	.	_	_	
+
+#Text=Die Studierenden sollen in der Lage sein, Designkonzepte für verschiedene Medienarten und mit unterschiedlichen Anforderungen an das Interface zu entwickeln: vom Small Screen Design am Smartphone bis zur Webanwendung am Computer.
+2-1	193-196	Die	_	_	
+2-2	197-209	Studierenden	_	_	
+2-3	210-216	sollen	_	_	
+2-4	217-219	in	_	_	
+2-5	220-223	der	_	_	
+2-6	224-228	Lage	_	_	
+2-7	229-233	sein	_	_	
+2-8	233-234	,	_	_	
+2-9	235-249	Designkonzepte	object	2-21	
+2-10	250-253	für	_	_	
+2-11	254-266	verschiedene	_	_	
+2-12	267-278	Medienarten	context[5]	2-9[0_5]	
+2-13	279-282	und	context[5]	_	
+2-14	283-286	mit	context[5]	_	
+2-15	287-304	unterschiedlichen	context[5]	_	
+2-16	305-318	Anforderungen	context[5]	_	
+2-17	319-321	an	context[5]	_	
+2-18	322-325	das	context[5]	_	
+2-19	326-335	Interface	context[5]	_	
+2-20	336-338	zu	_	_	
+2-21	339-349	entwickeln	competency	_	
+2-22	349-350	:	_	_	
+2-23	351-354	vom	_	_	
+2-24	355-360	Small	_	_	
+2-25	361-367	Screen	_	_	
+2-26	368-374	Design	_	_	
+2-27	375-377	am	_	_	
+2-28	378-388	Smartphone	_	_	
+2-29	389-392	bis	_	_	
+2-30	393-396	zur	_	_	
+2-31	397-409	Webanwendung	_	_	
+2-32	410-412	am	_	_	
+2-33	413-421	Computer	_	_	
+2-34	421-422	.	_	_	
+
+#Text=Anhand einer konkreten Themenstellung, die das Semester wie ein roter Faden durchzieht, werden wichtige Aspekte der Gestaltung und Konzeption von digitalen Medien erlernt.
+3-1	423-429	Anhand	_	_	
+3-2	430-435	einer	_	_	
+3-3	436-445	konkreten	_	_	
+3-4	446-460	Themenstellung	_	_	
+3-5	460-461	,	_	_	
+3-6	462-465	die	_	_	
+3-7	466-469	das	_	_	
+3-8	470-478	Semester	_	_	
+3-9	479-482	wie	_	_	
+3-10	483-486	ein	_	_	
+3-11	487-492	roter	_	_	
+3-12	493-498	Faden	_	_	
+3-13	499-509	durchzieht	_	_	
+3-14	509-510	,	_	_	
+3-15	511-517	werden	_	_	
+3-16	518-526	wichtige	_	_	
+3-17	527-534	Aspekte	object	3-25	
+3-18	535-538	der	_	_	
+3-19	539-549	Gestaltung	context[6]	3-17[0_6]	
+3-20	550-553	und	context[6]	_	
+3-21	554-564	Konzeption	context[6]	_	
+3-22	565-568	von	_	_	
+3-23	569-578	digitalen	_	_	
+3-24	579-585	Medien	_	_	
+3-25	586-593	erlernt	competency	_	
+3-26	593-594	.	_	_	
+
+#Text=Der Fokus liegt dabei auf dem gestalterischen Experimentieren mit digitalen Werkzeugen in Kombination mit einer strukturierten, methodischen Vorgehensweise.
+4-1	595-598	Der	_	_	
+4-2	599-604	Fokus	_	_	
+4-3	605-610	liegt	_	_	
+4-4	611-616	dabei	_	_	
+4-5	617-620	auf	_	_	
+4-6	621-624	dem	_	_	
+4-7	625-640	gestalterischen	_	_	
+4-8	641-656	Experimentieren	_	_	
+4-9	657-660	mit	_	_	
+4-10	661-670	digitalen	_	_	
+4-11	671-681	Werkzeugen	_	_	
+4-12	682-684	in	_	_	
+4-13	685-696	Kombination	_	_	
+4-14	697-700	mit	_	_	
+4-15	701-706	einer	_	_	
+4-16	707-721	strukturierten	_	_	
+4-17	721-722	,	_	_	
+4-18	723-735	methodischen	_	_	
+4-19	736-750	Vorgehensweise	_	_	
+4-20	750-751	.	_	_	
+
+#Text=Die Studierenden sind in der Lage digitale, interaktive Anwendungen zu konzipieren, zu visualisieren und zu erproben.
+5-1	752-755	Die	_	_	
+5-2	756-768	Studierenden	_	_	
+5-3	769-773	sind	_	_	
+5-4	774-776	in	_	_	
+5-5	777-780	der	_	_	
+5-6	781-785	Lage	_	_	
+5-7	786-794	digitale	object[7]	5-12[0_7]|5-15[0_7]|5-18[0_7]	
+5-8	794-795	,	object[7]	_	
+5-9	796-807	interaktive	object[7]	_	
+5-10	808-819	Anwendungen	object[7]	_	
+5-11	820-822	zu	_	_	
+5-12	823-834	konzipieren	competency	_	
+5-13	834-835	,	_	_	
+5-14	836-838	zu	_	_	
+5-15	839-852	visualisieren	competency	_	
+5-16	853-856	und	_	_	
+5-17	857-859	zu	_	_	
+5-18	860-868	erproben	competency	_	
+5-19	868-869	.	_	_	

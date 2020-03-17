@@ -1,0 +1,23 @@
+#FORMAT=WebAnno TSV 3.2
+
+
+#Text=Empfehlung: Ein erfolgreicher Abschluss der Module Mathematik 1 + 2, Programmieren 1 + 2 und Computergrafik Grundlagen
+1-1	0-10	Empfehlung	
+1-2	10-11	:	
+1-3	12-15	Ein	
+1-4	16-29	erfolgreicher	
+1-5	30-39	Abschluss	
+1-6	40-43	der	
+1-7	44-50	Module	
+1-8	51-61	Mathematik	
+1-9	62-63	1	
+1-10	64-65	+	
+1-11	66-67	2	
+1-12	67-68	,	
+1-13	69-82	Programmieren	
+1-14	83-84	1	
+1-15	85-86	+	
+1-16	87-88	2	
+1-17	89-92	und	
+1-18	93-107	Computergrafik	
+1-19	108-118	Grundlagen	

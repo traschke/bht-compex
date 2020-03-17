@@ -1,0 +1,19 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden verstehen Aufbau und Wirkungsweise von Betriebssystemen, speziell von Mehrbenutzersystemen.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-26	verstehen	competency	_	
+1-4	27-33	Aufbau	object	1-3	
+1-5	34-37	und	_	_	
+1-6	38-51	Wirkungsweise	object	1-3	
+1-7	52-55	von	_	_	
+1-8	56-72	Betriebssystemen	context	1-4|1-6	
+1-9	72-73	,	_	_	
+1-10	74-82	speziell	_	_	
+1-11	83-86	von	_	_	
+1-12	87-107	Mehrbenutzersystemen	context	1-4|1-6	
+1-13	107-108	.	_	_	

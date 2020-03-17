@@ -1,0 +1,38 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Die Studierenden erlernen aktuelle Techniken der 3D-Grafikprogrammierung für hardwarebeschleunigte grafisch-interaktive Webanwendungen.
+1-1	0-3	Die	_	_	
+1-2	4-16	Studierenden	_	_	
+1-3	17-25	erlernen	competency	_	
+1-4	26-34	aktuelle	_	_	
+1-5	35-44	Techniken	object[1]	1-3[0_1]	
+1-6	45-48	der	object[1]	_	
+1-7	49-72	3D-Grafikprogrammierung	object[1]	_	
+1-8	73-76	für	_	_	
+1-9	77-98	hardwarebeschleunigte	context[2]	1-5[1_2]	
+1-10	99-119	grafisch-interaktive	context[2]	_	
+1-11	120-134	Webanwendungen	context[2]	_	
+1-12	134-135	.	_	_	
+
+#Text=Sie lernen die Umsetzbarkeit verschiedener Beleuchtungsund Materialeffekte mittels aktueller Browser-Schnittstellen einzuschätzen und selbst effiziente Lösungen zu implementieren.
+2-1	136-139	Sie	_	_	
+2-2	140-146	lernen	_	_	
+2-3	147-150	die	_	_	
+2-4	151-164	Umsetzbarkeit	object	2-11	
+2-5	165-178	verschiedener	_	_	
+2-6	179-194	Beleuchtungsund	context[3]	2-4[0_3]	
+2-7	195-210	Materialeffekte	context[3]	_	
+2-8	211-218	mittels	context[3]	_	
+2-9	219-228	aktueller	context[3]	_	
+2-10	229-251	Browser-Schnittstellen	context[3]	_	
+2-11	252-265	einzuschätzen	competency	_	
+2-12	266-269	und	_	_	
+2-13	270-276	selbst	_	_	
+2-14	277-287	effiziente	object[4]	2-17[0_4]	
+2-15	288-296	Lösungen	object[4]	_	
+2-16	297-299	zu	_	_	
+2-17	300-314	implementieren	competency	_	
+2-18	314-315	.	_	_	

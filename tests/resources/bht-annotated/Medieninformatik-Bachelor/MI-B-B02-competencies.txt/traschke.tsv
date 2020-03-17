@@ -1,0 +1,50 @@
+#FORMAT=WebAnno TSV 3.2
+#T_SP=webanno.custom.TestLayer|CompType
+#T_RL=webanno.custom.TestLayerRelation|BT_webanno.custom.TestLayer
+
+
+#Text=Ziel ist das Erlernen der Grundlagen von Automaten und formalen Sprachen als Werkzeug zur Modellierung und Transformation von Systemen und Prozessen.
+1-1	0-4	Ziel	_	_	
+1-2	5-8	ist	_	_	
+1-3	9-12	das	_	_	
+1-4	13-21	Erlernen	competency	_	
+1-5	22-25	der	_	_	
+1-6	26-36	Grundlagen	_	_	
+1-7	37-40	von	_	_	
+1-8	41-50	Automaten	object	1-4	
+1-9	51-54	und	_	_	
+1-10	55-63	formalen	object[1]	1-4[0_1]	
+1-11	64-72	Sprachen	object[1]	_	
+1-12	73-76	als	_	_	
+1-13	77-85	Werkzeug	_	_	
+1-14	86-89	zur	_	_	
+1-15	90-102	Modellierung	context[2]	1-8[0_2]|1-10[1_2]	
+1-16	103-106	und	context[2]	_	
+1-17	107-121	Transformation	context[2]	_	
+1-18	122-125	von	context[2]	_	
+1-19	126-134	Systemen	context[2]	_	
+1-20	135-138	und	context[2]	_	
+1-21	139-148	Prozessen	context[2]	_	
+1-22	148-149	.	_	_	
+
+#Text=Diese Grundlagen sollen ermöglichen den Aufbau von Programmiersprachen besser zu verstehen und die Grenzen von Programmen beurteilen zu können.
+2-1	150-155	Diese	_	_	
+2-2	156-166	Grundlagen	_	_	
+2-3	167-173	sollen	_	_	
+2-4	174-185	ermöglichen	_	_	
+2-5	186-189	den	_	_	
+2-6	190-196	Aufbau	context	2-8	
+2-7	197-200	von	_	_	
+2-8	201-220	Programmiersprachen	object	2-11	
+2-9	221-227	besser	_	_	
+2-10	228-230	zu	_	_	
+2-11	231-240	verstehen	competency	_	
+2-12	241-244	und	_	_	
+2-13	245-248	die	_	_	
+2-14	249-256	Grenzen	context	2-16	
+2-15	257-260	von	_	_	
+2-16	261-271	Programmen	object	2-17	
+2-17	272-282	beurteilen	competency	_	
+2-18	283-285	zu	_	_	
+2-19	286-292	können	_	_	
+2-20	292-293	.	_	_	

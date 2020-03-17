@@ -1,0 +1,10 @@
+#FORMAT=WebAnno TSV 3.2
+
+
+#Text=Empfehlung: Grundlegende mathematische und Programmierkenntnisse
+1-1	0-10	Empfehlung	
+1-2	10-11	:	
+1-3	12-24	Grundlegende	
+1-4	25-38	mathematische	
+1-5	39-42	und	
+1-6	43-64	Programmierkenntnisse	

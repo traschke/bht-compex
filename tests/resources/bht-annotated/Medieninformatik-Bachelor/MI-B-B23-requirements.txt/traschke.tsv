@@ -1,0 +1,9 @@
+#FORMAT=WebAnno TSV 3.2
+
+
+#Text=Empfehlung: Grundlegende Modellierungsund Programmierkenntnisse
+1-1	0-10	Empfehlung	
+1-2	10-11	:	
+1-3	12-24	Grundlegende	
+1-4	25-41	Modellierungsund	
+1-5	42-63	Programmierkenntnisse	
