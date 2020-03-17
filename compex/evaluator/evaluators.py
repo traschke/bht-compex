@@ -54,11 +54,15 @@ class FMeasureEvaluator:
             "precision": precision,
             "recall": recall,
             "f1": f1,
-            "true_positives": true_positives,
-            "false_positives": false_positives,
-            "true_negatives": true_negatives,
-            "false_negatives": false_negatives
+            "positives": {
+                "true": true_positives,
+                "false": false_positives
+            },
+            "negatives": {
+                "true": true_negatives,
+                "false": false_negatives
             }
+        }
 
     def __count_positive_negative(self, evaluation_set: EvaluationSet, mode: CalculationType = CalculationType.POSITIVE, consider_objects: bool = False, consider_contexts: bool = False):
         """
@@ -118,23 +122,25 @@ class FMeasureEvaluator:
                                     if consider_contexts:
                                         for dict1_context in dict1_object.contexts:
                                             is_whole_context_found: bool = False
-                                            for dict2_context in dict2_object.contexts:
-                                                if dict2_context == dict1_context:
-                                                    is_whole_context_found = True
-                                                    in_comp_trues += len(dict1_context.word_chunk.words)
-                                                    break
+                                            for dict2_object in dict2_compentency.objects:
+                                                for dict2_context in dict2_object.contexts:
+                                                    if dict2_context == dict1_context:
+                                                        is_whole_context_found = True
+                                                        in_comp_trues += len(dict1_context.word_chunk.words)
+                                                        break
                                             # Check each word of context if the whole context is not correct
                                             if not is_whole_context_found:
                                                 for dict1_context_word in dict1_context.word_chunk.words:
                                                     is_context_word_found: bool = False
-                                                    for dict2_context in dict2_object.contexts:
-                                                        for dict2_context_word in dict2_context.word_chunk.words:
-                                                            if dict1_context_word == dict2_context_word:
-                                                                is_context_word_found = True
-                                                                in_comp_trues += 1
+                                                    for dict2_object in dict2_compentency.objects:
+                                                        for dict2_context in dict2_object.contexts:
+                                                            for dict2_context_word in dict2_context.word_chunk.words:
+                                                                if dict1_context_word == dict2_context_word:
+                                                                    is_context_word_found = True
+                                                                    in_comp_trues += 1
+                                                                    break
+                                                            if is_context_word_found:
                                                                 break
-                                                        if is_context_word_found:
-                                                            break
                                                     if not is_context_word_found:
                                                         in_comp_falses += 1
                             break
