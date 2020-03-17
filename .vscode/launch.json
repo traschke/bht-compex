@@ -52,13 +52,13 @@
             "console": "integratedTerminal"
         },
         {
-            "name": "Evaluate folder",
+            "name": "Evaluate ALL",
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/compex/__main__.py",
             "args": [
                 "evaluate",
-                "${workspaceFolder}/tests/resources/"
+                "${workspaceFolder}/tests/resources/bht-annotated"
             ],
             "env": {
                 "PYTHONPATH":"${workspaceRoot}",
@@ -67,13 +67,165 @@
             "console": "integratedTerminal"
         },
         {
-            "name": "Evaluate bht-tesdata",
+            "name": "Evaluate ALL + objects",
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/compex/__main__.py",
             "args": [
                 "evaluate",
+                "--objects",
                 "${workspaceFolder}/tests/resources/bht-annotated"
+            ],
+            "env": {
+                "PYTHONPATH":"${workspaceRoot}",
+                "CORENLP_HOME": "${workspaceRoot}/.corenlp"
+            },
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Evaluate ALL + objects + contexts",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/compex/__main__.py",
+            "args": [
+                "evaluate",
+                "--objects",
+                "--contexts",
+                "${workspaceFolder}/tests/resources/bht-annotated"
+            ],
+            "env": {
+                "PYTHONPATH":"${workspaceRoot}",
+                "CORENLP_HOME": "${workspaceRoot}/.corenlp"
+            },
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Evaluate MI-B",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/compex/__main__.py",
+            "args": [
+                "evaluate",
+                "${workspaceFolder}/tests/resources/bht-annotated/Medieninformatik-Bachelor"
+            ],
+            "env": {
+                "PYTHONPATH":"${workspaceRoot}",
+                "CORENLP_HOME": "${workspaceRoot}/.corenlp"
+            },
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Evaluate MI-B (taxo)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/compex/__main__.py",
+            "args": [
+                "evaluate",
+                "--taxonomyjson",
+                "${workspaceFolder}/tests/resources/test.json",
+                "${workspaceFolder}/tests/resources/bht-annotated/Medieninformatik-Bachelor"
+            ],
+            "env": {
+                "PYTHONPATH":"${workspaceRoot}",
+                "CORENLP_HOME": "${workspaceRoot}/.corenlp"
+            },
+            "console": "integratedTerminal"
+        },
+
+        {
+            "name": "Evaluate MI-B + objects",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/compex/__main__.py",
+            "args": [
+                "evaluate",
+                "--objects",
+                "${workspaceFolder}/tests/resources/bht-annotated/Medieninformatik-Bachelor"
+            ],
+            "env": {
+                "PYTHONPATH":"${workspaceRoot}",
+                "CORENLP_HOME": "${workspaceRoot}/.corenlp"
+            },
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Evaluate MI-B + objects (taxo)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/compex/__main__.py",
+            "args": [
+                "evaluate",
+                "--objects",
+                "--taxonomyjson",
+                "${workspaceFolder}/tests/resources/test.json",
+                "${workspaceFolder}/tests/resources/bht-annotated/Medieninformatik-Bachelor"
+            ],
+            "env": {
+                "PYTHONPATH":"${workspaceRoot}",
+                "CORENLP_HOME": "${workspaceRoot}/.corenlp"
+            },
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Evaluate MI-M",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/compex/__main__.py",
+            "args": [
+                "evaluate",
+                "${workspaceFolder}/tests/resources/bht-annotated/Medieninformatik-Master"
+            ],
+            "env": {
+                "PYTHONPATH":"${workspaceRoot}",
+                "CORENLP_HOME": "${workspaceRoot}/.corenlp"
+            },
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Evaluate MI-M (taxo)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/compex/__main__.py",
+            "args": [
+                "evaluate",
+                "--taxonomyjson",
+                "${workspaceFolder}/tests/resources/test.json",
+                "${workspaceFolder}/tests/resources/bht-annotated/Medieninformatik-Master"
+            ],
+            "env": {
+                "PYTHONPATH":"${workspaceRoot}",
+                "CORENLP_HOME": "${workspaceRoot}/.corenlp"
+            },
+            "console": "integratedTerminal"
+        },
+
+        {
+            "name": "Evaluate MI-M + objects",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/compex/__main__.py",
+            "args": [
+                "evaluate",
+                "--objects",
+                "${workspaceFolder}/tests/resources/bht-annotated/Medieninformatik-Master"
+            ],
+            "env": {
+                "PYTHONPATH":"${workspaceRoot}",
+                "CORENLP_HOME": "${workspaceRoot}/.corenlp"
+            },
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Evaluate MI-M + objects (taxo)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/compex/__main__.py",
+            "args": [
+                "evaluate",
+                "--objects",
+                "--taxonomyjson",
+                "${workspaceFolder}/tests/resources/test.json",
+                "${workspaceFolder}/tests/resources/bht-annotated/Medieninformatik-Master"
             ],
             "env": {
                 "PYTHONPATH":"${workspaceRoot}",
