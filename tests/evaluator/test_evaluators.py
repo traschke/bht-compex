@@ -40,11 +40,11 @@ class TestFMeasureEvaluator:
         result = self.evaluator.evaluate_with_annotated_sentences(evaluation_set, False, False)
 
         # Make sure, the one false positive we've injected earlier is found
-        assert result["false_positives"] == 1
+        assert result["positives"]["false"] == 1
         # Make sure, the two false negatives we've injected earlier are found
-        assert result["false_negatives"] == 2
+        assert result["negatives"]["false"] == 2
         # Make sure all true positives are found. There are 6 competencies in the tsv!
-        assert result["true_positives"] == 6
+        assert result["positives"]["true"] == 6
 
         # Check the resulting measurement data
         # 6 / (6 + 1)
@@ -112,11 +112,11 @@ class TestFMeasureEvaluator:
         result = self.evaluator.evaluate_with_annotated_sentences(evaluation_set, True, False)
 
         # Make sure, the 3/5 false positive we've injected earlier is found
-        assert result["false_positives"] == 0.6
+        assert result["positives"]["false"] == 0.6
         # Make sure, the 5/7 false negative we've injected earlier is found
-        assert result["false_negatives"] == 0.7142857142857143
+        assert result["negatives"]["false"] == 0.7142857142857143
         # Make sure all true positives are found. There are 6 competencies in the tsv + the 2/5 correct one we've injected
-        assert result["true_positives"] == 6.4
+        assert result["positives"]["true"] == 6.4
 
         # Check the resulting measurement data
         # 6.4 / (6.4 + 0.6)
@@ -205,11 +205,11 @@ class TestFMeasureEvaluator:
         result = self.evaluator.evaluate_with_annotated_sentences(evaluation_set, True, True)
 
         # Make sure, the 4/7 false positive we've injected earlier is found
-        assert result["false_positives"] == 0.5714285714285714
+        assert result["positives"]["false"] == 0.5714285714285714
         # Make sure, the 5/8 false negative we've injected earlier is found
-        assert result["false_negatives"] == 0.625
+        assert result["negatives"]["false"] == 0.625
         # Make sure all true positives are found. There are 6 competencies in the tsv + the 3/7 correct one we've injected
-        assert result["true_positives"] == 6.428571428571429
+        assert result["positives"]["true"] == 6.428571428571429
 
         # Check the resulting measurement data
         # 6.428571428571429 / (6.428571428571429 + 0.5714285714285714)
@@ -232,11 +232,11 @@ class TestFMeasureEvaluator:
         result = self.evaluator.evaluate_with_annotated_sentences(evaluation_set, False, False)
 
         # Make sure, the 3/5 false positive we've injected earlier is found
-        assert result["false_positives"] == 0
+        assert result["positives"]["false"] == 0
         # Make sure, the 5/7 false negative we've injected earlier is found
-        assert result["false_negatives"] == 0
+        assert result["negatives"]["false"] == 0
         # Make sure all true positives are found. There are 6 competencies in the tsv + the 2/5 correct one we've injected
-        assert result["true_positives"] == 7
+        assert result["positives"]["true"] == 7
 
         # Check the resulting measurement data
         # 6.4 / (6.4 + 0.6)
@@ -284,11 +284,11 @@ class TestFMeasureEvaluator:
         result = self.evaluator.evaluate_with_annotated_sentences(evaluation_set, True, False)
 
         # Make sure, the 3/5 false positive we've injected earlier is found
-        assert result["false_positives"] == 0
+        assert result["positives"]["false"] == 0
         # Make sure, the 5/7 false negative we've injected earlier is found
-        assert result["false_negatives"] == 0
+        assert result["negatives"]["false"] == 0
         # Make sure all true positives are found. There are 6 competencies in the tsv + the 2/5 correct one we've injected
-        assert result["true_positives"] == 7
+        assert result["positives"]["true"] == 7
 
         # Check the resulting measurement data
         # 6.4 / (6.4 + 0.6)
@@ -356,11 +356,11 @@ class TestFMeasureEvaluator:
         result = self.evaluator.evaluate_with_annotated_sentences(evaluation_set, True, True)
 
         # Make sure, the 3/5 false positive we've injected earlier is found
-        assert result["false_positives"] == 0
+        assert result["positives"]["false"] == 0
         # Make sure, the 5/7 false negative we've injected earlier is found
-        assert result["false_negatives"] == 0
+        assert result["negatives"]["false"] == 0
         # Make sure all true positives are found. There are 6 competencies in the tsv + the 2/5 correct one we've injected
-        assert result["true_positives"] == 7
+        assert result["positives"]["true"] == 7
 
         # Check the resulting measurement data
         # 6.4 / (6.4 + 0.6)
