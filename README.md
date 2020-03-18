@@ -1,10 +1,12 @@
 # CompEx
-![coverage](coverage.svg)
 ![release](https://img.shields.io/github/v/release/traschke/bht-compex)
 ![license](https://img.shields.io/github/license/traschke/bht-compex)
 ![pythonversion](https://img.shields.io/github/pipenv/locked/python-version/traschke/bht-compex)
+![jreversion](https://img.shields.io/badge/JRE-1.8+-blue)
+![corenlpversion](https://img.shields.io/badge/CoreNLP-3.9.1-blue)
+![coverage](coverage.svg)
 
-Extract competencies from written text
+Extract competency triples from written text.
 
 ## Getting Started
 
@@ -16,7 +18,7 @@ These instructions will get you a copy of the project up and running on your loc
 * [pipenv](https://github.com/pypa/pipenv)
 * (optional) [pyenv](https://github.com/pyenv/pyenv) to automatically install required Pythons
   * If pyenv is not installed, Python 3.7 is required, otherwise pyenv will install it
-* Java 1.8+ for CoreNLP server
+* Java JRE 1.8+ for CoreNLP server
 * [Stanford CoreNLP](https://stanfordnlp.github.io/CoreNLP/index.html)
 
 ### Installing
