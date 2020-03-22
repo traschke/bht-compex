@@ -4,15 +4,19 @@ from enum import Enum
 from compex.model.competency import Competency
 from compex.extractor.corenlp_semgrex_extractor import SemgrexAnnotator
 
+
 class EvaluationSet:
     """Helper class to manage testdata and data annotated by an algorithm."""
 
-    def __init__(self, test_data: Dict[str, List[Competency]], annotated_data: Dict[str, List[Competency]]):
+    def __init__(self, test_data: Dict[str, List[Competency]],
+                 annotated_data: Dict[str, List[Competency]]):
         self.test_data: List[Competency] = test_data
         self.annotated_data: List[Competency] = annotated_data
-        self.merged_data: Dict[str, Dict[str, Competency]] = self.__merge_data(test_data, annotated_data)
+        self.merged_data: Dict[str, Dict[str, Competency]
+                               ] = self.__merge_data(test_data, annotated_data)
 
-    def __merge_data(self, test_data: Dict[str, List[Competency]], annotated_data: Dict[str, List[Competency]]) -> Dict[str, Dict[str, Competency]]:
+    def __merge_data(self, test_data: Dict[str, List[Competency]],
+                     annotated_data: Dict[str, List[Competency]]) -> Dict[str, Dict[str, Competency]]:
         """Merge dictionaries and keep values of common keys in list.
 
         Parameters
@@ -41,14 +45,17 @@ class EvaluationSet:
 
         return merged_data
 
+
 class CalculationType(Enum):
     POSITIVE = 0,
     NEGATIVE = 1
 
+
 class FMeasureEvaluator:
     """Evaluator precision, recall and f1-score"""
 
-    def evaluate_with_annotated_sentences(self, evaluation_set: EvaluationSet, consider_objects: bool = False, consider_contexts = False):
+    def evaluate_with_annotated_sentences(
+            self, evaluation_set: EvaluationSet, consider_objects: bool = False, consider_contexts=False):
         """Evaluates the parser against pre-annotated sentences.
 
         By default, only bare competencies are used in the calculation.
@@ -70,10 +77,12 @@ class FMeasureEvaluator:
         """
 
         # Calculate true positives and false positives
-        true_positives, false_positives = self.__count_positive_negative(evaluation_set, CalculationType.POSITIVE, consider_objects, consider_contexts)
+        true_positives, false_positives = self.__count_positive_negative(
+            evaluation_set, CalculationType.POSITIVE, consider_objects, consider_contexts)
 
         # Calculate true negatives and false negatives
-        true_negatives, false_negatives = self.__count_positive_negative(evaluation_set, CalculationType.NEGATIVE, consider_objects, consider_contexts)
+        true_negatives, false_negatives = self.__count_positive_negative(
+            evaluation_set, CalculationType.NEGATIVE, consider_objects, consider_contexts)
 
         precision = self.__calculate_precision(true_positives, false_positives)
         recall = self.__calculate_recall(true_positives, false_negatives)
@@ -93,7 +102,8 @@ class FMeasureEvaluator:
             }
         }
 
-    def __count_positive_negative(self, evaluation_set: EvaluationSet, mode: CalculationType = CalculationType.POSITIVE, consider_objects: bool = False, consider_contexts: bool = False) -> List[float]:
+    def __count_positive_negative(self, evaluation_set: EvaluationSet, mode: CalculationType = CalculationType.POSITIVE,
+                                  consider_objects: bool = False, consider_contexts: bool = False) -> List[float]:
         """Counts either positive or negative based objects in evaluationset.
 
         A completely correct competency gets a score of 1.0. If considered, every object and context
@@ -147,10 +157,13 @@ class FMeasureEvaluator:
                                     for dict2_object in dict2_compentency.objects:
                                         if dict2_object == dict1_object:
                                             is_whole_object_found = True
-                                            # Add the count of the objects words to
-                                            in_comp_trues += len(dict1_object.word_chunk.words)
+                                            # Add the count of the objects
+                                            # words to
+                                            in_comp_trues += len(
+                                                dict1_object.word_chunk.words)
                                             break
-                                    # Check each word of objects if the whole object is not correct
+                                    # Check each word of objects if the whole
+                                    # object is not correct
                                     if not is_whole_object_found:
                                         for dict1_object_word in dict1_object.word_chunk.words:
                                             is_object_word_found: bool = False
@@ -172,9 +185,11 @@ class FMeasureEvaluator:
                                                 for dict2_context in dict2_object.contexts:
                                                     if dict2_context == dict1_context:
                                                         is_whole_context_found = True
-                                                        in_comp_trues += len(dict1_context.word_chunk.words)
+                                                        in_comp_trues += len(
+                                                            dict1_context.word_chunk.words)
                                                         break
-                                            # Check each word of context if the whole context is not correct
+                                            # Check each word of context if the
+                                            # whole context is not correct
                                             if not is_whole_context_found:
                                                 for dict1_context_word in dict1_context.word_chunk.words:
                                                     is_context_word_found: bool = False
@@ -197,7 +212,8 @@ class FMeasureEvaluator:
 
         return [trues, falses]
 
-    def __calculate_precision(self, true_positives: float, false_positives: float) -> float:
+    def __calculate_precision(self, true_positives: float,
+                              false_positives: float) -> float:
         """Calculates precision.
 
         Parameters
@@ -213,9 +229,11 @@ class FMeasureEvaluator:
             precision based from 0.0 to 1.0
         """
 
-        return true_positives / (true_positives + false_positives) if true_positives or false_positives else 0.0
+        return true_positives / \
+            (true_positives + false_positives) if true_positives or false_positives else 0.0
 
-    def __calculate_recall(self, true_positives: float, false_negatives: float) -> float:
+    def __calculate_recall(self, true_positives: float,
+                           false_negatives: float) -> float:
         """Calculates recall.
 
         Parameters
@@ -231,7 +249,8 @@ class FMeasureEvaluator:
             recall based from 0.0 to 1.0
         """
 
-        return true_positives / (true_positives + false_negatives) if true_positives or false_negatives else 0.0
+        return true_positives / \
+            (true_positives + false_negatives) if true_positives or false_negatives else 0.0
 
     def __calculate_f1_score(self, precision: float, recall: float) -> float:
         """Calculates f1 score.
@@ -249,4 +268,5 @@ class FMeasureEvaluator:
             f1 score based from 0.0 to 1.0
         """
 
-        return 2 * ((precision * recall) / (precision + recall)) if precision or recall else 0.0
+        return 2 * ((precision * recall) / (precision + recall)
+                    ) if precision or recall else 0.0

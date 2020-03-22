@@ -3,6 +3,7 @@ from enum import Enum
 
 from compex.model.taxonomy import BloomsTaxonomyDimensionEnum
 
+
 class Word:
     """Represents a word of a competency triple."""
 
@@ -35,6 +36,7 @@ class Word:
     def __repr__(self):
         return self.__str__()
 
+
 class WordChunk:
     """Represents a chunk of words."""
 
@@ -60,6 +62,7 @@ class WordChunk:
             self.words == other.words
         )
 
+
 class ObjectContext:
     """Represents a context of an object of a competency triple."""
 
@@ -78,7 +81,8 @@ class ObjectContext:
         return hash(self.word_chunk)
 
     def __eq__(self, other):
-        return (self.__class__ == other.__class__ and self.word_chunk == other.word_chunk)
+        return (self.__class__ ==
+                other.__class__ and self.word_chunk == other.word_chunk)
 
     def __str__(self) -> str:
         return " ".join(x.word for x in self.word_chunk.words)
@@ -86,10 +90,12 @@ class ObjectContext:
     def __repr__(self):
         return self.__str__()
 
+
 class CompetencyObject:
     """Represents an object of a competency triple."""
 
-    def __init__(self, word_chunk: WordChunk, contexts: List[ObjectContext] = None):
+    def __init__(self, word_chunk: WordChunk,
+                 contexts: List[ObjectContext] = None):
         """Creates a new instance.
 
         Parameters
@@ -111,7 +117,8 @@ class CompetencyObject:
 
     def __eq__(self, other):
         # TODO Consider contexts!
-        return (self.__class__ == other.__class__ and self.word_chunk == other.word_chunk)
+        return (self.__class__ ==
+                other.__class__ and self.word_chunk == other.word_chunk)
 
     def __str__(self) -> str:
         return " ".join(x.word for x in self.word_chunk.words)
@@ -119,10 +126,12 @@ class CompetencyObject:
     def __repr__(self):
         return self.__str__()
 
+
 class Competency:
     """Represents a competency triple."""
 
-    def __init__(self, word: Word, objects: List[CompetencyObject] = None, taxonomy_dimension: BloomsTaxonomyDimensionEnum = None):
+    def __init__(self, word: Word, objects: List[CompetencyObject]
+                 = None, taxonomy_dimension: BloomsTaxonomyDimensionEnum = None):
         """Creates a new instance.
 
         Parameters
@@ -158,10 +167,12 @@ class Competency:
     def __repr__(self):
         return self.__str__()
 
+
 class Sentence:
     """Represents a sentence with competency triples."""
 
-    def __init__(self, words: List[Word], competencies: List[Competency] = None):
+    def __init__(self, words: List[Word],
+                 competencies: List[Competency] = None):
         """Creates a new instance.
 
         Parameters

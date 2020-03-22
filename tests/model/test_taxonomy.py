@@ -3,6 +3,7 @@ import os
 
 from compex.model.taxonomy import TaxonomyManager, BloomsTaxonomyDimensionEnum
 
+
 class TestTaxonomyManager:
     def test_load_json(self):
         test_dir = os.path.dirname(__file__)

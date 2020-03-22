@@ -3,6 +3,7 @@ import os
 from compex.io.tsv import TsvReader, TsvDocument
 from compex.converter.tsv2competency import convert_tsv_to_competencies
 
+
 class TestTsvToCompetenciesConverter:
     def test_one(self):
         # Read a sample tsv

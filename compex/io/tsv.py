@@ -1,20 +1,23 @@
 from typing import List, Iterator, Dict, TextIO
 from enum import Enum
-import re, uuid
+import re
+import uuid
 
-# See https://webanno.github.io/webanno/releases/3.4.5/docs/user-guide.html#sect_webannotsv
+# See
+# https://webanno.github.io/webanno/releases/3.4.5/docs/user-guide.html#sect_webannotsv
 
 HEADER_LAYER_PREFIX_SEPARATOR = "="
-HEADER_PREFIX_FORMAT =         "#FORMAT" + HEADER_LAYER_PREFIX_SEPARATOR
-HEADER_PREFIX_CHAIN_LAYER =    "#T_CH"   + HEADER_LAYER_PREFIX_SEPARATOR
-HEADER_PREFIX_RELATION_LAYER = "#T_RL"   + HEADER_LAYER_PREFIX_SEPARATOR
-HEADER_PREFIX_SPAN_LAYER =     "#T_SP"   + HEADER_LAYER_PREFIX_SEPARATOR
+HEADER_PREFIX_FORMAT = "#FORMAT" + HEADER_LAYER_PREFIX_SEPARATOR
+HEADER_PREFIX_CHAIN_LAYER = "#T_CH" + HEADER_LAYER_PREFIX_SEPARATOR
+HEADER_PREFIX_RELATION_LAYER = "#T_RL" + HEADER_LAYER_PREFIX_SEPARATOR
+HEADER_PREFIX_SPAN_LAYER = "#T_SP" + HEADER_LAYER_PREFIX_SEPARATOR
 
 SENTENCE_IDENTIFICATOR = "#Text="
 FIELD_SEPARATOR = "\t"
 RANGE_SEPERATOR = "-"
-LINE_BREAK      = '\n'
-NULL_COLUMN     = "_"
+LINE_BREAK = '\n'
+NULL_COLUMN = "_"
+
 
 class LayerType(Enum):
     """Enum for TSV layer types."""
@@ -22,6 +25,7 @@ class LayerType(Enum):
     SPAN_LAYER = 1
     CHAIN_LAYER = 2
     RELATION_LAYER = 3
+
 
 class LayerDefinition:
     """Definition of a tsv layer."""
@@ -59,6 +63,7 @@ class LayerDefinition:
             (self.layer_type, self.id) == (other.layer_type, other.id)
         )
 
+
 class FeatureDefinition:
     """Definition of a feature of a layer definition."""
 
@@ -82,8 +87,10 @@ class FeatureDefinition:
     def __eq__(self, other):
         return (
             self.__class__ == other.__class__ and
-            (self.name, self.layer_definition) == (other.name, other.layer_definition)
+            (self.name, self.layer_definition) == (
+                other.name, other.layer_definition)
         )
+
 
 class TsvSchema:
     """Represents the schema of a TSV document."""
@@ -128,10 +135,12 @@ class TsvSchema:
             feature_definitions = feature_definitions + relation.features_definitions
         return feature_definitions
 
+
 class Feature:
     """Represents a feature of a TSV document."""
 
-    def __init__(self, feature_definition: FeatureDefinition, span_index: str, value: str):
+    def __init__(self, feature_definition: FeatureDefinition,
+                 span_index: str, value: str):
         """Creates a new instance.
 
         Parameters
@@ -155,13 +164,16 @@ class Feature:
     def __eq__(self, other):
         return (
             self.__class__ == other.__class__ and
-            (self.feature_definition, self.span_index, self.value) == (other.feature_definition, other.span_index, other.value)
+            (self.feature_definition, self.span_index, self.value) == (
+                other.feature_definition, other.span_index, other.value)
         )
+
 
 class TsvToken:
     """Represents a token of a TSV document."""
 
-    def __init__(self, sentence_number: int, token_number: int, offset_begin: int, offset_end: int, token: str, features: Dict):
+    def __init__(self, sentence_number: int, token_number: int,
+                 offset_begin: int, offset_end: int, token: str, features: Dict):
         """Create a new instance.
 
         Parameters
@@ -186,6 +198,7 @@ class TsvToken:
         self.offset_end: int = offset_end
         self.token: str = token
         self.features: Dict = features
+
 
 class TokenChunk:
     """Represents a chunk of tokens."""
@@ -214,6 +227,7 @@ class TokenChunk:
             Another TokenChunk this TokenChunk should be related to
         """
         self.relations.append(token_chunk)
+
 
 class TsvSentence:
     """Represents a sentence of a TSV document."""
@@ -248,7 +262,8 @@ class TsvSentence:
                 child: TokenChunk = None
                 parent: TokenChunk = None
                 for f, tc in self.token_chunks.items():
-                    if tc.tokens[0].sentence_number == sentence_no and tc.tokens[0].token_number == token_no and tc.feature.feature_definition.layer_definition.layer_type != LayerType.RELATION_LAYER:
+                    if tc.tokens[0].sentence_number == sentence_no and tc.tokens[
+                            0].token_number == token_no and tc.feature.feature_definition.layer_definition.layer_type != LayerType.RELATION_LAYER:
                         child = tc
                     elif tc.tokens[0].sentence_number == token_chunk.tokens[0].sentence_number and tc.tokens[0].token_number == token_chunk.tokens[0].token_number and tc.feature.feature_definition.layer_definition.layer_type != LayerType.RELATION_LAYER:
                         parent = tc
@@ -260,6 +275,7 @@ class TsvSentence:
                 features_to_del.append(feature)
         for feature_to_del in features_to_del:
             del self.token_chunks[feature_to_del]
+
 
 class TsvDocument:
     """Represents a TSV document."""
@@ -277,6 +293,7 @@ class TsvDocument:
 
         self.schema: TsvSchema = schema
         self.sentences: List[TsvSentence] = sentences
+
 
 class TsvReader:
     """A class to read/parse TSV documents."""
@@ -351,7 +368,8 @@ class TsvReader:
                 break
         return schema
 
-    def read_sentences(self, iterator: Iterator[str], schema: TsvSchema) -> List[TsvSentence]:
+    def read_sentences(
+            self, iterator: Iterator[str], schema: TsvSchema) -> List[TsvSentence]:
         """Reads/parses all sentences of a TSV document.
 
         Parameters
@@ -392,20 +410,29 @@ class TsvReader:
                 sentence_number, token_number = parts[0].split(RANGE_SEPERATOR)
                 offset_begin, offset_end = parts[1].split(RANGE_SEPERATOR)
                 token = parts[2]
-                features = self.parse_features(parts[3:], schema.get_feature_definitions())
-                tokens.append(TsvToken(sentence_number, token_number, offset_begin, offset_end, token, features))
+                features = self.parse_features(
+                    parts[3:], schema.get_feature_definitions())
+                tokens.append(
+                    TsvToken(
+                        sentence_number,
+                        token_number,
+                        offset_begin,
+                        offset_end,
+                        token,
+                        features))
 
         # FIXME Dirty hack to complete the last sentence in tsv
         if sentence_started:
-                    # Sentence ends
-                    sentences.append(TsvSentence(current_text, tokens))
-                    current_text = None
-                    tokens = []
-                    sentence_started = False
+            # Sentence ends
+            sentences.append(TsvSentence(current_text, tokens))
+            current_text = None
+            tokens = []
+            sentence_started = False
 
         return sentences
 
-    def parse_features(self, features: List[str], feature_definitions: List[FeatureDefinition]) -> List[Feature]:
+    def parse_features(
+            self, features: List[str], feature_definitions: List[FeatureDefinition]) -> List[Feature]:
         """Parses features of a token in a TSV document.
 
         Parameters
@@ -429,21 +456,28 @@ class TsvReader:
         if not features[-1]:
             del features[-1]
         if len(features) != len(feature_definitions):
-            raise Exception("The number of features does not match the number of feature definitions in the schema.")
+            raise Exception(
+                "The number of features does not match the number of feature definitions in the schema.")
         parsed_features: List[Feature] = []
 
         for i, layer in enumerate(features, start=0):
             if layer != NULL_COLUMN:
                 parts = layer.split("|")
                 for part in parts:
-                    searcho = re.search(r"^([A-Za-z0-9\-]+)(\[(\d+(_\d+)?)\])?$", part)
+                    searcho = re.search(
+                        r"^([A-Za-z0-9\-]+)(\[(\d+(_\d+)?)\])?$", part)
                     name = searcho.group(1)
                     if searcho.group(3) is None:
                         # FIXME Dirty hack to distinguish features without span-index
-                        # Assign each of them a random id, so they are not part of the same span
+                        # Assign each of them a random id, so they are not part
+                        # of the same span
                         span_index = uuid.uuid1()
                     else:
                         span_index = searcho.group(3)
-                    parsed_features.append(Feature(feature_definitions[i], span_index, name))
+                    parsed_features.append(
+                        Feature(
+                            feature_definitions[i],
+                            span_index,
+                            name))
 
         return parsed_features

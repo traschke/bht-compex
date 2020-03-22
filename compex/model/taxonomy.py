@@ -2,6 +2,7 @@ from typing import Dict, TextIO
 from enum import IntEnum
 import jsonpickle
 
+
 class BloomsTaxonomyDimensionEnum(IntEnum):
     """Represents taxonomy dimensions according to Bloom."""
 
@@ -12,10 +13,12 @@ class BloomsTaxonomyDimensionEnum(IntEnum):
     EVALUATE = 4,
     CREATE = 5
 
+
 class TaxonomyManager:
     """Represents a taxonomy. Reads it's values from a given json file (see README.md for file format)"""
 
-    def read_json(self, taxonomy_json_file: TextIO) -> Dict[str, BloomsTaxonomyDimensionEnum]:
+    def read_json(
+            self, taxonomy_json_file: TextIO) -> Dict[str, BloomsTaxonomyDimensionEnum]:
         """Reads a json file.
 
         Parameters
@@ -48,7 +51,8 @@ class TaxonomyManager:
         taxonomy_json: str = taxonomy_json_file.read()
         return taxonomy_json
 
-    def __parse_json(self, taxonomy_json: str) -> Dict[str, BloomsTaxonomyDimensionEnum]:
+    def __parse_json(
+            self, taxonomy_json: str) -> Dict[str, BloomsTaxonomyDimensionEnum]:
         """Reads a taxonomy json document.
 
         Parameters
@@ -66,5 +70,6 @@ class TaxonomyManager:
         decoded_json = jsonpickle.decode(taxonomy_json)
         for dimension in decoded_json:
             for verb in dimension["verbs"]:
-                taxonomy_verb_dict[verb] = BloomsTaxonomyDimensionEnum(dimension["dimension"])
+                taxonomy_verb_dict[verb] = BloomsTaxonomyDimensionEnum(
+                    dimension["dimension"])
         return taxonomy_verb_dict
