@@ -95,7 +95,7 @@ Sample output on `stdout` (formatted for better readability)
 
 #### Evaluation
 Evaluate compex against pre-annotated data. Outputs recall, precision and F1.
-To evaluate a pre-annoted [WebAnno](https://webanno.github.io/webanno/) TSV 3.2 file is needed. See [here](https://webanno.github.io/webanno/releases/3.6.4/docs/user-guide.html#sect_webannotsv) for the file format. You can use WebAnno to annotate data and evaluate compex with it. Use the ?? and ?? for the project files.
+To evaluate a pre-annoted [WebAnno](https://webanno.github.io/webanno/) TSV 3.2 file is needed. See [here](https://webanno.github.io/webanno/releases/3.6.4/docs/user-guide.html#sect_webannotsv) for the file format. You can use WebAnno to annotate data and evaluate compex with it. This repository contains pre-annotated data from Modulhandbooks of Department~VI of Beuth University of Applied Sciences Berlin. They can be found here: `tests/resources/bht-annotated`. The corresponding WebAnno Projekt is located at `tests/resources/webanno/BHT+Test_2020-03-22_1808.zip`.
 
 Show help
 ```console
