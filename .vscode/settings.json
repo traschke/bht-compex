@@ -1,0 +1,31 @@
+{
+    "python.pythonPath": "/home/timo/.local/share/virtualenvs/bht-depparse-compex-oGXoNNSZ/bin/python",
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "cSpell.words": [
+        "ADJA",
+        "VVFIN",
+        "VVINF",
+        "VVIZU",
+        "amod",
+        "contextadja",
+        "corenlp",
+        "dobj",
+        "nmod",
+        "objectadja",
+        "objectdet",
+        "objectdetart",
+        "semgrex",
+        "ssplit",
+        "stanfordnlp",
+        "unpicklable"
+    ],
+    "autoDocstring.docstringFormat": "numpy",
+    "python.formatting.autopep8Args": [
+        "--aggressive"
+    ]
+}
