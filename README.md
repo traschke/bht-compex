@@ -26,7 +26,7 @@ These instructions will get you a copy of the project up and running on your loc
 Setup a python virtual environment and download all dependencies
 
 ```console
-$ pipenv install
+$ pipenv install --dev
 ```
 
 ComPex requires an installation of CoreNLP with german models. Download required CoreNLP Java server and german models from [here](https://stanfordnlp.github.io/CoreNLP/download.html) to destination of your choosing. You can use the following script to automate this process, which downloads all required files to `./.corenlp`:
